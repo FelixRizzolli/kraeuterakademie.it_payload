@@ -1,10 +1,10 @@
-import { link } from '@/fields/link'
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
-import { Block } from 'payload/types'
+import { link } from '@/fields/web'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
+import { Block } from 'payload'
 
-export const SwiperCard: Block = {
-  slug: 'swiperCard',
+export const WebSwiperCard: Block = {
+  slug: 'web-swiper-card',
   fields: [
     {
       type: 'group',

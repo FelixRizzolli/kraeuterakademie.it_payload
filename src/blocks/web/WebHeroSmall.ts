@@ -1,9 +1,9 @@
-import { spacing } from '@/fields/spacing'
-import { link } from '@/fields/link'
-import { Block } from 'payload/types'
+import { spacing } from '@/fields/web'
+import { link } from '@/fields/web'
+import { Block } from 'payload'
 
-export const HeroSmall: Block = {
-  slug: 'heroSmall',
+export const WebHeroSmall: Block = {
+  slug: 'web-hero-small',
   fields: [
     {
       type: 'group',

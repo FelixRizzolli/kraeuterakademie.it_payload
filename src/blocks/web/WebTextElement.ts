@@ -1,11 +1,11 @@
-import { link } from '@/fields/link'
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
+import { link } from '@/fields/web'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
-export const TextElement: Block = {
-  slug: 'textElement',
+export const WebTextElement: Block = {
+  slug: 'web-text-element',
   fields: [
     {
       type: 'group',

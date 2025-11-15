@@ -1,11 +1,11 @@
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
-import { link } from '@/fields/link'
+import { link } from '@/fields/web'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
-export const SwiperLarge: Block = {
-  slug: 'swiperLarge',
+export const WebCourseList: Block = {
+  slug: 'web-course-list',
   fields: [
     {
       type: 'group',
@@ -14,23 +14,21 @@ export const SwiperLarge: Block = {
         {
           name: 'title',
           type: 'text',
+          required: false,
         },
         {
-          name: 'items',
+          name: 'courses',
           type: 'array',
           fields: [
             {
-              name: 'image',
-              type: 'upload',
-              relationTo: 'media',
-            },
-            {
-              name: 'infos',
-              type: 'text',
-            },
-            {
               name: 'title',
               type: 'text',
+              required: true,
+            },
+            {
+              name: 'place',
+              type: 'text',
+              required: false,
             },
             {
               name: 'description',

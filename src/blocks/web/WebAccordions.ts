@@ -1,10 +1,10 @@
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
-import { spacing } from '../fields/spacing'
-import { style } from '@/fields/style'
+import { Block } from 'payload'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
 
-export const Accordions: Block = {
-  slug: 'accordions',
+export const WebAccordions: Block = {
+  slug: 'web-accordions',
   fields: [
     {
       type: 'group',

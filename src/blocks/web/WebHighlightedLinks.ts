@@ -1,9 +1,9 @@
-import { imageLink } from '@/fields/image-link'
-import { spacing } from '@/fields/spacing'
-import { Block } from 'payload/types'
+import { imageLink } from '@/fields/web/ImageLink'
+import { spacing } from '@/fields/web'
+import { Block } from 'payload'
 
-export const HighlightedLinks: Block = {
-  slug: 'highlightedLinks',
+export const WebHighlightedLinks: Block = {
+  slug: 'web-highlighted-links',
   fields: [
     {
       type: 'group',

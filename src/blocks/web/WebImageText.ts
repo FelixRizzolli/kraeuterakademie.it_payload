@@ -1,10 +1,10 @@
-import { link } from '@/fields/link'
-import { spacing } from '@/fields/spacing'
+import { link } from '@/fields/web'
+import { spacing } from '@/fields/web'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
-export const ImageText: Block = {
-  slug: 'imageText',
+export const WebImageText: Block = {
+  slug: 'web-image-text',
   fields: [
     {
       type: 'group',

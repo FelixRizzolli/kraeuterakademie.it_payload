@@ -1,11 +1,11 @@
-import { link } from '@/fields/link'
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
+import { link } from '@/fields/web'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
-export const CourseList: Block = {
-  slug: 'courseList',
+export const WebBookList: Block = {
+  slug: 'web-book-list',
   fields: [
     {
       type: 'group',
@@ -17,7 +17,7 @@ export const CourseList: Block = {
           required: false,
         },
         {
-          name: 'courses',
+          name: 'books',
           type: 'array',
           fields: [
             {
@@ -26,14 +26,19 @@ export const CourseList: Block = {
               required: true,
             },
             {
-              name: 'place',
+              name: 'infos',
               type: 'text',
-              required: false,
+              required: true,
             },
             {
               name: 'description',
               type: 'richText',
               editor: lexicalEditor({}),
+            },
+            {
+              name: 'cover',
+              type: 'upload',
+              relationTo: 'media',
             },
             link,
           ],

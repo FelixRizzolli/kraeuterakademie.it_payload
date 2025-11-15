@@ -1,11 +1,11 @@
-import { link } from '@/fields/link'
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
+import { link } from '@/fields/web'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
-export const BookList: Block = {
-  slug: 'bookList',
+export const WebSwiperLarge: Block = {
+  slug: 'web-swiper-large',
   fields: [
     {
       type: 'group',
@@ -14,31 +14,28 @@ export const BookList: Block = {
         {
           name: 'title',
           type: 'text',
-          required: false,
         },
         {
-          name: 'books',
+          name: 'items',
           type: 'array',
           fields: [
             {
-              name: 'title',
-              type: 'text',
-              required: true,
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
             },
             {
               name: 'infos',
               type: 'text',
-              required: true,
+            },
+            {
+              name: 'title',
+              type: 'text',
             },
             {
               name: 'description',
               type: 'richText',
               editor: lexicalEditor({}),
-            },
-            {
-              name: 'cover',
-              type: 'upload',
-              relationTo: 'media',
             },
             link,
           ],

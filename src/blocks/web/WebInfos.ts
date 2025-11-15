@@ -1,11 +1,11 @@
-import { spacing } from '@/fields/spacing'
-import { style } from '@/fields/style'
-import { link } from '@/fields/link'
-import { Block } from 'payload/types'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
+import { link } from '@/fields/web'
+import { Block } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
-export const Infos: Block = {
-  slug: 'infos',
+export const WebInfos: Block = {
+  slug: 'web-infos',
   fields: [
     {
       type: 'group',

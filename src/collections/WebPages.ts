@@ -1,8 +1,8 @@
-import { CollectionConfig } from 'payload/types'
-import { blocks } from '../blocks'
+import { CollectionConfig } from 'payload'
+import { webBlocks } from '../blocks/web'
 
-export const Pages: CollectionConfig = {
-  slug: 'pages',
+export const WebPages: CollectionConfig = {
+  slug: 'web-pages',
   admin: {
     useAsTitle: 'title',
   },
@@ -15,7 +15,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks,
+      blocks: webBlocks,
       required: false,
     },
   ],

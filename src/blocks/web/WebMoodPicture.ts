@@ -1,8 +1,9 @@
-import { spacing } from '@/fields/spacing'
-import { Block } from 'payload/types'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
+import { Block } from 'payload'
 
-export const HeroLarge: Block = {
-  slug: 'heroLarge',
+export const WebMoodPicture: Block = {
+  slug: 'web-mood-picture',
   fields: [
     {
       type: 'group',
@@ -12,18 +13,13 @@ export const HeroLarge: Block = {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
-          required: true,
-        },
-        {
-          name: 'title',
-          type: 'text',
         },
       ],
     },
     {
       type: 'group',
       name: 'settings',
-      fields: [spacing],
+      fields: [spacing, style],
     },
   ],
 }
