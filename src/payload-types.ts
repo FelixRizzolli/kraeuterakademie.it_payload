@@ -69,17 +69,35 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    pages: Page;
+    'web-pages': WebPage;
+    courses: Course;
+    'course-modules': CourseModule;
+    plants: Plant;
+    'plant-families': PlantFamily;
+    'plant-groups': PlantGroup;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    users: {
+      enrolledCourses: 'courses';
+      attendedModules: 'course-modules';
+    };
+    courses: {
+      modules: 'course-modules';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    pages: PagesSelect<false> | PagesSelect<true>;
+    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
+    courses: CoursesSelect<false> | CoursesSelect<true>;
+    'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
+    plants: PlantsSelect<false> | PlantsSelect<true>;
+    'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
+    'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -123,6 +141,28 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  firstName?: string | null;
+  lastName?: string | null;
+  /**
+   * User role: Admin can manage everything, Participant can access Dashboard/Quiz
+   */
+  role: 'admin' | 'participant';
+  /**
+   * Courses this participant is enrolled in
+   */
+  enrolledCourses?: {
+    docs?: (number | Course)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * Modules this participant has attended
+   */
+  attendedModules?: {
+    docs?: (number | CourseModule)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -140,6 +180,136 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses".
+ */
+export interface Course {
+  id: number;
+  /**
+   * Unique course identifier (e.g., K1, K2, K3)
+   */
+  name: string;
+  /**
+   * Location where the course takes place
+   */
+  place: 'unterland' | 'pustertal' | 'vinschgau';
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Current status of the course
+   */
+  status: 'open' | 'running' | 'closed';
+  /**
+   * Users enrolled in this course
+   */
+  participants?: (number | User)[] | null;
+  /**
+   * Modules that belong to this course
+   */
+  modules?: {
+    docs?: (number | CourseModule)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-modules".
+ */
+export interface CourseModule {
+  id: number;
+  /**
+   * Auto-generated or custom title for the module
+   */
+  title: string;
+  /**
+   * The course this module belongs to
+   */
+  course: number | Course;
+  /**
+   * Date when the module takes place
+   */
+  date: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Plants assigned to this module with checklist status
+   */
+  plants?:
+    | {
+        plant: number | Plant;
+        /**
+         * Check if this plant was studied during the module
+         */
+        studied?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Participants who attended this specific module
+   */
+  participants?: (number | User)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plants".
+ */
+export interface Plant {
+  id: number;
+  /**
+   * German name of the plant
+   */
+  germanName: string;
+  /**
+   * Scientific/Latin name of the plant
+   */
+  latinName: string;
+  /**
+   * Images of the plant
+   */
+  images?: (number | Media)[] | null;
+  /**
+   * The botanical family this plant belongs to
+   */
+  family: number | PlantFamily;
+  /**
+   * The groups this plant belongs to
+   */
+  groups?: (number | PlantGroup)[] | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -162,9 +332,51 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "plant-families".
  */
-export interface Page {
+export interface PlantFamily {
+  id: number;
+  /**
+   * German name of the plant family
+   */
+  germanName: string;
+  /**
+   * Scientific/Latin name of the plant family
+   */
+  latinName: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-groups".
+ */
+export interface PlantGroup {
+  id: number;
+  name: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-pages".
+ */
+export interface WebPage {
   id: number;
   title: string;
   blocks?:
@@ -205,7 +417,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'accordions';
+            blockType: 'web-accordions';
           }
         | {
             data: {
@@ -222,7 +434,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'animatedText';
+            blockType: 'web-animatedText';
           }
         | {
             data?: {
@@ -266,7 +478,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'bookList';
+            blockType: 'web-book-list';
           }
         | {
             data?: {
@@ -309,7 +521,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'courseList';
+            blockType: 'web-course-list';
           }
         | {
             data: {
@@ -326,7 +538,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'heroLarge';
+            blockType: 'web-hero-large';
           }
         | {
             data: {
@@ -347,7 +559,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'heroSmall';
+            blockType: 'web-hero-small';
           }
         | {
             data?: {
@@ -370,7 +582,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'highlightedLinks';
+            blockType: 'web-highlighted-links';
           }
         | {
             data: {
@@ -422,7 +634,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'imageText';
+            blockType: 'web-image-text';
           }
         | {
             data?: {
@@ -465,7 +677,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'infos';
+            blockType: 'web-infos';
           }
         | {
             data?: {
@@ -482,7 +694,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'moodPicture';
+            blockType: 'web-mood-picture';
           }
         | {
             data?: {
@@ -511,7 +723,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'swiperCard';
+            blockType: 'web-swiper-card';
           }
         | {
             data?: {
@@ -555,7 +767,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'swiperLarge';
+            blockType: 'web-swiper-large';
           }
         | {
             data?: {
@@ -583,7 +795,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'swiperSimple';
+            blockType: 'web-swiper-simple';
           }
         | {
             data: {
@@ -619,7 +831,7 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'textElement';
+            blockType: 'web-text-element';
           }
       )[]
     | null;
@@ -659,8 +871,28 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'pages';
-        value: number | Page;
+        relationTo: 'web-pages';
+        value: number | WebPage;
+      } | null)
+    | ({
+        relationTo: 'courses';
+        value: number | Course;
+      } | null)
+    | ({
+        relationTo: 'course-modules';
+        value: number | CourseModule;
+      } | null)
+    | ({
+        relationTo: 'plants';
+        value: number | Plant;
+      } | null)
+    | ({
+        relationTo: 'plant-families';
+        value: number | PlantFamily;
+      } | null)
+    | ({
+        relationTo: 'plant-groups';
+        value: number | PlantGroup;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -709,6 +941,11 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
+  role?: T;
+  enrolledCourses?: T;
+  attendedModules?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -746,14 +983,14 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages_select".
+ * via the `definition` "web-pages_select".
  */
-export interface PagesSelect<T extends boolean = true> {
+export interface WebPagesSelect<T extends boolean = true> {
   title?: T;
   blocks?:
     | T
     | {
-        accordions?:
+        'web-accordions'?:
           | T
           | {
               data?:
@@ -784,7 +1021,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        animatedText?:
+        'web-animatedText'?:
           | T
           | {
               data?:
@@ -808,7 +1045,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        bookList?:
+        'web-book-list'?:
           | T
           | {
               data?:
@@ -847,7 +1084,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        courseList?:
+        'web-course-list'?:
           | T
           | {
               data?:
@@ -885,7 +1122,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        heroLarge?:
+        'web-hero-large'?:
           | T
           | {
               data?:
@@ -909,7 +1146,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        heroSmall?:
+        'web-hero-small'?:
           | T
           | {
               data?:
@@ -939,7 +1176,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        highlightedLinks?:
+        'web-highlighted-links'?:
           | T
           | {
               data?:
@@ -969,7 +1206,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        imageText?:
+        'web-image-text'?:
           | T
           | {
               data?:
@@ -1002,7 +1239,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        infos?:
+        'web-infos'?:
           | T
           | {
               data?:
@@ -1042,7 +1279,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        moodPicture?:
+        'web-mood-picture'?:
           | T
           | {
               data?:
@@ -1066,7 +1303,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        swiperCard?:
+        'web-swiper-card'?:
           | T
           | {
               data?:
@@ -1104,7 +1341,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        swiperLarge?:
+        'web-swiper-large'?:
           | T
           | {
               data?:
@@ -1143,7 +1380,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        swiperSimple?:
+        'web-swiper-simple'?:
           | T
           | {
               data?:
@@ -1178,7 +1415,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        textElement?:
+        'web-text-element'?:
           | T
           | {
               data?:
@@ -1210,6 +1447,73 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses_select".
+ */
+export interface CoursesSelect<T extends boolean = true> {
+  name?: T;
+  place?: T;
+  description?: T;
+  status?: T;
+  participants?: T;
+  modules?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-modules_select".
+ */
+export interface CourseModulesSelect<T extends boolean = true> {
+  title?: T;
+  course?: T;
+  date?: T;
+  description?: T;
+  plants?:
+    | T
+    | {
+        plant?: T;
+        studied?: T;
+        id?: T;
+      };
+  participants?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plants_select".
+ */
+export interface PlantsSelect<T extends boolean = true> {
+  germanName?: T;
+  latinName?: T;
+  images?: T;
+  family?: T;
+  groups?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-families_select".
+ */
+export interface PlantFamiliesSelect<T extends boolean = true> {
+  germanName?: T;
+  latinName?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-groups_select".
+ */
+export interface PlantGroupsSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
