@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -160,6 +162,472 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  blocks?:
+    | (
+        | {
+            data?: {
+              title?: string | null;
+              AccordionItems?:
+                | {
+                    title: string;
+                    content?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'accordions';
+          }
+        | {
+            data: {
+              text: string;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'animatedText';
+          }
+        | {
+            data?: {
+              title?: string | null;
+              books?:
+                | {
+                    title: string;
+                    infos: string;
+                    description?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    cover?: (number | null) | Media;
+                    link: {
+                      label: string;
+                      url: string;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'bookList';
+          }
+        | {
+            data?: {
+              title?: string | null;
+              courses?:
+                | {
+                    title: string;
+                    place?: string | null;
+                    description?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    link: {
+                      label: string;
+                      url: string;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'courseList';
+          }
+        | {
+            data: {
+              image: number | Media;
+              title?: string | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'heroLarge';
+          }
+        | {
+            data: {
+              image?: (number | null) | Media;
+              title: string;
+              link: {
+                label: string;
+                url: string;
+              };
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'heroSmall';
+          }
+        | {
+            data?: {
+              links?:
+                | {
+                    label: string;
+                    url: string;
+                    image: number | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'highlightedLinks';
+          }
+        | {
+            data: {
+              title?: string | null;
+              image?: (number | null) | Media;
+              textTop?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              textHighlight?: string | null;
+              textBottom?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              link: {
+                label: string;
+                url: string;
+              };
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'imageText';
+          }
+        | {
+            data?: {
+              infos?:
+                | {
+                    infos: {
+                      title?: string | null;
+                      text?: {
+                        root: {
+                          type: string;
+                          children: {
+                            type: any;
+                            version: number;
+                            [k: string]: unknown;
+                          }[];
+                          direction: ('ltr' | 'rtl') | null;
+                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                          indent: number;
+                          version: number;
+                        };
+                        [k: string]: unknown;
+                      } | null;
+                    };
+                    link: {
+                      label: string;
+                      url: string;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'infos';
+          }
+        | {
+            data?: {
+              image?: (number | null) | Media;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'moodPicture';
+          }
+        | {
+            data?: {
+              cards?:
+                | {
+                    image?: (number | null) | Media;
+                    info?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    link: {
+                      label: string;
+                      url: string;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'swiperCard';
+          }
+        | {
+            data?: {
+              title?: string | null;
+              items?:
+                | {
+                    image?: (number | null) | Media;
+                    infos?: string | null;
+                    title?: string | null;
+                    description?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    link: {
+                      label: string;
+                      url: string;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'swiperLarge';
+          }
+        | {
+            data?: {
+              slides?:
+                | {
+                    title?: string | null;
+                    images?:
+                      | {
+                          image?: (number | null) | Media;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'swiperSimple';
+          }
+        | {
+            data: {
+              title: string;
+              content: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              link: {
+                label: string;
+                url: string;
+              };
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textElement';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -189,6 +657,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -271,6 +743,475 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  blocks?:
+    | T
+    | {
+        accordions?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    AccordionItems?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        animatedText?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    text?: T;
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        bookList?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    books?:
+                      | T
+                      | {
+                          title?: T;
+                          infos?: T;
+                          description?: T;
+                          cover?: T;
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                url?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        courseList?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    courses?:
+                      | T
+                      | {
+                          title?: T;
+                          place?: T;
+                          description?: T;
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                url?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        heroLarge?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        heroSmall?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    link?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        highlightedLinks?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    links?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                          image?: T;
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        imageText?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    image?: T;
+                    textTop?: T;
+                    textHighlight?: T;
+                    textBottom?: T;
+                    link?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        infos?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    infos?:
+                      | T
+                      | {
+                          infos?:
+                            | T
+                            | {
+                                title?: T;
+                                text?: T;
+                              };
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                url?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        moodPicture?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    image?: T;
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        swiperCard?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    cards?:
+                      | T
+                      | {
+                          image?: T;
+                          info?: T;
+                          date?: T;
+                          title?: T;
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                url?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        swiperLarge?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    items?:
+                      | T
+                      | {
+                          image?: T;
+                          infos?: T;
+                          title?: T;
+                          description?: T;
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                url?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        swiperSimple?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    slides?:
+                      | T
+                      | {
+                          title?: T;
+                          images?:
+                            | T
+                            | {
+                                image?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        textElement?:
+          | T
+          | {
+              data?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                    link?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
