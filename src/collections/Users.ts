@@ -1,12 +1,19 @@
 import type { CollectionConfig } from 'payload'
+import { CollectionSlug } from '../lib/constants'
+import { administratorOrSelf, isAdministratorFieldLevel } from '../lib/access'
 
 export const Users: CollectionConfig = {
-  slug: 'users',
+  slug: CollectionSlug.USERS,
   admin: {
     useAsTitle: 'email',
-    defaultColumns: ['email', 'firstName', 'lastName', 'role'],
+    defaultColumns: ['email', 'firstName', 'lastName', 'roles'],
+    description: 'Manage user accounts and their roles',
   },
-  auth: true,
+  auth: {
+    // Require email verification for non-admin roles
+    verify: false, // Set to true in production
+  },
+  access: administratorOrSelf,
   fields: [
     {
       name: 'firstName',
@@ -19,39 +26,62 @@ export const Users: CollectionConfig = {
       label: 'Last Name',
     },
     {
-      name: 'role',
-      type: 'select',
+      name: 'roles',
+      type: 'relationship',
+      relationTo: CollectionSlug.ROLES,
+      hasMany: true,
       required: true,
-      defaultValue: 'participant',
-      options: [
-        { label: 'Admin', value: 'admin' },
-        { label: 'Participant', value: 'participant' },
-      ],
+      label: 'Roles',
       admin: {
-        description:
-          'User role: Admin can manage everything, Participant can access Dashboard/Quiz',
+        description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
+      },
+      access: {
+        // Only administrators can modify roles
+        update: isAdministratorFieldLevel,
       },
     },
     {
       name: 'enrolledCourses',
       type: 'join',
-      collection: 'courses',
+      collection: CollectionSlug.COURSES,
       on: 'participants',
       label: 'Enrolled Courses',
       admin: {
-        description: 'Courses this participant is enrolled in',
-        condition: (data) => data.role === 'participant',
+        description: 'Courses this user is enrolled in',
+        condition: (data) => {
+          // Show if user has dashboard access role
+          return (
+            data.roles?.some(
+              (role: any) =>
+                role?.slug === 'dashboard-user' ||
+                role?.slug === 'demo-dashboard-user' ||
+                role?.slug === 'administrator' ||
+                role?.slug === 'super-admin',
+            ) || false
+          )
+        },
       },
     },
     {
       name: 'attendedModules',
       type: 'join',
-      collection: 'course-modules',
+      collection: CollectionSlug.COURSE_MODULES,
       on: 'participants',
       label: 'Attended Modules',
       admin: {
-        description: 'Modules this participant has attended',
-        condition: (data) => data.role === 'participant',
+        description: 'Modules this user has attended',
+        condition: (data) => {
+          // Show if user has dashboard access role
+          return (
+            data.roles?.some(
+              (role: any) =>
+                role?.slug === 'dashboard-user' ||
+                role?.slug === 'demo-dashboard-user' ||
+                role?.slug === 'administrator' ||
+                role?.slug === 'super-admin',
+            ) || false
+          )
+        },
       },
     },
   ],

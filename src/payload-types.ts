@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    roles: Role;
     media: Media;
     'web-pages': WebPage;
     courses: Course;
@@ -91,6 +92,7 @@ export interface Config {
   };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    roles: RolesSelect<false> | RolesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
@@ -136,6 +138,8 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Manage user accounts and their roles
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -144,11 +148,11 @@ export interface User {
   firstName?: string | null;
   lastName?: string | null;
   /**
-   * User role: Admin can manage everything, Participant can access Dashboard/Quiz
+   * User can have multiple roles (e.g., Dashboard User + Quiz Player)
    */
-  role: 'admin' | 'participant';
+  roles: (number | Role)[];
   /**
-   * Courses this participant is enrolled in
+   * Courses this user is enrolled in
    */
   enrolledCourses?: {
     docs?: (number | Course)[];
@@ -156,7 +160,7 @@ export interface User {
     totalDocs?: number;
   };
   /**
-   * Modules this participant has attended
+   * Modules this user has attended
    */
   attendedModules?: {
     docs?: (number | CourseModule)[];
@@ -180,6 +184,36 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * Manage user roles and permissions
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles".
+ */
+export interface Role {
+  id: number;
+  /**
+   * Display name of the role
+   */
+  name: string;
+  /**
+   * Unique identifier for the role
+   */
+  slug:
+    | 'super-admin'
+    | 'administrator'
+    | 'content-creator'
+    | 'dashboard-user'
+    | 'quiz-player'
+    | 'demo-dashboard-user'
+    | 'demo-quiz-player';
+  /**
+   * What can users with this role do?
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -867,6 +901,10 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
+        relationTo: 'roles';
+        value: number | Role;
+      } | null)
+    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
@@ -943,7 +981,7 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
-  role?: T;
+  roles?: T;
   enrolledCourses?: T;
   attendedModules?: T;
   updatedAt?: T;
@@ -962,6 +1000,17 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles_select".
+ */
+export interface RolesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
+import { administratorWritePublicRead } from '../lib/access'
 
 export const CourseModules: CollectionConfig = {
   slug: CollectionSlug.COURSE_MODULES,
@@ -9,6 +10,7 @@ export const CourseModules: CollectionConfig = {
     defaultColumns: ['title', 'date', 'course'],
     group: CollectionGroup.COURSES,
   },
+  access: administratorWritePublicRead,
   fields: [
     {
       name: 'title',

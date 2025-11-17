@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
 import { Users } from './collections/Users'
+import { Roles } from './collections/Roles'
 import { Media } from './collections/Media'
 import { WebPages } from './collections/WebPages'
 import { Courses } from './collections/Courses'
@@ -27,7 +28,7 @@ export default buildConfig({
   },
   collections: [
     Users,
-  collections: [Users, Media, WebPages, Course, CourseModule, Plant, PlantFamily, PlantGroup],
+    Roles,
     Media,
     WebPages,
     Courses,

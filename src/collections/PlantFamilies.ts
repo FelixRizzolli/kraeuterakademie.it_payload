@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
+import { administratorWritePublicRead } from '../lib/access'
 
 export const PlantFamilies: CollectionConfig = {
   slug: CollectionSlug.PLANT_FAMILIES,
@@ -8,6 +9,7 @@ export const PlantFamilies: CollectionConfig = {
     defaultColumns: ['germanName', 'latinName'],
     group: CollectionGroup.BOTANICAL,
   },
+  access: administratorWritePublicRead,
   fields: [
     {
       name: 'germanName',

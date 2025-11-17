@@ -7,6 +7,7 @@ import {
   COURSE_STATUS_OPTIONS,
   CourseStatus,
 } from '../lib/constants'
+import { administratorWritePublicRead } from '../lib/access'
 
 export const Courses: CollectionConfig = {
   slug: CollectionSlug.COURSES,
@@ -15,6 +16,7 @@ export const Courses: CollectionConfig = {
     defaultColumns: ['name', 'place', 'status'],
     group: CollectionGroup.COURSES,
   },
+  access: administratorWritePublicRead,
   fields: [
     {
       name: 'name',
