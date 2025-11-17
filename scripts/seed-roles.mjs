@@ -1,16 +1,14 @@
 /**
  * Seed script to create initial roles in the database
- * Run this once after deploying the new role system
- *
- * Usage: node scripts/seed-roles.js
- * Or: Add to package.json scripts and run: pnpm seed:roles
+ * Exported as a function so a central orchestrator can call it.
+ * Usage (direct): `node --no-deprecation ./scripts/seed-roles.mjs`
  */
 
 import { getPayload } from 'payload'
 import config from '../src/payload.config'
 import { UserRole, USER_ROLE_LABELS, USER_ROLE_DESCRIPTIONS } from '../src/lib/constants'
 
-async function seedRoles() {
+export async function seedRoles() {
   console.log('🌱 Starting role seeding...')
 
   const payloadConfig = await config
@@ -85,11 +83,6 @@ async function seedRoles() {
   }
 
   console.log('🎉 Role seeding complete!')
-  process.exit(0)
 }
 
-// Run the seed function
-seedRoles().catch((error) => {
-  console.error('❌ Seeding failed:', error)
-  process.exit(1)
-})
+export default seedRoles
