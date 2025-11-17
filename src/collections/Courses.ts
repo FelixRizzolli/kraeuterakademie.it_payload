@@ -1,12 +1,19 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  CollectionGroup,
+  CollectionSlug,
+  COURSE_PLACE_OPTIONS,
+  COURSE_STATUS_OPTIONS,
+  CourseStatus,
+} from '../lib/constants'
 
-export const Course: CollectionConfig = {
-  slug: 'courses',
+export const Courses: CollectionConfig = {
+  slug: CollectionSlug.COURSES,
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'place', 'status'],
-    group: 'Courses',
+    group: CollectionGroup.COURSES,
   },
   fields: [
     {
@@ -24,11 +31,7 @@ export const Course: CollectionConfig = {
       type: 'select',
       required: true,
       label: 'Place',
-      options: [
-        { label: 'Unterland', value: 'unterland' },
-        { label: 'Pustertal', value: 'pustertal' },
-        { label: 'Vinschgau', value: 'vinschgau' },
-      ],
+      options: COURSE_PLACE_OPTIONS,
       admin: {
         description: 'Location where the course takes place',
       },
@@ -43,13 +46,9 @@ export const Course: CollectionConfig = {
       name: 'status',
       type: 'select',
       required: true,
-      defaultValue: 'open',
+      defaultValue: CourseStatus.OPEN,
       label: 'Status',
-      options: [
-        { label: 'Open', value: 'open' },
-        { label: 'Running', value: 'running' },
-        { label: 'Closed', value: 'closed' },
-      ],
+      options: COURSE_STATUS_OPTIONS,
       admin: {
         description: 'Current status of the course',
       },
@@ -57,22 +56,19 @@ export const Course: CollectionConfig = {
     {
       name: 'participants',
       type: 'relationship',
-      relationTo: 'users',
+      relationTo: CollectionSlug.USERS,
       hasMany: true,
       label: 'Course Participants',
       admin: {
         description: 'Users enrolled in this course',
       },
-      filterOptions: {
-        role: {
-          equals: 'participant',
-        },
-      },
+      // Note: filterOptions removed since we now use roles relationship
+      // Filtering will be done in the UI or via custom queries
     },
     {
       name: 'modules',
       type: 'join',
-      collection: 'course-modules',
+      collection: CollectionSlug.COURSE_MODULES,
       on: 'course',
       label: 'Modules',
       admin: {

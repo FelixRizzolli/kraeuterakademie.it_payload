@@ -1,11 +1,12 @@
 import type { CollectionConfig } from 'payload'
+import { CollectionGroup, CollectionSlug } from '../lib/constants'
 
-export const Plant: CollectionConfig = {
-  slug: 'plants',
+export const Plants: CollectionConfig = {
+  slug: CollectionSlug.PLANTS,
   admin: {
     useAsTitle: 'germanName',
     defaultColumns: ['germanName', 'latinName', 'family'],
-    group: 'Botanical',
+    group: CollectionGroup.BOTANICAL,
   },
   fields: [
     {
@@ -29,7 +30,7 @@ export const Plant: CollectionConfig = {
     {
       name: 'images',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: CollectionSlug.MEDIA,
       hasMany: true,
       label: 'Images',
       admin: {
@@ -39,7 +40,7 @@ export const Plant: CollectionConfig = {
     {
       name: 'family',
       type: 'relationship',
-      relationTo: 'plant-families',
+      relationTo: CollectionSlug.PLANT_FAMILIES,
       required: true,
       label: 'Plant Family',
       admin: {
@@ -49,7 +50,7 @@ export const Plant: CollectionConfig = {
     {
       name: 'groups',
       type: 'relationship',
-      relationTo: 'plant-groups',
+      relationTo: CollectionSlug.PLANT_GROUPS,
       hasMany: true,
       label: 'Plant Groups',
       admin: {

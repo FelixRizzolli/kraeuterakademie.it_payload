@@ -1,12 +1,13 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { CollectionGroup, CollectionSlug } from '../lib/constants'
 
-export const CourseModule: CollectionConfig = {
-  slug: 'course-modules',
+export const CourseModules: CollectionConfig = {
+  slug: CollectionSlug.COURSE_MODULES,
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'course'],
-    group: 'Courses',
+    group: CollectionGroup.COURSES,
   },
   fields: [
     {
@@ -33,7 +34,7 @@ export const CourseModule: CollectionConfig = {
     {
       name: 'course',
       type: 'relationship',
-      relationTo: 'courses',
+      relationTo: CollectionSlug.COURSES,
       required: true,
       label: 'Course',
       admin: {
@@ -70,7 +71,7 @@ export const CourseModule: CollectionConfig = {
         {
           name: 'plant',
           type: 'relationship',
-          relationTo: 'plants',
+          relationTo: CollectionSlug.PLANTS,
           required: true,
           label: 'Plant',
         },
@@ -88,16 +89,11 @@ export const CourseModule: CollectionConfig = {
     {
       name: 'participants',
       type: 'relationship',
-      relationTo: 'users',
+      relationTo: CollectionSlug.USERS,
       hasMany: true,
       label: 'Module Participants',
       admin: {
         description: 'Participants who attended this specific module',
-      },
-      filterOptions: {
-        role: {
-          equals: 'participant',
-        },
       },
     },
   ],

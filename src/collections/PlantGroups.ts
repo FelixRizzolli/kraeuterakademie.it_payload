@@ -1,12 +1,13 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { CollectionGroup, CollectionSlug } from '../lib/constants'
 
-export const PlantGroup: CollectionConfig = {
-  slug: 'plant-groups',
+export const PlantGroups: CollectionConfig = {
+  slug: CollectionSlug.PLANT_GROUPS,
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name'],
-    group: 'Botanical',
+    group: CollectionGroup.BOTANICAL,
   },
   fields: [
     {

@@ -1,11 +1,12 @@
 import type { CollectionConfig } from 'payload'
+import { CollectionGroup, CollectionSlug } from '../lib/constants'
 
-export const PlantFamily: CollectionConfig = {
-  slug: 'plant-families',
+export const PlantFamilies: CollectionConfig = {
+  slug: CollectionSlug.PLANT_FAMILIES,
   admin: {
     useAsTitle: 'germanName',
     defaultColumns: ['germanName', 'latinName'],
-    group: 'Botanical',
+    group: CollectionGroup.BOTANICAL,
   },
   fields: [
     {
