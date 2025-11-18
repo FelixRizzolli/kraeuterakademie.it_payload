@@ -150,7 +150,7 @@ export interface User {
   /**
    * User can have multiple roles (e.g., Dashboard User + Quiz Player)
    */
-  roles: (number | Role)[];
+  roles?: (number | Role)[] | null;
   /**
    * Courses this user is enrolled in
    */

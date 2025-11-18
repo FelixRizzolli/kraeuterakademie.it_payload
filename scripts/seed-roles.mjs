@@ -70,10 +70,11 @@ export async function seedRoles() {
         continue
       }
 
-      // Create the role
+      // Create the role (bypass access control for seeding)
       const role = await payload.create({
         collection: 'roles',
         data: roleData,
+        overrideAccess: true,
       })
 
       console.log(`✅ Created role: ${role.name} (${role.slug})`)

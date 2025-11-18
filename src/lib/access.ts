@@ -186,10 +186,31 @@ export const superAdminOnly = {
 }
 
 /**
+ * Allow user creation if admin OR if no users exist yet (first user setup)
+ */
+export const allowFirstUserCreation: Access = async ({ req: { user, payload } }) => {
+  // If user is an administrator, allow
+  if (userHasAnyRole(user, [UserRole.SUPER_ADMIN, UserRole.ADMINISTRATOR])) {
+    return true
+  }
+
+  // Check if there are any users in the database
+  const users = await payload.find({
+    collection: 'users',
+    limit: 1,
+    pagination: false,
+  })
+
+  // Allow creation if no users exist (first user setup)
+  return users.docs.length === 0
+}
+
+/**
  * Standard CRUD access pattern: Admin for all, users for their own data
+ * Allows first user creation when no users exist
  */
 export const administratorOrSelf = {
-  create: isAdministrator,
+  create: allowFirstUserCreation,
   read: isAdministratorOrSelf,
   update: isAdministratorOrSelf,
   delete: isAdministrator,

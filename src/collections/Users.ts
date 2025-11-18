@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { CollectionSlug } from '../lib/constants'
+import { CollectionSlug, UserRole } from '../lib/constants'
 import { administratorOrSelf, isAdministratorFieldLevel } from '../lib/access'
 
 export const Users: CollectionConfig = {
@@ -14,6 +14,39 @@ export const Users: CollectionConfig = {
     verify: false, // Set to true in production
   },
   access: administratorOrSelf,
+  hooks: {
+    beforeChange: [
+      async ({ data, req, operation }) => {
+        // Automatically assign super-admin role to the first user
+        if (operation === 'create') {
+          const existingUsers = await req.payload.find({
+            collection: CollectionSlug.USERS,
+            limit: 1,
+            pagination: false,
+          })
+
+          // If this is the first user and no roles are assigned, assign super-admin
+          if (existingUsers.docs.length === 0 && (!data.roles || data.roles.length === 0)) {
+            // Find the super-admin role
+            const superAdminRole = await req.payload.find({
+              collection: CollectionSlug.ROLES,
+              where: {
+                slug: {
+                  equals: UserRole.SUPER_ADMIN,
+                },
+              },
+              limit: 1,
+            })
+
+            if (superAdminRole.docs.length > 0) {
+              data.roles = [superAdminRole.docs[0].id]
+            }
+          }
+        }
+        return data
+      },
+    ],
+  },
   fields: [
     {
       name: 'firstName',
@@ -34,9 +67,15 @@ export const Users: CollectionConfig = {
       label: 'Roles',
       admin: {
         description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
+        // Hide roles field during first user creation (will be auto-assigned as super-admin)
+        condition: (data, siblingData, { user }) => {
+          // Show field if there's an authenticated user (not first user creation)
+          return Boolean(user)
+        },
       },
       access: {
         // Only administrators can modify roles
+        create: isAdministratorFieldLevel,
         update: isAdministratorFieldLevel,
       },
     },
