@@ -79,7 +79,7 @@ importers:
         specifier: 1.56.1
         version: 1.56.1
       prettier:
-        specifier: ^3.4.2
+        specifier: 3.6.2
         version: 3.6.2
       tsx:
         specifier: ^4.20.6
