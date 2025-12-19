@@ -1,7 +1,11 @@
+import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
-  slug: 'media',
+  slug: CollectionSlug.MEDIA,
+  admin: {
+    group: CollectionGroup.WEBCONTENT,
+  },
   access: {
     read: () => true,
   },

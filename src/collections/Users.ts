@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { CollectionSlug, UserRole } from '../lib/constants'
+import { CollectionGroup, CollectionSlug, UserRole } from '../lib/constants'
 import { administratorOrSelf, isAdministratorFieldLevel } from '../lib/access'
 
 export const Users: CollectionConfig = {
@@ -8,6 +8,7 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
     defaultColumns: ['email', 'firstName', 'lastName', 'roles'],
     description: 'Manage user accounts and their roles',
+    group: CollectionGroup.ADMINISTRATION,
   },
   auth: {
     // Require email verification for non-admin roles

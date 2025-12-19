@@ -8,9 +8,10 @@
  * Used to organize collections in the Payload admin panel sidebar
  */
 export enum CollectionGroup {
+  ADMINISTRATION = 'Administration',
+  WEBCONTENT = 'Web Content',
   COURSES = 'Courses',
   BOTANICAL = 'Botanical',
-  CONTENT = 'Content',
 }
 
 /**

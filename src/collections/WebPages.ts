@@ -1,10 +1,12 @@
 import { CollectionConfig } from 'payload'
 import { webBlocks } from '../blocks/web'
+import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 
 export const WebPages: CollectionConfig = {
-  slug: 'web-pages',
+  slug: CollectionSlug.WEB_PAGES,
   admin: {
     useAsTitle: 'title',
+    group: CollectionGroup.WEBCONTENT,
   },
   fields: [
     {

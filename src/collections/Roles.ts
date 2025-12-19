@@ -11,7 +11,7 @@ export const Roles: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'slug', 'description'],
-    group: CollectionGroup.CONTENT,
+    group: CollectionGroup.ADMINISTRATION,
     description: 'Manage user roles and permissions',
   },
   access: {
