@@ -70,7 +70,7 @@ export interface Config {
     users: User;
     roles: Role;
     media: Media;
-    'web-pages': WebPage;
+    webpages: Webpage;
     courses: Course;
     'course-modules': CourseModule;
     plants: Plant;
@@ -94,7 +94,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
+    webpages: WebpagesSelect<false> | WebpagesSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
     'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
@@ -409,9 +409,9 @@ export interface PlantGroup {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-pages".
+ * via the `definition` "webpages".
  */
-export interface WebPage {
+export interface Webpage {
   id: number;
   title: string;
   blocks?:
@@ -910,8 +910,8 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'web-pages';
-        value: number | WebPage;
+        relationTo: 'webpages';
+        value: number | Webpage;
       } | null)
     | ({
         relationTo: 'courses';
@@ -1033,9 +1033,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-pages_select".
+ * via the `definition` "webpages_select".
  */
-export interface WebPagesSelect<T extends boolean = true> {
+export interface WebpagesSelect<T extends boolean = true> {
   title?: T;
   blocks?:
     | T

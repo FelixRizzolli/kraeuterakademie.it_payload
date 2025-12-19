@@ -9,7 +9,7 @@
  */
 export enum CollectionGroup {
   ADMINISTRATION = 'Administration',
-  WEBCONTENT = 'Web Content',
+  WEB_CONTENT = 'Web Content',
   COURSES = 'Courses',
   BOTANICAL = 'Botanical',
 }

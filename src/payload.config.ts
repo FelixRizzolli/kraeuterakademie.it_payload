@@ -52,4 +52,8 @@ export default buildConfig({
   plugins: [
     // storage-adapter-placeholder
   ],
+  graphQL: {
+    disable: false,
+    disablePlaygroundInProduction: false,
+  },
 })
