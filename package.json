@@ -20,15 +20,15 @@
     "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx ./scripts/seed.mjs"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "3.64.0",
-    "@payloadcms/next": "3.64.0",
-    "@payloadcms/richtext-lexical": "3.64.0",
-    "@payloadcms/ui": "3.64.0",
+    "@payloadcms/db-postgres": "3.68.5",
+    "@payloadcms/next": "3.68.5",
+    "@payloadcms/richtext-lexical": "3.68.5",
+    "@payloadcms/ui": "3.68.5",
     "cross-env": "10.1.0",
     "dotenv": "16.6.1",
     "graphql": "16.12.0",
     "next": "15.4.7",
-    "payload": "3.64.0",
+    "payload": "3.68.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sharp": "0.34.5"
