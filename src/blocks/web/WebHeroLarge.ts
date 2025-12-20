@@ -6,42 +6,45 @@ export const WebHeroLarge: Block = {
   slug: 'web-hero-large',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'image',
+          name: 'content',
           label: {
-            en: 'Image',
-            de: 'Bild',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'upload',
-          relationTo: CollectionSlug.WEB_MEDIA,
-          required: true,
+          fields: [
+            {
+              name: 'image',
+              label: {
+                en: 'Image',
+                de: 'Bild',
+              },
+              type: 'upload',
+              relationTo: CollectionSlug.WEB_MEDIA,
+              required: true,
+            },
+            {
+              name: 'title',
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
+              required: true,
+              type: 'text',
+            },
+          ],
         },
         {
-          name: 'title',
+          name: 'settings',
           label: {
-            en: 'Title',
-            de: 'Titel',
+            en: 'Settings',
+            de: 'Einstellungen',
           },
-          required: true,
-          type: 'text',
+          fields: [spacing],
         },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing],
     },
   ],
 }

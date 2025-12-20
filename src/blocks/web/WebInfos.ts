@@ -8,60 +8,63 @@ export const WebInfos: Block = {
   slug: 'web-infos',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'infos',
+          name: 'content',
           label: {
-            en: 'Infos',
-            de: 'Infos',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'array',
           fields: [
             {
               name: 'infos',
-              type: 'group',
-              required: true,
+              label: {
+                en: 'Infos',
+                de: 'Infos',
+              },
+              type: 'array',
               fields: [
                 {
-                  name: 'title',
-                  label: {
-                    en: 'Title',
-                    de: 'Titel',
-                  },
-                  type: 'text',
-                  required: false,
+                  name: 'infos',
+                  type: 'group',
+                  required: true,
+                  fields: [
+                    {
+                      name: 'title',
+                      label: {
+                        en: 'Title',
+                        de: 'Titel',
+                      },
+                      type: 'text',
+                      required: false,
+                    },
+                    {
+                      name: 'text',
+                      label: {
+                        en: 'Text',
+                        de: 'Text',
+                      },
+                      type: 'richText',
+                      editor: lexicalEditor({}),
+                      required: false,
+                    },
+                  ],
                 },
-                {
-                  name: 'text',
-                  label: {
-                    en: 'Text',
-                    de: 'Text',
-                  },
-                  type: 'richText',
-                  editor: lexicalEditor({}),
-                  required: false,
-                },
+                link,
               ],
             },
-            link,
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

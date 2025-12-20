@@ -416,9 +416,9 @@ export interface WebPage {
   blocks?:
     | (
         | {
-            data?: {
+            content?: {
               title?: string | null;
-              AccordionItems?:
+              items?:
                 | {
                     title: string;
                     content?: {
@@ -454,7 +454,7 @@ export interface WebPage {
             blockType: 'web-accordions';
           }
         | {
-            data: {
+            content: {
               text: string;
             };
             settings: {
@@ -471,7 +471,7 @@ export interface WebPage {
             blockType: 'web-animatedText';
           }
         | {
-            data?: {
+            content?: {
               title?: string | null;
               books?:
                 | {
@@ -516,7 +516,7 @@ export interface WebPage {
             blockType: 'web-book-list';
           }
         | {
-            data?: {
+            content?: {
               title?: string | null;
               courses?:
                 | {
@@ -560,9 +560,9 @@ export interface WebPage {
             blockType: 'web-course-list';
           }
         | {
-            data: {
+            content: {
               image: number | WebMedia;
-              title?: string | null;
+              title: string;
             };
             settings: {
               spacing: {
@@ -577,7 +577,7 @@ export interface WebPage {
             blockType: 'web-hero-large';
           }
         | {
-            data: {
+            content: {
               image?: (number | null) | WebMedia;
               title: string;
               link: {
@@ -599,7 +599,7 @@ export interface WebPage {
             blockType: 'web-hero-small';
           }
         | {
-            data?: {
+            content?: {
               links?:
                 | {
                     label: string;
@@ -623,7 +623,7 @@ export interface WebPage {
             blockType: 'web-highlighted-links';
           }
         | {
-            data: {
+            content: {
               title?: string | null;
               image?: (number | null) | WebMedia;
               textTop?: {
@@ -676,7 +676,7 @@ export interface WebPage {
             blockType: 'web-image-text';
           }
         | {
-            data?: {
+            content?: {
               infos?:
                 | {
                     infos: {
@@ -720,7 +720,7 @@ export interface WebPage {
             blockType: 'web-infos';
           }
         | {
-            data?: {
+            content?: {
               image?: (number | null) | WebMedia;
             };
             settings: {
@@ -737,7 +737,7 @@ export interface WebPage {
             blockType: 'web-mood-picture';
           }
         | {
-            data?: {
+            content?: {
               cards?:
                 | {
                     image?: (number | null) | WebMedia;
@@ -767,7 +767,7 @@ export interface WebPage {
             blockType: 'web-swiper-card';
           }
         | {
-            data?: {
+            content?: {
               title?: string | null;
               items?:
                 | {
@@ -812,7 +812,7 @@ export interface WebPage {
             blockType: 'web-swiper-large';
           }
         | {
-            data?: {
+            content?: {
               slides?:
                 | {
                     title?: string | null;
@@ -840,7 +840,7 @@ export interface WebPage {
             blockType: 'web-swiper-simple';
           }
         | {
-            data: {
+            content: {
               title: string;
               content: {
                 root: {
@@ -1056,11 +1056,11 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-accordions'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;
-                    AccordionItems?:
+                    items?:
                       | T
                       | {
                           title?: T;
@@ -1087,7 +1087,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-animatedText'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     text?: T;
@@ -1111,7 +1111,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-book-list'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;
@@ -1151,7 +1151,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-course-list'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;
@@ -1190,7 +1190,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-hero-large'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     image?: T;
@@ -1214,7 +1214,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-hero-small'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     image?: T;
@@ -1245,7 +1245,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-highlighted-links'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     links?:
@@ -1276,7 +1276,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-image-text'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;
@@ -1310,7 +1310,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-infos'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     infos?:
@@ -1351,7 +1351,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-mood-picture'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     image?: T;
@@ -1375,7 +1375,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-swiper-card'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     cards?:
@@ -1414,7 +1414,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-swiper-large'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;
@@ -1454,7 +1454,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-swiper-simple'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     slides?:
@@ -1489,7 +1489,7 @@ export interface WebPagesSelect<T extends boolean = true> {
         'web-text-element'?:
           | T
           | {
-              data?:
+              content?:
                 | T
                 | {
                     title?: T;

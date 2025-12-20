@@ -35,6 +35,7 @@ export const imageLink: GroupField = {
     },
     {
       name: 'target',
+      enumName: 'link_target_enum',
       label: {
         en: 'Target',
         de: 'Ziel',

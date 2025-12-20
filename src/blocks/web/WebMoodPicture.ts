@@ -7,32 +7,35 @@ export const WebMoodPicture: Block = {
   slug: 'web-mood-picture',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'image',
+          name: 'content',
           label: {
-            en: 'Image',
-            de: 'Bild',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'upload',
-          relationTo: CollectionSlug.WEB_MEDIA,
+          fields: [
+            {
+              name: 'image',
+              label: {
+                en: 'Image',
+                de: 'Bild',
+              },
+              type: 'upload',
+              relationTo: CollectionSlug.WEB_MEDIA,
+            },
+          ],
+        },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
         },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

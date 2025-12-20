@@ -7,60 +7,63 @@ export const WebAccordions: Block = {
   slug: 'web-accordions',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'title',
+          name: 'content',
           label: {
-            en: 'Title',
-            de: 'Titel',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'text',
-          required: false,
-        },
-        {
-          name: 'items',
-          label: {
-            en: 'Accordion Items',
-            de: 'Akkordeon Elemente',
-          },
-          type: 'array',
           fields: [
             {
               name: 'title',
               label: {
-                en: 'Accordion Title',
-                de: 'Elementtitel',
+                en: 'Title',
+                de: 'Titel',
               },
               type: 'text',
-              required: true,
+              required: false,
             },
             {
-              name: 'content',
+              name: 'items',
               label: {
-                en: 'Accordion Content',
-                de: 'Elementinhalt',
+                en: 'Accordion Items',
+                de: 'Akkordeon Elemente',
               },
-              type: 'richText',
-              editor: lexicalEditor({}),
+              type: 'array',
+              fields: [
+                {
+                  name: 'title',
+                  label: {
+                    en: 'Accordion Title',
+                    de: 'Elementtitel',
+                  },
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'content',
+                  label: {
+                    en: 'Accordion Content',
+                    de: 'Elementinhalt',
+                  },
+                  type: 'richText',
+                  editor: lexicalEditor({}),
+                },
+              ],
             },
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

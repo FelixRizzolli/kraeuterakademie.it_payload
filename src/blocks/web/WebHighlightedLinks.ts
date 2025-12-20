@@ -6,32 +6,35 @@ export const WebHighlightedLinks: Block = {
   slug: 'web-highlighted-links',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'links',
+          name: 'content',
           label: {
-            en: 'Highlighted Links',
-            de: 'Hervorgehobene Links',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'array',
-          fields: imageLink.fields,
+          fields: [
+            {
+              name: 'links',
+              label: {
+                en: 'Highlighted Links',
+                de: 'Hervorgehobene Links',
+              },
+              type: 'array',
+              fields: imageLink.fields,
+            },
+          ],
+        },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing],
         },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing],
     },
   ],
 }

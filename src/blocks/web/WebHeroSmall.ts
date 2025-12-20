@@ -7,43 +7,46 @@ export const WebHeroSmall: Block = {
   slug: 'web-hero-small',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'image',
+          name: 'content',
           label: {
-            en: 'Image',
-            de: 'Bild',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'upload',
-          relationTo: CollectionSlug.WEB_MEDIA,
-          required: false,
+          fields: [
+            {
+              name: 'image',
+              label: {
+                en: 'Image',
+                de: 'Bild',
+              },
+              type: 'upload',
+              relationTo: CollectionSlug.WEB_MEDIA,
+              required: false,
+            },
+            {
+              name: 'title',
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
+              type: 'text',
+              required: true,
+            },
+            link,
+          ],
         },
         {
-          name: 'title',
+          name: 'settings',
           label: {
-            en: 'Title',
-            de: 'Titel',
+            en: 'Settings',
+            de: 'Einstellungen',
           },
-          type: 'text',
-          required: true,
+          fields: [spacing],
         },
-        link,
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing],
     },
   ],
 }

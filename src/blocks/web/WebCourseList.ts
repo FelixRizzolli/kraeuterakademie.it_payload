@@ -8,29 +8,14 @@ export const WebCourseList: Block = {
   slug: 'web-course-list',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'title',
+          name: 'content',
           label: {
-            en: 'Title',
-            de: 'Titel',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'text',
-          required: false,
-        },
-        {
-          name: 'courses',
-          label: {
-            en: 'Courses',
-            de: 'Kurse',
-          },
-          type: 'array',
           fields: [
             {
               name: 'title',
@@ -39,39 +24,57 @@ export const WebCourseList: Block = {
                 de: 'Titel',
               },
               type: 'text',
-              required: true,
-            },
-            {
-              name: 'place',
-              label: {
-                en: 'Place',
-                de: 'Ort',
-              },
-              type: 'text',
               required: false,
             },
             {
-              name: 'description',
+              name: 'courses',
               label: {
-                en: 'Description',
-                de: 'Beschreibung',
+                en: 'Courses',
+                de: 'Kurse',
               },
-              type: 'richText',
-              editor: lexicalEditor({}),
+              type: 'array',
+              fields: [
+                {
+                  name: 'title',
+                  label: {
+                    en: 'Title',
+                    de: 'Titel',
+                  },
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'place',
+                  label: {
+                    en: 'Place',
+                    de: 'Ort',
+                  },
+                  type: 'text',
+                  required: false,
+                },
+                {
+                  name: 'description',
+                  label: {
+                    en: 'Description',
+                    de: 'Beschreibung',
+                  },
+                  type: 'richText',
+                  editor: lexicalEditor({}),
+                },
+                link,
+              ],
             },
-            link,
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

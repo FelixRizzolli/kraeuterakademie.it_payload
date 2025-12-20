@@ -6,32 +6,35 @@ export const WebAnimatedText: Block = {
   slug: 'web-animatedText',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'text',
+          name: 'content',
           label: {
-            en: 'Text',
-            de: 'Text',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'text',
-          required: true,
+          fields: [
+            {
+              name: 'text',
+              label: {
+                en: 'Text',
+                de: 'Text',
+              },
+              type: 'text',
+              required: true,
+            },
+          ],
+        },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
         },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

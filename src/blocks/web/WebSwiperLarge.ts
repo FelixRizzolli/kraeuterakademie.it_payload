@@ -9,76 +9,79 @@ export const WebSwiperLarge: Block = {
   slug: 'web-swiper-large',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'title',
+          name: 'content',
           label: {
-            en: 'Heading',
-            de: 'Titel',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'text',
-        },
-        {
-          name: 'items',
-          label: {
-            en: 'Items',
-            de: 'Elemente',
-          },
-          type: 'array',
           fields: [
-            {
-              name: 'image',
-              label: {
-                en: 'Image',
-                de: 'Bild',
-              },
-              type: 'upload',
-              relationTo: CollectionSlug.WEB_MEDIA,
-            },
-            {
-              name: 'infos',
-              label: {
-                en: 'Infos',
-                de: 'Infos',
-              },
-              type: 'text',
-            },
             {
               name: 'title',
               label: {
-                en: 'Title',
+                en: 'Heading',
                 de: 'Titel',
               },
               type: 'text',
             },
             {
-              name: 'description',
+              name: 'items',
               label: {
-                en: 'Description',
-                de: 'Beschreibung',
+                en: 'Items',
+                de: 'Elemente',
               },
-              type: 'richText',
-              editor: lexicalEditor({}),
+              type: 'array',
+              fields: [
+                {
+                  name: 'image',
+                  label: {
+                    en: 'Image',
+                    de: 'Bild',
+                  },
+                  type: 'upload',
+                  relationTo: CollectionSlug.WEB_MEDIA,
+                },
+                {
+                  name: 'infos',
+                  label: {
+                    en: 'Infos',
+                    de: 'Infos',
+                  },
+                  type: 'text',
+                },
+                {
+                  name: 'title',
+                  label: {
+                    en: 'Title',
+                    de: 'Titel',
+                  },
+                  type: 'text',
+                },
+                {
+                  name: 'description',
+                  label: {
+                    en: 'Description',
+                    de: 'Beschreibung',
+                  },
+                  type: 'richText',
+                  editor: lexicalEditor({}),
+                },
+                link,
+              ],
             },
-            link,
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

@@ -7,60 +7,63 @@ export const WebSwiperSimple: Block = {
   slug: 'web-swiper-simple',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'slides',
+          name: 'content',
           label: {
-            en: 'Slides',
-            de: 'Folien',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'array',
           fields: [
             {
-              name: 'title',
+              name: 'slides',
               label: {
-                en: 'Title',
-                de: 'Titel',
-              },
-              type: 'text',
-            },
-            {
-              name: 'images',
-              label: {
-                en: 'Images',
-                de: 'Bilder',
+                en: 'Slides',
+                de: 'Folien',
               },
               type: 'array',
               fields: [
                 {
-                  name: 'image',
+                  name: 'title',
                   label: {
-                    en: 'Image',
-                    de: 'Bild',
+                    en: 'Title',
+                    de: 'Titel',
                   },
-                  type: 'upload',
-                  relationTo: CollectionSlug.WEB_MEDIA,
+                  type: 'text',
+                },
+                {
+                  name: 'images',
+                  label: {
+                    en: 'Images',
+                    de: 'Bilder',
+                  },
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'image',
+                      label: {
+                        en: 'Image',
+                        de: 'Bild',
+                      },
+                      type: 'upload',
+                      relationTo: CollectionSlug.WEB_MEDIA,
+                    },
+                  ],
                 },
               ],
             },
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

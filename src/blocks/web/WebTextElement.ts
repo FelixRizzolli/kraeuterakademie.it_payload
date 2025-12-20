@@ -8,43 +8,46 @@ export const WebTextElement: Block = {
   slug: 'web-text-element',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
-        {
-          name: 'title',
-          label: {
-            en: 'Title',
-            de: 'Titel',
-          },
-          type: 'text',
-          required: true,
-        },
+      type: 'tabs',
+      tabs: [
         {
           name: 'content',
           label: {
             en: 'Content',
             de: 'Inhalt',
           },
-          type: 'richText',
-          editor: lexicalEditor({}),
-          required: true,
+          fields: [
+            {
+              name: 'title',
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'content',
+              label: {
+                en: 'Content',
+                de: 'Inhalt',
+              },
+              type: 'richText',
+              editor: lexicalEditor({}),
+              required: true,
+            },
+            link,
+          ],
         },
-        link,
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }

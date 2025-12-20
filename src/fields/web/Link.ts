@@ -28,6 +28,7 @@ export const link: Field = {
     },
     {
       name: 'target',
+      enumName: 'link_target_enum',
       label: {
         en: 'Target',
         de: 'Ziel',

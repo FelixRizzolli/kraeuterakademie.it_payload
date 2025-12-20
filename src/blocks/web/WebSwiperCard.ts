@@ -8,67 +8,70 @@ export const WebSwiperCard: Block = {
   slug: 'web-swiper-card',
   fields: [
     {
-      type: 'group',
-      name: 'data',
-      label: {
-        en: 'Data',
-        de: 'Inhalt',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'cards',
+          name: 'content',
           label: {
-            en: 'Cards',
-            de: 'Karten',
+            en: 'Content',
+            de: 'Inhalt',
           },
-          type: 'array',
           fields: [
             {
-              name: 'image',
+              name: 'cards',
               label: {
-                en: 'Image',
-                de: 'Bild',
+                en: 'Cards',
+                de: 'Karten',
               },
-              type: 'upload',
-              relationTo: CollectionSlug.WEB_MEDIA,
+              type: 'array',
+              fields: [
+                {
+                  name: 'image',
+                  label: {
+                    en: 'Image',
+                    de: 'Bild',
+                  },
+                  type: 'upload',
+                  relationTo: CollectionSlug.WEB_MEDIA,
+                },
+                {
+                  name: 'info',
+                  label: {
+                    en: 'Info',
+                    de: 'Info',
+                  },
+                  type: 'text',
+                },
+                {
+                  name: 'date',
+                  label: {
+                    en: 'Date',
+                    de: 'Datum',
+                  },
+                  type: 'date',
+                },
+                {
+                  name: 'title',
+                  label: {
+                    en: 'Title',
+                    de: 'Titel',
+                  },
+                  type: 'text',
+                },
+                link,
+              ],
             },
-            {
-              name: 'info',
-              label: {
-                en: 'Info',
-                de: 'Info',
-              },
-              type: 'text',
-            },
-            {
-              name: 'date',
-              label: {
-                en: 'Date',
-                de: 'Datum',
-              },
-              type: 'date',
-            },
-            {
-              name: 'title',
-              label: {
-                en: 'Title',
-                de: 'Titel',
-              },
-              type: 'text',
-            },
-            link,
           ],
         },
+        {
+          name: 'settings',
+          label: {
+            en: 'Settings',
+            de: 'Einstellungen',
+          },
+          fields: [spacing, style],
+        },
       ],
-    },
-    {
-      type: 'group',
-      name: 'settings',
-      label: {
-        en: 'Settings',
-        de: 'Einstellungen',
-      },
-      fields: [spacing, style],
     },
   ],
 }
