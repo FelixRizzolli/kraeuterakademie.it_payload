@@ -1,6 +1,7 @@
 import { link } from '@/fields/web'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
 export const WebSwiperCard: Block = {
@@ -17,7 +18,7 @@ export const WebSwiperCard: Block = {
             {
               name: 'image',
               type: 'upload',
-              relationTo: 'media',
+              relationTo: CollectionSlug.WEB_MEDIA,
             },
             {
               name: 'info',

@@ -32,7 +32,7 @@ export const Plants: CollectionConfig = {
     {
       name: 'images',
       type: 'upload',
-      relationTo: CollectionSlug.MEDIA,
+      relationTo: CollectionSlug.WEB_MEDIA,
       hasMany: true,
       label: 'Images',
       admin: {

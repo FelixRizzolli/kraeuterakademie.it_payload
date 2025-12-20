@@ -1,4 +1,5 @@
 import { spacing } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
 export const WebHeroLarge: Block = {
@@ -11,7 +12,7 @@ export const WebHeroLarge: Block = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: CollectionSlug.WEB_MEDIA,
           required: true,
         },
         {

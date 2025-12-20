@@ -137,14 +137,16 @@ export const COURSE_PLACE_OPTIONS = Object.entries(COURSE_PLACE_LABELS).map(([va
  * Collection Slugs
  * Type-safe collection slugs for relationships and queries
  */
-export enum CollectionSlug {
-  USERS = 'users',
-  ROLES = 'roles',
-  MEDIA = 'media',
-  WEB_PAGES = 'web-pages',
-  COURSES = 'courses',
-  COURSE_MODULES = 'course-modules',
-  PLANTS = 'plants',
-  PLANT_FAMILIES = 'plant-families',
-  PLANT_GROUPS = 'plant-groups',
-}
+export const CollectionSlug = {
+  USERS: 'users',
+  ROLES: 'roles',
+  WEB_MEDIA: 'web-media',
+  WEB_PAGES: 'web-pages',
+  COURSES: 'courses',
+  COURSE_MODULES: 'course-modules',
+  PLANTS: 'plants',
+  PLANT_FAMILIES: 'plant-families',
+  PLANT_GROUPS: 'plant-groups',
+} as const
+
+export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]

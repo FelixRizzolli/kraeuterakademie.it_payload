@@ -1,5 +1,6 @@
 import { link } from '@/fields/web'
 import { spacing } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
@@ -17,7 +18,7 @@ export const WebImageText: Block = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: CollectionSlug.WEB_MEDIA,
         },
         {
           name: 'textTop',

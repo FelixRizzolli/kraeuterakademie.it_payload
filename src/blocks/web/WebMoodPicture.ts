@@ -1,5 +1,6 @@
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
 export const WebMoodPicture: Block = {
@@ -12,7 +13,7 @@ export const WebMoodPicture: Block = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: CollectionSlug.WEB_MEDIA,
         },
       ],
     },

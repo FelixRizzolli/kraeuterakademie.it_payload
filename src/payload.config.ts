@@ -8,7 +8,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Roles } from './collections/Roles'
-import { Media } from './collections/Media'
+import { WebMedia } from './collections/WebMedia'
 import { WebPages } from './collections/WebPages'
 import { Courses } from './collections/Courses'
 import { CourseModules } from './collections/CourseModules'
@@ -29,7 +29,7 @@ export default buildConfig({
   collections: [
     Users,
     Roles,
-    Media,
+    WebMedia,
     WebPages,
     Courses,
     CourseModules,

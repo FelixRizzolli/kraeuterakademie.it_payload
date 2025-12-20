@@ -2,8 +2,8 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
-export const Media: CollectionConfig = {
-  slug: CollectionSlug.MEDIA,
+export const WebMedia: CollectionConfig = {
+  slug: CollectionSlug.WEB_MEDIA,
   admin: {
     group: CollectionGroup.WEB_CONTENT,
   },

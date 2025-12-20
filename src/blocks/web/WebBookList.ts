@@ -1,6 +1,7 @@
 import { link } from '@/fields/web'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
@@ -38,7 +39,7 @@ export const WebBookList: Block = {
             {
               name: 'cover',
               type: 'upload',
-              relationTo: 'media',
+              relationTo: CollectionSlug.WEB_MEDIA,
             },
             link,
           ],
