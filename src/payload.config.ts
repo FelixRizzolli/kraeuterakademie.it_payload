@@ -25,8 +25,8 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   i18n: {
-    supportedLanguages: [en, de],
-    defaultLanguage: 'de',
+    supportedLanguages: { en, de },
+    fallbackLanguage: 'en',
   },
   admin: {
     user: Users.slug,
