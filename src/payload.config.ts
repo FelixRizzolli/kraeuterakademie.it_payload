@@ -15,6 +15,8 @@ import { CourseModules } from './collections/CourseModules'
 import { Plants } from './collections/Plants'
 import { PlantFamilies } from './collections/PlantFamilies'
 import { PlantGroups } from './collections/PlantGroups'
+import { seoPlugin } from '@payloadcms/plugin-seo'
+import { CollectionSlug } from './lib/constants'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,7 +52,11 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    // storage-adapter-placeholder
+    seoPlugin({
+      uploadsCollection: CollectionSlug.WEB_MEDIA,
+      generateTitle: ({ doc }) => `kraeuterakademie.it — ${doc.title}`,
+      generateDescription: ({ doc }) => doc.excerpt,
+    }),
   ],
   graphQL: {
     disable: false,
