@@ -59,86 +59,84 @@ export type SupportedTimezones =
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
   | 'Pacific/Auckland'
-  | 'Pacific/Fiji'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
-    users: UserAuthOperations
-  }
-  blocks: {}
+    users: UserAuthOperations;
+  };
+  blocks: {};
   collections: {
-    users: User
-    roles: Role
-    'web-media': WebMedia
-    'web-pages': WebPage
-    courses: Course
-    'course-modules': CourseModule
-    plants: Plant
-    'plant-families': PlantFamily
-    'plant-groups': PlantGroup
-    'payload-kv': PayloadKv
-    'payload-locked-documents': PayloadLockedDocument
-    'payload-preferences': PayloadPreference
-    'payload-migrations': PayloadMigration
-  }
+    users: User;
+    roles: Role;
+    'web-media': WebMedia;
+    'web-pages': WebPage;
+    courses: Course;
+    'course-modules': CourseModule;
+    plants: Plant;
+    'plant-families': PlantFamily;
+    'plant-groups': PlantGroup;
+    'payload-kv': PayloadKv;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
   collectionsJoins: {
     users: {
-      enrolledCourses: 'courses'
-      attendedModules: 'course-modules'
-    }
+      enrolledCourses: 'courses';
+      attendedModules: 'course-modules';
+    };
     courses: {
-      modules: 'course-modules'
-    }
-  }
+      modules: 'course-modules';
+    };
+  };
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>
-    roles: RolesSelect<false> | RolesSelect<true>
-    'web-media': WebMediaSelect<false> | WebMediaSelect<true>
-    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>
-    courses: CoursesSelect<false> | CoursesSelect<true>
-    'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>
-    plants: PlantsSelect<false> | PlantsSelect<true>
-    'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>
-    'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>
-  }
+    users: UsersSelect<false> | UsersSelect<true>;
+    roles: RolesSelect<false> | RolesSelect<true>;
+    'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
+    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
+    courses: CoursesSelect<false> | CoursesSelect<true>;
+    'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
+    plants: PlantsSelect<false> | PlantsSelect<true>;
+    'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
+    'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
   db: {
-    defaultIDType: number
-  }
-  fallbackLocale: null
-  globals: {}
-  globalsSelect: {}
-  locale: null
+    defaultIDType: number;
+  };
+  fallbackLocale: null;
+  globals: {};
+  globalsSelect: {};
+  locale: null;
   user: User & {
-    collection: 'users'
-  }
+    collection: 'users';
+  };
   jobs: {
-    tasks: unknown
-    workflows: unknown
-  }
+    tasks: unknown;
+    workflows: unknown;
+  };
 }
 export interface UserAuthOperations {
   forgotPassword: {
-    email: string
-    password: string
-  }
+    email: string;
+    password: string;
+  };
   login: {
-    email: string
-    password: string
-  }
+    email: string;
+    password: string;
+  };
   registerFirstUser: {
-    email: string
-    password: string
-  }
+    email: string;
+    password: string;
+  };
   unlock: {
-    email: string
-    password: string
-  }
+    email: string;
+    password: string;
+  };
 }
 /**
  * Manage user accounts and their roles
@@ -147,46 +145,46 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: number
-  firstName?: string | null
-  lastName?: string | null
+  id: number;
+  firstName?: string | null;
+  lastName?: string | null;
   /**
    * User can have multiple roles (e.g., Dashboard User + Quiz Player)
    */
-  roles?: (number | Role)[] | null
+  roles?: (number | Role)[] | null;
   /**
    * Courses this user is enrolled in
    */
   enrolledCourses?: {
-    docs?: (number | Course)[]
-    hasNextPage?: boolean
-    totalDocs?: number
-  }
+    docs?: (number | Course)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   /**
    * Modules this user has attended
    */
   attendedModules?: {
-    docs?: (number | CourseModule)[]
-    hasNextPage?: boolean
-    totalDocs?: number
-  }
-  updatedAt: string
-  createdAt: string
-  email: string
-  resetPasswordToken?: string | null
-  resetPasswordExpiration?: string | null
-  salt?: string | null
-  hash?: string | null
-  loginAttempts?: number | null
-  lockUntil?: string | null
+    docs?: (number | CourseModule)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
   sessions?:
     | {
-        id: string
-        createdAt?: string | null
-        expiresAt: string
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
       }[]
-    | null
-  password?: string | null
+    | null;
+  password?: string | null;
 }
 /**
  * Manage user roles and permissions
@@ -195,11 +193,11 @@ export interface User {
  * via the `definition` "roles".
  */
 export interface Role {
-  id: number
+  id: number;
   /**
    * Display name of the role
    */
-  name: string
+  name: string;
   /**
    * Unique identifier for the role
    */
@@ -210,844 +208,844 @@ export interface Role {
     | 'dashboard-user'
     | 'quiz-player'
     | 'demo-dashboard-user'
-    | 'demo-quiz-player'
+    | 'demo-quiz-player';
   /**
    * What can users with this role do?
    */
-  description?: string | null
-  updatedAt: string
-  createdAt: string
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "courses".
  */
 export interface Course {
-  id: number
+  id: number;
   /**
    * Unique course identifier (e.g., K1, K2, K3)
    */
-  name: string
+  name: string;
   /**
    * Location where the course takes place
    */
-  place: 'unterland' | 'pustertal' | 'vinschgau'
+  place: 'unterland' | 'pustertal' | 'vinschgau';
   description?: {
     root: {
-      type: string
+      type: string;
       children: {
-        type: any
-        version: number
-        [k: string]: unknown
-      }[]
-      direction: ('ltr' | 'rtl') | null
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-      indent: number
-      version: number
-    }
-    [k: string]: unknown
-  } | null
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
    * Current status of the course
    */
-  status: 'open' | 'running' | 'closed'
+  status: 'open' | 'running' | 'closed';
   /**
    * Users enrolled in this course
    */
-  participants?: (number | User)[] | null
+  participants?: (number | User)[] | null;
   /**
    * Modules that belong to this course
    */
   modules?: {
-    docs?: (number | CourseModule)[]
-    hasNextPage?: boolean
-    totalDocs?: number
-  }
-  updatedAt: string
-  createdAt: string
+    docs?: (number | CourseModule)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "course-modules".
  */
 export interface CourseModule {
-  id: number
+  id: number;
   /**
    * Auto-generated or custom title for the module
    */
-  title: string
+  title: string;
   /**
    * The course this module belongs to
    */
-  course: number | Course
+  course: number | Course;
   /**
    * Date when the module takes place
    */
-  date: string
+  date: string;
   description?: {
     root: {
-      type: string
+      type: string;
       children: {
-        type: any
-        version: number
-        [k: string]: unknown
-      }[]
-      direction: ('ltr' | 'rtl') | null
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-      indent: number
-      version: number
-    }
-    [k: string]: unknown
-  } | null
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
    * Plants assigned to this module with checklist status
    */
   plants?:
     | {
-        plant: number | Plant
+        plant: number | Plant;
         /**
          * Check if this plant was studied during the module
          */
-        studied?: boolean | null
-        id?: string | null
+        studied?: boolean | null;
+        id?: string | null;
       }[]
-    | null
+    | null;
   /**
    * Participants who attended this specific module
    */
-  participants?: (number | User)[] | null
-  updatedAt: string
-  createdAt: string
+  participants?: (number | User)[] | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plants".
  */
 export interface Plant {
-  id: number
+  id: number;
   /**
    * German name of the plant
    */
-  germanName: string
+  germanName: string;
   /**
    * Scientific/Latin name of the plant
    */
-  latinName: string
+  latinName: string;
   /**
    * Images of the plant
    */
-  images?: (number | WebMedia)[] | null
+  images?: (number | WebMedia)[] | null;
   /**
    * The botanical family this plant belongs to
    */
-  family: number | PlantFamily
+  family: number | PlantFamily;
   /**
    * The groups this plant belongs to
    */
-  groups?: (number | PlantGroup)[] | null
-  updatedAt: string
-  createdAt: string
+  groups?: (number | PlantGroup)[] | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "web-media".
  */
 export interface WebMedia {
-  id: number
-  alt: string
-  updatedAt: string
-  createdAt: string
-  url?: string | null
-  thumbnailURL?: string | null
-  filename?: string | null
-  mimeType?: string | null
-  filesize?: number | null
-  width?: number | null
-  height?: number | null
-  focalX?: number | null
-  focalY?: number | null
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plant-families".
  */
 export interface PlantFamily {
-  id: number
+  id: number;
   /**
    * German name of the plant family
    */
-  germanName: string
+  germanName: string;
   /**
    * Scientific/Latin name of the plant family
    */
-  latinName: string
-  updatedAt: string
-  createdAt: string
+  latinName: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plant-groups".
  */
 export interface PlantGroup {
-  id: number
-  name: string
+  id: number;
+  name: string;
   description?: {
     root: {
-      type: string
+      type: string;
       children: {
-        type: any
-        version: number
-        [k: string]: unknown
-      }[]
-      direction: ('ltr' | 'rtl') | null
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-      indent: number
-      version: number
-    }
-    [k: string]: unknown
-  } | null
-  updatedAt: string
-  createdAt: string
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "web-pages".
  */
 export interface WebPage {
-  id: number
-  title: string
+  id: number;
+  title: string;
   blocks?:
     | (
         | {
             data?: {
-              title?: string | null
+              title?: string | null;
               AccordionItems?:
                 | {
-                    title: string
+                    title: string;
                     content?: {
                       root: {
-                        type: string
+                        type: string;
                         children: {
-                          type: any
-                          version: number
-                          [k: string]: unknown
-                        }[]
-                        direction: ('ltr' | 'rtl') | null
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                        indent: number
-                        version: number
-                      }
-                      [k: string]: unknown
-                    } | null
-                    id?: string | null
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-accordions'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-accordions';
           }
         | {
             data: {
-              text: string
-            }
+              text: string;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-animatedText'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-animatedText';
           }
         | {
             data?: {
-              title?: string | null
+              title?: string | null;
               books?:
                 | {
-                    title: string
-                    infos: string
+                    title: string;
+                    infos: string;
                     description?: {
                       root: {
-                        type: string
+                        type: string;
                         children: {
-                          type: any
-                          version: number
-                          [k: string]: unknown
-                        }[]
-                        direction: ('ltr' | 'rtl') | null
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                        indent: number
-                        version: number
-                      }
-                      [k: string]: unknown
-                    } | null
-                    cover?: (number | null) | WebMedia
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    cover?: (number | null) | WebMedia;
                     link: {
-                      label: string
-                      url: string
-                      target?: ('_self' | '_blank') | null
-                    }
-                    id?: string | null
+                      label: string;
+                      url: string;
+                      target?: ('_self' | '_blank') | null;
+                    };
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-book-list'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-book-list';
           }
         | {
             data?: {
-              title?: string | null
+              title?: string | null;
               courses?:
                 | {
-                    title: string
-                    place?: string | null
+                    title: string;
+                    place?: string | null;
                     description?: {
                       root: {
-                        type: string
+                        type: string;
                         children: {
-                          type: any
-                          version: number
-                          [k: string]: unknown
-                        }[]
-                        direction: ('ltr' | 'rtl') | null
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                        indent: number
-                        version: number
-                      }
-                      [k: string]: unknown
-                    } | null
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
                     link: {
-                      label: string
-                      url: string
-                      target?: ('_self' | '_blank') | null
-                    }
-                    id?: string | null
+                      label: string;
+                      url: string;
+                      target?: ('_self' | '_blank') | null;
+                    };
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-course-list'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-course-list';
           }
         | {
             data: {
-              image: number | WebMedia
-              title?: string | null
-            }
+              image: number | WebMedia;
+              title?: string | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-hero-large'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-hero-large';
           }
         | {
             data: {
-              image?: (number | null) | WebMedia
-              title: string
+              image?: (number | null) | WebMedia;
+              title: string;
               link: {
-                label: string
-                url: string
-                target?: ('_self' | '_blank') | null
-              }
-            }
+                label: string;
+                url: string;
+                target?: ('_self' | '_blank') | null;
+              };
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-hero-small'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-hero-small';
           }
         | {
             data?: {
               links?:
                 | {
-                    label: string
-                    url: string
-                    image: number | WebMedia
-                    target?: ('_self' | '_blank') | null
-                    id?: string | null
+                    label: string;
+                    url: string;
+                    image: number | WebMedia;
+                    target?: ('_self' | '_blank') | null;
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-highlighted-links'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-highlighted-links';
           }
         | {
             data: {
-              title?: string | null
-              image?: (number | null) | WebMedia
+              title?: string | null;
+              image?: (number | null) | WebMedia;
               textTop?: {
                 root: {
-                  type: string
+                  type: string;
                   children: {
-                    type: any
-                    version: number
-                    [k: string]: unknown
-                  }[]
-                  direction: ('ltr' | 'rtl') | null
-                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                  indent: number
-                  version: number
-                }
-                [k: string]: unknown
-              } | null
-              textHighlight?: string | null
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              textHighlight?: string | null;
               textBottom?: {
                 root: {
-                  type: string
+                  type: string;
                   children: {
-                    type: any
-                    version: number
-                    [k: string]: unknown
-                  }[]
-                  direction: ('ltr' | 'rtl') | null
-                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                  indent: number
-                  version: number
-                }
-                [k: string]: unknown
-              } | null
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
               link: {
-                label: string
-                url: string
-                target?: ('_self' | '_blank') | null
-              }
-            }
+                label: string;
+                url: string;
+                target?: ('_self' | '_blank') | null;
+              };
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-image-text'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-image-text';
           }
         | {
             data?: {
               infos?:
                 | {
                     infos: {
-                      title?: string | null
+                      title?: string | null;
                       text?: {
                         root: {
-                          type: string
+                          type: string;
                           children: {
-                            type: any
-                            version: number
-                            [k: string]: unknown
-                          }[]
-                          direction: ('ltr' | 'rtl') | null
-                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                          indent: number
-                          version: number
-                        }
-                        [k: string]: unknown
-                      } | null
-                    }
+                            type: any;
+                            version: number;
+                            [k: string]: unknown;
+                          }[];
+                          direction: ('ltr' | 'rtl') | null;
+                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                          indent: number;
+                          version: number;
+                        };
+                        [k: string]: unknown;
+                      } | null;
+                    };
                     link: {
-                      label: string
-                      url: string
-                      target?: ('_self' | '_blank') | null
-                    }
-                    id?: string | null
+                      label: string;
+                      url: string;
+                      target?: ('_self' | '_blank') | null;
+                    };
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-infos'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-infos';
           }
         | {
             data?: {
-              image?: (number | null) | WebMedia
-            }
+              image?: (number | null) | WebMedia;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-mood-picture'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-mood-picture';
           }
         | {
             data?: {
               cards?:
                 | {
-                    image?: (number | null) | WebMedia
-                    info?: string | null
-                    date?: string | null
-                    title?: string | null
+                    image?: (number | null) | WebMedia;
+                    info?: string | null;
+                    date?: string | null;
+                    title?: string | null;
                     link: {
-                      label: string
-                      url: string
-                      target?: ('_self' | '_blank') | null
-                    }
-                    id?: string | null
+                      label: string;
+                      url: string;
+                      target?: ('_self' | '_blank') | null;
+                    };
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-swiper-card'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-swiper-card';
           }
         | {
             data?: {
-              title?: string | null
+              title?: string | null;
               items?:
                 | {
-                    image?: (number | null) | WebMedia
-                    infos?: string | null
-                    title?: string | null
+                    image?: (number | null) | WebMedia;
+                    infos?: string | null;
+                    title?: string | null;
                     description?: {
                       root: {
-                        type: string
+                        type: string;
                         children: {
-                          type: any
-                          version: number
-                          [k: string]: unknown
-                        }[]
-                        direction: ('ltr' | 'rtl') | null
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                        indent: number
-                        version: number
-                      }
-                      [k: string]: unknown
-                    } | null
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
                     link: {
-                      label: string
-                      url: string
-                      target?: ('_self' | '_blank') | null
-                    }
-                    id?: string | null
+                      label: string;
+                      url: string;
+                      target?: ('_self' | '_blank') | null;
+                    };
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-swiper-large'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-swiper-large';
           }
         | {
             data?: {
               slides?:
                 | {
-                    title?: string | null
+                    title?: string | null;
                     images?:
                       | {
-                          image?: (number | null) | WebMedia
-                          id?: string | null
+                          image?: (number | null) | WebMedia;
+                          id?: string | null;
                         }[]
-                      | null
-                    id?: string | null
+                      | null;
+                    id?: string | null;
                   }[]
-                | null
-            }
+                | null;
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-swiper-simple'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-swiper-simple';
           }
         | {
             data: {
-              title: string
+              title: string;
               content: {
                 root: {
-                  type: string
+                  type: string;
                   children: {
-                    type: any
-                    version: number
-                    [k: string]: unknown
-                  }[]
-                  direction: ('ltr' | 'rtl') | null
-                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-                  indent: number
-                  version: number
-                }
-                [k: string]: unknown
-              }
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
               link: {
-                label: string
-                url: string
-                target?: ('_self' | '_blank') | null
-              }
-            }
+                label: string;
+                url: string;
+                target?: ('_self' | '_blank') | null;
+              };
+            };
             settings: {
               spacing: {
-                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge'
-              }
-              style: 'light' | 'gray' | 'dark'
-            }
-            id?: string | null
-            blockName?: string | null
-            blockType: 'web-text-element'
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+              style: 'light' | 'gray' | 'dark';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-text-element';
           }
       )[]
-    | null
-  updatedAt: string
-  createdAt: string
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: number
-  key: string
+  id: number;
+  key: string;
   data:
     | {
-        [k: string]: unknown
+        [k: string]: unknown;
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number
+  id: number;
   document?:
     | ({
-        relationTo: 'users'
-        value: number | User
+        relationTo: 'users';
+        value: number | User;
       } | null)
     | ({
-        relationTo: 'roles'
-        value: number | Role
+        relationTo: 'roles';
+        value: number | Role;
       } | null)
     | ({
-        relationTo: 'web-media'
-        value: number | WebMedia
+        relationTo: 'web-media';
+        value: number | WebMedia;
       } | null)
     | ({
-        relationTo: 'web-pages'
-        value: number | WebPage
+        relationTo: 'web-pages';
+        value: number | WebPage;
       } | null)
     | ({
-        relationTo: 'courses'
-        value: number | Course
+        relationTo: 'courses';
+        value: number | Course;
       } | null)
     | ({
-        relationTo: 'course-modules'
-        value: number | CourseModule
+        relationTo: 'course-modules';
+        value: number | CourseModule;
       } | null)
     | ({
-        relationTo: 'plants'
-        value: number | Plant
+        relationTo: 'plants';
+        value: number | Plant;
       } | null)
     | ({
-        relationTo: 'plant-families'
-        value: number | PlantFamily
+        relationTo: 'plant-families';
+        value: number | PlantFamily;
       } | null)
     | ({
-        relationTo: 'plant-groups'
-        value: number | PlantGroup
-      } | null)
-  globalSlug?: string | null
+        relationTo: 'plant-groups';
+        value: number | PlantGroup;
+      } | null);
+  globalSlug?: string | null;
   user: {
-    relationTo: 'users'
-    value: number | User
-  }
-  updatedAt: string
-  createdAt: string
+    relationTo: 'users';
+    value: number | User;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number
+  id: number;
   user: {
-    relationTo: 'users'
-    value: number | User
-  }
-  key?: string | null
+    relationTo: 'users';
+    value: number | User;
+  };
+  key?: string | null;
   value?:
     | {
-        [k: string]: unknown
+        [k: string]: unknown;
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null
-  updatedAt: string
-  createdAt: string
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number
-  name?: string | null
-  batch?: number | null
-  updatedAt: string
-  createdAt: string
+  id: number;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  firstName?: T
-  lastName?: T
-  roles?: T
-  enrolledCourses?: T
-  attendedModules?: T
-  updatedAt?: T
-  createdAt?: T
-  email?: T
-  resetPasswordToken?: T
-  resetPasswordExpiration?: T
-  salt?: T
-  hash?: T
-  loginAttempts?: T
-  lockUntil?: T
+  firstName?: T;
+  lastName?: T;
+  roles?: T;
+  enrolledCourses?: T;
+  attendedModules?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
   sessions?:
     | T
     | {
-        id?: T
-        createdAt?: T
-        expiresAt?: T
-      }
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "roles_select".
  */
 export interface RolesSelect<T extends boolean = true> {
-  name?: T
-  slug?: T
-  description?: T
-  updatedAt?: T
-  createdAt?: T
+  name?: T;
+  slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "web-media_select".
  */
 export interface WebMediaSelect<T extends boolean = true> {
-  alt?: T
-  updatedAt?: T
-  createdAt?: T
-  url?: T
-  thumbnailURL?: T
-  filename?: T
-  mimeType?: T
-  filesize?: T
-  width?: T
-  height?: T
-  focalX?: T
-  focalY?: T
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "web-pages_select".
  */
 export interface WebPagesSelect<T extends boolean = true> {
-  title?: T
+  title?: T;
   blocks?:
     | T
     | {
@@ -1057,189 +1055,189 @@ export interface WebPagesSelect<T extends boolean = true> {
               data?:
                 | T
                 | {
-                    title?: T
+                    title?: T;
                     AccordionItems?:
                       | T
                       | {
-                          title?: T
-                          content?: T
-                          id?: T
-                        }
-                  }
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-animatedText'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    text?: T
-                  }
+                    text?: T;
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-book-list'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    title?: T
+                    title?: T;
                     books?:
                       | T
                       | {
-                          title?: T
-                          infos?: T
-                          description?: T
-                          cover?: T
+                          title?: T;
+                          infos?: T;
+                          description?: T;
+                          cover?: T;
                           link?:
                             | T
                             | {
-                                label?: T
-                                url?: T
-                                target?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                label?: T;
+                                url?: T;
+                                target?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-course-list'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    title?: T
+                    title?: T;
                     courses?:
                       | T
                       | {
-                          title?: T
-                          place?: T
-                          description?: T
+                          title?: T;
+                          place?: T;
+                          description?: T;
                           link?:
                             | T
                             | {
-                                label?: T
-                                url?: T
-                                target?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                label?: T;
+                                url?: T;
+                                target?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-hero-large'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    image?: T
-                    title?: T
-                  }
+                    image?: T;
+                    title?: T;
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-hero-small'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    image?: T
-                    title?: T
+                    image?: T;
+                    title?: T;
                     link?:
                       | T
                       | {
-                          label?: T
-                          url?: T
-                          target?: T
-                        }
-                  }
+                          label?: T;
+                          url?: T;
+                          target?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-highlighted-links'?:
           | T
           | {
@@ -1249,62 +1247,62 @@ export interface WebPagesSelect<T extends boolean = true> {
                     links?:
                       | T
                       | {
-                          label?: T
-                          url?: T
-                          image?: T
-                          target?: T
-                          id?: T
-                        }
-                  }
+                          label?: T;
+                          url?: T;
+                          image?: T;
+                          target?: T;
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-image-text'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    title?: T
-                    image?: T
-                    textTop?: T
-                    textHighlight?: T
-                    textBottom?: T
+                    title?: T;
+                    image?: T;
+                    textTop?: T;
+                    textHighlight?: T;
+                    textBottom?: T;
                     link?:
                       | T
                       | {
-                          label?: T
-                          url?: T
-                          target?: T
-                        }
-                  }
+                          label?: T;
+                          url?: T;
+                          target?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-infos'?:
           | T
           | {
@@ -1317,59 +1315,59 @@ export interface WebPagesSelect<T extends boolean = true> {
                           infos?:
                             | T
                             | {
-                                title?: T
-                                text?: T
-                              }
+                                title?: T;
+                                text?: T;
+                              };
                           link?:
                             | T
                             | {
-                                label?: T
-                                url?: T
-                                target?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                label?: T;
+                                url?: T;
+                                target?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-mood-picture'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    image?: T
-                  }
+                    image?: T;
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-swiper-card'?:
           | T
           | {
@@ -1379,76 +1377,76 @@ export interface WebPagesSelect<T extends boolean = true> {
                     cards?:
                       | T
                       | {
-                          image?: T
-                          info?: T
-                          date?: T
-                          title?: T
+                          image?: T;
+                          info?: T;
+                          date?: T;
+                          title?: T;
                           link?:
                             | T
                             | {
-                                label?: T
-                                url?: T
-                                target?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                label?: T;
+                                url?: T;
+                                target?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-swiper-large'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    title?: T
+                    title?: T;
                     items?:
                       | T
                       | {
-                          image?: T
-                          infos?: T
-                          title?: T
-                          description?: T
+                          image?: T;
+                          infos?: T;
+                          title?: T;
+                          description?: T;
                           link?:
                             | T
                             | {
-                                label?: T
-                                url?: T
-                                target?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                label?: T;
+                                url?: T;
+                                target?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-swiper-simple'?:
           | T
           | {
@@ -1458,182 +1456,183 @@ export interface WebPagesSelect<T extends boolean = true> {
                     slides?:
                       | T
                       | {
-                          title?: T
+                          title?: T;
                           images?:
                             | T
                             | {
-                                image?: T
-                                id?: T
-                              }
-                          id?: T
-                        }
-                  }
+                                image?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         'web-text-element'?:
           | T
           | {
               data?:
                 | T
                 | {
-                    title?: T
-                    content?: T
+                    title?: T;
+                    content?: T;
                     link?:
                       | T
                       | {
-                          label?: T
-                          url?: T
-                          target?: T
-                        }
-                  }
+                          label?: T;
+                          url?: T;
+                          target?: T;
+                        };
+                  };
               settings?:
                 | T
                 | {
                     spacing?:
                       | T
                       | {
-                          marginTop?: T
-                          marginBottom?: T
-                          paddingTop?: T
-                          paddingBottom?: T
-                        }
-                    style?: T
-                  }
-              id?: T
-              blockName?: T
-            }
-      }
-  updatedAt?: T
-  createdAt?: T
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
+                    style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "courses_select".
  */
 export interface CoursesSelect<T extends boolean = true> {
-  name?: T
-  place?: T
-  description?: T
-  status?: T
-  participants?: T
-  modules?: T
-  updatedAt?: T
-  createdAt?: T
+  name?: T;
+  place?: T;
+  description?: T;
+  status?: T;
+  participants?: T;
+  modules?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "course-modules_select".
  */
 export interface CourseModulesSelect<T extends boolean = true> {
-  title?: T
-  course?: T
-  date?: T
-  description?: T
+  title?: T;
+  course?: T;
+  date?: T;
+  description?: T;
   plants?:
     | T
     | {
-        plant?: T
-        studied?: T
-        id?: T
-      }
-  participants?: T
-  updatedAt?: T
-  createdAt?: T
+        plant?: T;
+        studied?: T;
+        id?: T;
+      };
+  participants?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plants_select".
  */
 export interface PlantsSelect<T extends boolean = true> {
-  germanName?: T
-  latinName?: T
-  images?: T
-  family?: T
-  groups?: T
-  updatedAt?: T
-  createdAt?: T
+  germanName?: T;
+  latinName?: T;
+  images?: T;
+  family?: T;
+  groups?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plant-families_select".
  */
 export interface PlantFamiliesSelect<T extends boolean = true> {
-  germanName?: T
-  latinName?: T
-  updatedAt?: T
-  createdAt?: T
+  germanName?: T;
+  latinName?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "plant-groups_select".
  */
 export interface PlantGroupsSelect<T extends boolean = true> {
-  name?: T
-  description?: T
-  updatedAt?: T
-  createdAt?: T
+  name?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
-  key?: T
-  data?: T
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-  document?: T
-  globalSlug?: T
-  user?: T
-  updatedAt?: T
-  createdAt?: T
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-  user?: T
-  key?: T
-  value?: T
-  updatedAt?: T
-  createdAt?: T
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-  name?: T
-  batch?: T
-  updatedAt?: T
-  createdAt?: T
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-  [k: string]: unknown
+  [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
