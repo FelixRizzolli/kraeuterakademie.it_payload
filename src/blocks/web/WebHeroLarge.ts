@@ -8,15 +8,28 @@ export const WebHeroLarge: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'image',
+          label: {
+            en: 'Image',
+            de: 'Bild',
+          },
           type: 'upload',
           relationTo: CollectionSlug.WEB_MEDIA,
           required: true,
         },
         {
           name: 'title',
+          label: {
+            en: 'Title',
+            de: 'Titel',
+          },
+          required: true,
           type: 'text',
         },
       ],
@@ -24,6 +37,10 @@ export const WebHeroLarge: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing],
     },
   ],

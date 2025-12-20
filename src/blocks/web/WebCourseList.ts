@@ -10,28 +10,52 @@ export const WebCourseList: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'title',
+          label: {
+            en: 'Title',
+            de: 'Titel',
+          },
           type: 'text',
           required: false,
         },
         {
           name: 'courses',
+          label: {
+            en: 'Courses',
+            de: 'Kurse',
+          },
           type: 'array',
           fields: [
             {
               name: 'title',
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
               type: 'text',
               required: true,
             },
             {
               name: 'place',
+              label: {
+                en: 'Place',
+                de: 'Ort',
+              },
               type: 'text',
               required: false,
             },
             {
               name: 'description',
+              label: {
+                en: 'Description',
+                de: 'Beschreibung',
+              },
               type: 'richText',
               editor: lexicalEditor({}),
             },
@@ -43,6 +67,10 @@ export const WebCourseList: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing, style],
     },
   ],

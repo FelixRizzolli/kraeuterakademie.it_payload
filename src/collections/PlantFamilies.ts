@@ -4,6 +4,16 @@ import { administratorWritePublicRead } from '../lib/access'
 
 export const PlantFamilies: CollectionConfig = {
   slug: CollectionSlug.PLANT_FAMILIES,
+  labels: {
+    singular: {
+      en: 'Plant Family',
+      de: 'Pflanzenfamilie',
+    },
+    plural: {
+      en: 'Plant Families',
+      de: 'Pflanzenfamilien',
+    },
+  },
   admin: {
     useAsTitle: 'germanName',
     defaultColumns: ['germanName', 'latinName'],
@@ -15,18 +25,30 @@ export const PlantFamilies: CollectionConfig = {
       name: 'germanName',
       type: 'text',
       required: true,
-      label: 'German Name',
+      label: {
+        en: 'German Name',
+        de: 'Deutscher Name',
+      },
       admin: {
-        description: 'German name of the plant family',
+        description: {
+          en: 'German name of the plant family',
+          de: 'Deutscher Name der Pflanzenfamilie',
+        },
       },
     },
     {
       name: 'latinName',
       type: 'text',
       required: true,
-      label: 'Latin Name',
+      label: {
+        en: 'Latin Name',
+        de: 'Lateinischer Name',
+      },
       admin: {
-        description: 'Scientific/Latin name of the plant family',
+        description: {
+          en: 'Scientific/Latin name of the plant family',
+          de: 'Wissenschaftlicher/Lateinischer Name der Pflanzenfamilie',
+        },
       },
     },
   ],

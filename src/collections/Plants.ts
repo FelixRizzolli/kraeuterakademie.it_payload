@@ -4,6 +4,16 @@ import { administratorWritePublicRead } from '../lib/access'
 
 export const Plants: CollectionConfig = {
   slug: CollectionSlug.PLANTS,
+  labels: {
+    singular: {
+      en: 'Plant',
+      de: 'Pflanze',
+    },
+    plural: {
+      en: 'Plants',
+      de: 'Pflanzen',
+    },
+  },
   admin: {
     useAsTitle: 'germanName',
     defaultColumns: ['germanName', 'latinName', 'family'],
@@ -15,18 +25,30 @@ export const Plants: CollectionConfig = {
       name: 'germanName',
       type: 'text',
       required: true,
-      label: 'German Name',
+      label: {
+        en: 'German Name',
+        de: 'Deutscher Name',
+      },
       admin: {
-        description: 'German name of the plant',
+        description: {
+          en: 'German name of the plant',
+          de: 'Deutscher Name der Pflanze',
+        },
       },
     },
     {
       name: 'latinName',
       type: 'text',
       required: true,
-      label: 'Latin Name',
+      label: {
+        en: 'Latin Name',
+        de: 'Lateinischer Name',
+      },
       admin: {
-        description: 'Scientific/Latin name of the plant',
+        description: {
+          en: 'Scientific/Latin name of the plant',
+          de: 'Wissenschaftlicher/Lateinischer Name der Pflanze',
+        },
       },
     },
     {
@@ -34,9 +56,15 @@ export const Plants: CollectionConfig = {
       type: 'upload',
       relationTo: CollectionSlug.WEB_MEDIA,
       hasMany: true,
-      label: 'Images',
+      label: {
+        en: 'Images',
+        de: 'Bilder',
+      },
       admin: {
-        description: 'Images of the plant',
+        description: {
+          en: 'Images of the plant',
+          de: 'Bilder der Pflanze',
+        },
       },
     },
     {
@@ -44,9 +72,15 @@ export const Plants: CollectionConfig = {
       type: 'relationship',
       relationTo: CollectionSlug.PLANT_FAMILIES,
       required: true,
-      label: 'Plant Family',
+      label: {
+        en: 'Plant Family',
+        de: 'Pflanzenfamilie',
+      },
       admin: {
-        description: 'The botanical family this plant belongs to',
+        description: {
+          en: 'The botanical family this plant belongs to',
+          de: 'Die botanische Familie, zu der diese Pflanze gehört',
+        },
       },
     },
     {
@@ -54,9 +88,15 @@ export const Plants: CollectionConfig = {
       type: 'relationship',
       relationTo: CollectionSlug.PLANT_GROUPS,
       hasMany: true,
-      label: 'Plant Groups',
+      label: {
+        en: 'Plant Groups',
+        de: 'Pflanzengruppen',
+      },
       admin: {
-        description: 'The groups this plant belongs to',
+        description: {
+          en: 'The groups this plant belongs to',
+          de: 'Die Gruppen, zu denen diese Pflanze gehört',
+        },
       },
     },
   ],

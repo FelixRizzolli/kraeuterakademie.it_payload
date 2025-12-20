@@ -10,9 +10,17 @@ export const WebInfos: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'infos',
+          label: {
+            en: 'Infos',
+            de: 'Infos',
+          },
           type: 'array',
           fields: [
             {
@@ -22,11 +30,19 @@ export const WebInfos: Block = {
               fields: [
                 {
                   name: 'title',
+                  label: {
+                    en: 'Title',
+                    de: 'Titel',
+                  },
                   type: 'text',
                   required: false,
                 },
                 {
                   name: 'text',
+                  label: {
+                    en: 'Text',
+                    de: 'Text',
+                  },
                   type: 'richText',
                   editor: lexicalEditor({}),
                   required: false,
@@ -41,6 +57,10 @@ export const WebInfos: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing, style],
     },
   ],

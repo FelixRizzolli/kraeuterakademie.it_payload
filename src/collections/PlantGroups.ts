@@ -5,6 +5,16 @@ import { administratorWritePublicRead } from '../lib/access'
 
 export const PlantGroups: CollectionConfig = {
   slug: CollectionSlug.PLANT_GROUPS,
+  labels: {
+    singular: {
+      en: 'Plant Group',
+      de: 'Pflanzengruppe',
+    },
+    plural: {
+      en: 'Plant Groups',
+      de: 'Pflanzengruppen',
+    },
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name'],
@@ -16,13 +26,19 @@ export const PlantGroups: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      label: 'Name',
+      label: {
+        en: 'Name',
+        de: 'Name',
+      },
     },
     {
       name: 'description',
       type: 'richText',
       editor: lexicalEditor(),
-      label: 'Description',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
     },
   ],
 }

@@ -5,6 +5,16 @@ import { administratorWritePublicRead } from '../lib/access'
 
 export const CourseModules: CollectionConfig = {
   slug: CollectionSlug.COURSE_MODULES,
+  labels: {
+    singular: {
+      en: 'Course Module',
+      de: 'Kursmodul',
+    },
+    plural: {
+      en: 'Course Modules',
+      de: 'Kursmodule',
+    },
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'course'],
@@ -16,9 +26,15 @@ export const CourseModules: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      label: 'Title',
+      label: {
+        en: 'Module Title',
+        de: 'Modultitel',
+      },
       admin: {
-        description: 'Auto-generated or custom title for the module',
+        description: {
+          en: 'Auto-generated or custom title for the module',
+          de: 'Automatisch generierter oder benutzerdefinierter Titel für das Modul',
+        },
       },
       hooks: {
         beforeChange: [
@@ -38,18 +54,30 @@ export const CourseModules: CollectionConfig = {
       type: 'relationship',
       relationTo: CollectionSlug.COURSES,
       required: true,
-      label: 'Course',
+      label: {
+        en: 'Course',
+        de: 'Kurs',
+      },
       admin: {
-        description: 'The course this module belongs to',
+        description: {
+          en: 'The course this module belongs to',
+          de: 'Der Kurs, zu dem dieses Modul gehört',
+        },
       },
     },
     {
       name: 'date',
       type: 'date',
       required: true,
-      label: 'Date',
+      label: {
+        en: 'Date',
+        de: 'Datum',
+      },
       admin: {
-        description: 'Date when the module takes place',
+        description: {
+          en: 'Date when the module takes place',
+          de: 'Datum, an dem das Modul stattfindet',
+        },
         date: {
           pickerAppearance: 'dayAndTime',
           displayFormat: 'dd.MM.yyyy HH:mm',
@@ -75,15 +103,24 @@ export const CourseModules: CollectionConfig = {
           type: 'relationship',
           relationTo: CollectionSlug.PLANTS,
           required: true,
-          label: 'Plant',
+          label: {
+            en: 'Plant',
+            de: 'Pflanze',
+          },
         },
         {
           name: 'studied',
           type: 'checkbox',
-          label: 'Studied',
+          label: {
+            en: 'Studied',
+            de: 'Studiert',
+          },
           defaultValue: false,
           admin: {
-            description: 'Check if this plant was studied during the module',
+            description: {
+              en: 'Check if this plant was studied during the module',
+              de: 'Ankreuzen, wenn diese Pflanze während des Moduls studiert wurde',
+            },
           },
         },
       ],
@@ -93,9 +130,15 @@ export const CourseModules: CollectionConfig = {
       type: 'relationship',
       relationTo: CollectionSlug.USERS,
       hasMany: true,
-      label: 'Module Participants',
+      label: {
+        en: 'Module Participants',
+        de: 'Modulteilnehmer',
+      },
       admin: {
-        description: 'Participants who attended this specific module',
+        description: {
+          en: 'Participants who attended this specific module',
+          de: 'Teilnehmer, die an diesem speziellen Modul teilgenommen haben',
+        },
       },
     },
   ],

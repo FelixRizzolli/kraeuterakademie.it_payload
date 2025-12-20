@@ -10,27 +10,51 @@ export const WebImageText: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'title',
+          label: {
+            en: 'Title',
+            de: 'Titel',
+          },
           type: 'text',
         },
         {
           name: 'image',
+          label: {
+            en: 'Image',
+            de: 'Bild',
+          },
           type: 'upload',
           relationTo: CollectionSlug.WEB_MEDIA,
         },
         {
           name: 'textTop',
+          label: {
+            en: 'Text Top',
+            de: 'Text Oben',
+          },
           type: 'richText',
           editor: lexicalEditor({}),
         },
         {
           name: 'textHighlight',
+          label: {
+            en: 'Text Highlight',
+            de: 'Text Hervorhebung',
+          },
           type: 'text',
         },
         {
           name: 'textBottom',
+          label: {
+            en: 'Text Bottom',
+            de: 'Text Unten',
+          },
           type: 'richText',
           editor: lexicalEditor({}),
         },
@@ -40,6 +64,10 @@ export const WebImageText: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing],
     },
   ],

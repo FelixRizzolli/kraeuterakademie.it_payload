@@ -10,14 +10,26 @@ export const WebTextElement: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'title',
+          label: {
+            en: 'Title',
+            de: 'Titel',
+          },
           type: 'text',
           required: true,
         },
         {
           name: 'content',
+          label: {
+            en: 'Content',
+            de: 'Inhalt',
+          },
           type: 'richText',
           editor: lexicalEditor({}),
           required: true,
@@ -28,6 +40,10 @@ export const WebTextElement: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing, style],
     },
   ],

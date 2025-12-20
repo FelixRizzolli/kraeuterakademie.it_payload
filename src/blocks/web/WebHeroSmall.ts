@@ -9,15 +9,27 @@ export const WebHeroSmall: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'image',
+          label: {
+            en: 'Image',
+            de: 'Bild',
+          },
           type: 'upload',
           relationTo: CollectionSlug.WEB_MEDIA,
           required: false,
         },
         {
           name: 'title',
+          label: {
+            en: 'Title',
+            de: 'Titel',
+          },
           type: 'text',
           required: true,
         },
@@ -27,6 +39,10 @@ export const WebHeroSmall: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing],
     },
   ],

@@ -1,4 +1,6 @@
 // storage-adapter-import-placeholder
+import { en } from '@payloadcms/translations/languages/en'
+import { de } from '@payloadcms/translations/languages/de'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
@@ -22,6 +24,10 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  i18n: {
+    supportedLanguages: [en, de],
+    defaultLanguage: 'de',
+  },
   admin: {
     user: Users.slug,
     importMap: {

@@ -11,6 +11,16 @@ import { administratorWritePublicRead } from '../lib/access'
 
 export const Courses: CollectionConfig = {
   slug: CollectionSlug.COURSES,
+  labels: {
+    singular: {
+      en: 'Course',
+      de: 'Kurs',
+    },
+    plural: {
+      en: 'Courses',
+      de: 'Kurse',
+    },
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'place', 'status'],
@@ -23,36 +33,57 @@ export const Courses: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
-      label: 'Course Name',
+      label: {
+        en: 'Course Name',
+        de: 'Kursname',
+      },
       admin: {
-        description: 'Unique course identifier (e.g., K1, K2, K3)',
+        description: {
+          en: 'Unique course identifier (e.g., K1, K2, K3)',
+          de: 'Eindeutiger Kursbezeichner (z.B. K1, K2, K3)',
+        },
       },
     },
     {
       name: 'place',
       type: 'select',
       required: true,
-      label: 'Place',
+      label: {
+        en: 'Place',
+        de: 'Ort',
+      },
       options: COURSE_PLACE_OPTIONS,
       admin: {
-        description: 'Location where the course takes place',
+        description: {
+          en: 'Location where the course takes place',
+          de: 'Ort, an dem der Kurs stattfindet',
+        },
       },
     },
     {
       name: 'description',
       type: 'richText',
       editor: lexicalEditor(),
-      label: 'Description',
+      label: {
+        en: 'Course Description',
+        de: 'Kursbeschreibung',
+      },
     },
     {
       name: 'status',
       type: 'select',
       required: true,
       defaultValue: CourseStatus.OPEN,
-      label: 'Status',
+      label: {
+        en: 'Status',
+        de: 'Status',
+      },
       options: COURSE_STATUS_OPTIONS,
       admin: {
-        description: 'Current status of the course',
+        description: {
+          en: 'Current status of the course',
+          de: 'Aktueller Status des Kurses',
+        },
       },
     },
     {
@@ -60,9 +91,15 @@ export const Courses: CollectionConfig = {
       type: 'relationship',
       relationTo: CollectionSlug.USERS,
       hasMany: true,
-      label: 'Course Participants',
+      label: {
+        en: 'Course Participants',
+        de: 'Kursteilnehmer',
+      },
       admin: {
-        description: 'Users enrolled in this course',
+        description: {
+          en: 'Users enrolled in this course',
+          de: 'Benutzer, die in diesem Kurs eingeschrieben sind',
+        },
       },
       // Note: filterOptions removed since we now use roles relationship
       // Filtering will be done in the UI or via custom queries
@@ -72,9 +109,15 @@ export const Courses: CollectionConfig = {
       type: 'join',
       collection: CollectionSlug.COURSE_MODULES,
       on: 'course',
-      label: 'Modules',
+      label: {
+        en: 'Course Modules',
+        de: 'Kursmodule',
+      },
       admin: {
-        description: 'Modules that belong to this course',
+        description: {
+          en: 'Modules that belong to this course',
+          de: 'Module, die zu diesem Kurs gehören',
+        },
       },
     },
   ],

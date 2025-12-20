@@ -8,9 +8,17 @@ export const WebHighlightedLinks: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'links',
+          label: {
+            en: 'Highlighted Links',
+            de: 'Hervorgehobene Links',
+          },
           type: 'array',
           fields: imageLink.fields,
         },
@@ -19,6 +27,10 @@ export const WebHighlightedLinks: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing],
     },
   ],

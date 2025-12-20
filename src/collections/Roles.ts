@@ -8,6 +8,16 @@ import {
 
 export const Roles: CollectionConfig = {
   slug: CollectionSlug.ROLES,
+  labels: {
+    singular: {
+      en: 'Role',
+      de: 'Rolle',
+    },
+    plural: {
+      en: 'Roles',
+      de: 'Rollen',
+    },
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'slug', 'description'],
@@ -48,9 +58,15 @@ export const Roles: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      label: 'Role Name',
+      label: {
+        en: 'Role Name',
+        de: 'Rollenname',
+      },
       admin: {
-        description: 'Display name of the role',
+        description: {
+          en: 'Display name of the role',
+          de: 'Anzeigename der Rolle',
+        },
       },
     },
     {
@@ -58,18 +74,30 @@ export const Roles: CollectionConfig = {
       type: 'select',
       required: true,
       unique: true,
-      label: 'Role Slug',
+      label: {
+        en: 'Role Slug',
+        de: 'Rollen-Slug',
+      },
       options: USER_ROLE_OPTIONS,
       admin: {
-        description: 'Unique identifier for the role',
+        description: {
+          en: 'Unique identifier for the role',
+          de: 'Eindeutiger Bezeichner für die Rolle',
+        },
       },
     },
     {
       name: 'description',
       type: 'textarea',
-      label: 'Description',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       admin: {
-        description: 'What can users with this role do?',
+        description: {
+          en: 'What can users with this role do?',
+          de: 'Was Benutzer mit dieser Rolle tun können',
+        },
       },
       hooks: {
         beforeChange: [

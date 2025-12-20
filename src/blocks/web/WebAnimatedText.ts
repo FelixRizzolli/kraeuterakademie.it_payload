@@ -8,9 +8,17 @@ export const WebAnimatedText: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'text',
+          label: {
+            en: 'Text',
+            de: 'Text',
+          },
           type: 'text',
           required: true,
         },
@@ -19,6 +27,10 @@ export const WebAnimatedText: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing, style],
     },
   ],

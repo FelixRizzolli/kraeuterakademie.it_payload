@@ -4,6 +4,16 @@ import { administratorOrSelf, isAdministratorFieldLevel } from '../lib/access'
 
 export const Users: CollectionConfig = {
   slug: CollectionSlug.USERS,
+  labels: {
+    singular: {
+      en: 'User',
+      de: 'Benutzer',
+    },
+    plural: {
+      en: 'Users',
+      de: 'Benutzer',
+    },
+  },
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['email', 'firstName', 'lastName', 'roles'],
@@ -52,12 +62,18 @@ export const Users: CollectionConfig = {
     {
       name: 'firstName',
       type: 'text',
-      label: 'First Name',
+      label: {
+        en: 'First Name',
+        de: 'Vorname',
+      },
     },
     {
       name: 'lastName',
       type: 'text',
-      label: 'Last Name',
+      label: {
+        en: 'Last Name',
+        de: 'Nachname',
+      },
     },
     {
       name: 'roles',
@@ -65,7 +81,10 @@ export const Users: CollectionConfig = {
       relationTo: CollectionSlug.ROLES,
       hasMany: true,
       required: true,
-      label: 'Roles',
+      label: {
+        en: 'Roles',
+        de: 'Rollen',
+      },
       admin: {
         description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
         // Hide roles field during first user creation (will be auto-assigned as super-admin)
@@ -85,7 +104,10 @@ export const Users: CollectionConfig = {
       type: 'join',
       collection: CollectionSlug.COURSES,
       on: 'participants',
-      label: 'Enrolled Courses',
+      label: {
+        en: 'Enrolled Courses',
+        de: 'Eingeschriebene Kurse',
+      },
       admin: {
         description: 'Courses this user is enrolled in',
         condition: (data) => {
@@ -107,7 +129,10 @@ export const Users: CollectionConfig = {
       type: 'join',
       collection: CollectionSlug.COURSE_MODULES,
       on: 'participants',
-      label: 'Attended Modules',
+      label: {
+        en: 'Attended Modules',
+        de: 'Besuchte Module',
+      },
       admin: {
         description: 'Modules this user has attended',
         condition: (data) => {

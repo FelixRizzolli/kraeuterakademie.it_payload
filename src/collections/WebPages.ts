@@ -12,6 +12,16 @@ import {
 
 export const WebPages: CollectionConfig = {
   slug: CollectionSlug.WEB_PAGES,
+  labels: {
+    singular: {
+      en: 'Web Page',
+      de: 'Web Seite',
+    },
+    plural: {
+      en: 'Web Pages',
+      de: 'Web Seiten',
+    },
+  },
   admin: {
     useAsTitle: 'title',
     group: CollectionGroup.WEB_CONTENT,
@@ -22,7 +32,10 @@ export const WebPages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Content',
+          label: {
+            en: 'Content',
+            de: 'Inhalt',
+          },
           fields: [
             {
               name: 'blocks',
@@ -33,7 +46,10 @@ export const WebPages: CollectionConfig = {
           ],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [
             MetaTitleField({
               hasGenerateFn: true,

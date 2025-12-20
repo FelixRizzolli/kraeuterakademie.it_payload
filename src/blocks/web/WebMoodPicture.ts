@@ -9,9 +9,17 @@ export const WebMoodPicture: Block = {
     {
       type: 'group',
       name: 'data',
+      label: {
+        en: 'Data',
+        de: 'Inhalt',
+      },
       fields: [
         {
           name: 'image',
+          label: {
+            en: 'Image',
+            de: 'Bild',
+          },
           type: 'upload',
           relationTo: CollectionSlug.WEB_MEDIA,
         },
@@ -20,6 +28,10 @@ export const WebMoodPicture: Block = {
     {
       type: 'group',
       name: 'settings',
+      label: {
+        en: 'Settings',
+        de: 'Einstellungen',
+      },
       fields: [spacing, style],
     },
   ],
