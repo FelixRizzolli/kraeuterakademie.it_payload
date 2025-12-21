@@ -24,6 +24,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  cors: '*',
   i18n: {
     supportedLanguages: { en, de },
     fallbackLanguage: 'en',
@@ -61,6 +62,7 @@ export default buildConfig({
     seoPlugin({
       uploadsCollection: CollectionSlug.WEB_MEDIA,
       generateTitle: ({ doc }) => `kraeuterakademie.it — ${doc.title}`,
+      generateURL: ({ doc }) => `https://kraeuterakademie.it/${doc?.slug}`,
       generateDescription: ({ doc }) => doc.excerpt,
     }),
   ],
