@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig, TextField } from 'payload'
 import { webBlocks } from '../blocks/web'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import { contentCreatorWritePublicRead } from '@/lib/access'
@@ -28,6 +28,39 @@ export const WebPages: CollectionConfig = {
   },
   access: contentCreatorWritePublicRead,
   fields: [
+    MetaTitleField({
+      hasGenerateFn: true,
+      overrides: {
+        admin: {
+          ...MetaTitleField({}).admin,
+          position: 'sidebar',
+        },
+      },
+    }),
+    {
+      name: 'slug',
+      label: {
+        en: 'Slug',
+        de: 'Slug',
+      },
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, operation }) => {
+            if (operation === 'create' && !value) {
+              // Auto-generate slug on create if not provided
+              return 'new-page'
+            }
+            return value
+          },
+        ],
+      },
+    },
     {
       type: 'tabs',
       tabs: [
@@ -51,9 +84,6 @@ export const WebPages: CollectionConfig = {
             de: 'SEO',
           },
           fields: [
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
             MetaDescriptionField({
               hasGenerateFn: true,
             }),

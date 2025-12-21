@@ -413,6 +413,8 @@ export interface PlantGroup {
  */
 export interface WebPage {
   id: number;
+  title?: string | null;
+  slug: string;
   blocks?:
     | (
         | {
@@ -878,7 +880,6 @@ export interface WebPage {
           }
       )[]
     | null;
-  title?: string | null;
   description?: string | null;
   /**
    * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
@@ -1050,6 +1051,8 @@ export interface WebMediaSelect<T extends boolean = true> {
  * via the `definition` "web-pages_select".
  */
 export interface WebPagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   blocks?:
     | T
     | {
@@ -1519,7 +1522,6 @@ export interface WebPagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  title?: T;
   description?: T;
   image?: T;
   updatedAt?: T;
