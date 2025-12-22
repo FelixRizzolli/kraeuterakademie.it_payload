@@ -151,8 +151,7 @@ export const CollectionSlug = {
   WEB_PAGES: 'web-pages',
   WEB_PARTNERS: 'web-partners',
   WEB_SOCIALS: 'web-socials',
-  // Globals
-  TEXT_BLOCKS: 'text-blocks',
+  WEB_TEXT_BLOCKS: 'web-text-blocks',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]
