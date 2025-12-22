@@ -1,5 +1,5 @@
 import { spacing } from '@/fields/web'
-import { link } from '@/fields/web'
+import { link } from '@/fields/shared'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 

@@ -1,6 +1,6 @@
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
-import { link } from '@/fields/web'
+import { link } from '@/fields/shared'
 import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'

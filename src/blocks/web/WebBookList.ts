@@ -1,4 +1,4 @@
-import { link } from '@/fields/web'
+import { link } from '@/fields/shared'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
 import { CollectionSlug } from '@/lib/constants'

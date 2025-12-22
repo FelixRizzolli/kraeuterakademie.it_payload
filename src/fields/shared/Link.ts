@@ -9,22 +9,20 @@ export const link: Field = {
   type: 'group',
   fields: [
     {
-      name: 'text',
-      label: {
-        en: 'Label',
-        de: 'Label',
-      },
-      type: 'text',
-      required: true,
-    },
-    {
       name: 'href',
       label: {
         en: 'URL',
         de: 'URL',
       },
       type: 'text',
-      required: true,
+    },
+    {
+      name: 'text',
+      label: {
+        en: 'Text',
+        de: 'Text',
+      },
+      type: 'text',
     },
     {
       name: 'target',
@@ -34,7 +32,7 @@ export const link: Field = {
         de: 'Ziel',
       },
       type: 'select',
-      options: ['_self', '_blank'],
+      options: ['_self', '_blank', '_parent', '_top', '_unfencedTop'],
       defaultValue: '_self',
     },
   ],
