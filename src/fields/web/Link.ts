@@ -9,7 +9,7 @@ export const link: Field = {
   type: 'group',
   fields: [
     {
-      name: 'label',
+      name: 'text',
       label: {
         en: 'Label',
         de: 'Label',
@@ -18,7 +18,7 @@ export const link: Field = {
       required: true,
     },
     {
-      name: 'url',
+      name: 'href',
       label: {
         en: 'URL',
         de: 'URL',

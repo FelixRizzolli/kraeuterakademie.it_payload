@@ -496,8 +496,8 @@ export interface WebPage {
                     } | null;
                     cover?: (number | null) | WebMedia;
                     link: {
-                      label: string;
-                      url: string;
+                      text: string;
+                      href: string;
                       target?: ('_self' | '_blank') | null;
                     };
                     id?: string | null;
@@ -540,8 +540,8 @@ export interface WebPage {
                       [k: string]: unknown;
                     } | null;
                     link: {
-                      label: string;
-                      url: string;
+                      text: string;
+                      href: string;
                       target?: ('_self' | '_blank') | null;
                     };
                     id?: string | null;
@@ -583,8 +583,8 @@ export interface WebPage {
               image?: (number | null) | WebMedia;
               title: string;
               link: {
-                label: string;
-                url: string;
+                text: string;
+                href: string;
                 target?: ('_self' | '_blank') | null;
               };
             };
@@ -660,8 +660,8 @@ export interface WebPage {
                 [k: string]: unknown;
               } | null;
               link: {
-                label: string;
-                url: string;
+                text: string;
+                href: string;
                 target?: ('_self' | '_blank') | null;
               };
             };
@@ -700,8 +700,8 @@ export interface WebPage {
                       } | null;
                     };
                     link: {
-                      label: string;
-                      url: string;
+                      text: string;
+                      href: string;
                       target?: ('_self' | '_blank') | null;
                     };
                     id?: string | null;
@@ -747,8 +747,8 @@ export interface WebPage {
                     date?: string | null;
                     title?: string | null;
                     link: {
-                      label: string;
-                      url: string;
+                      text: string;
+                      href: string;
                       target?: ('_self' | '_blank') | null;
                     };
                     id?: string | null;
@@ -792,8 +792,8 @@ export interface WebPage {
                       [k: string]: unknown;
                     } | null;
                     link: {
-                      label: string;
-                      url: string;
+                      text: string;
+                      href: string;
                       target?: ('_self' | '_blank') | null;
                     };
                     id?: string | null;
@@ -860,8 +860,8 @@ export interface WebPage {
                 [k: string]: unknown;
               };
               link: {
-                label: string;
-                url: string;
+                text: string;
+                href: string;
                 target?: ('_self' | '_blank') | null;
               };
             };
@@ -1128,8 +1128,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                label?: T;
-                                url?: T;
+                                text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1167,8 +1167,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                label?: T;
-                                url?: T;
+                                text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1225,8 +1225,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          label?: T;
-                          url?: T;
+                          text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
@@ -1290,8 +1290,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          label?: T;
-                          url?: T;
+                          text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
@@ -1328,8 +1328,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                label?: T;
-                                url?: T;
+                                text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1391,8 +1391,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                label?: T;
-                                url?: T;
+                                text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1431,8 +1431,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                label?: T;
-                                url?: T;
+                                text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1500,8 +1500,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          label?: T;
-                          url?: T;
+                          text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
