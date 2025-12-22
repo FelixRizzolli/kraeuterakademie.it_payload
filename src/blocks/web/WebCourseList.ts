@@ -1,7 +1,6 @@
-import { link } from '@/fields/shared'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
 export const WebCourseList: Block = {
@@ -32,37 +31,16 @@ export const WebCourseList: Block = {
                 en: 'Courses',
                 de: 'Kurse',
               },
-              type: 'array',
-              fields: [
-                {
-                  name: 'title',
-                  label: {
-                    en: 'Title',
-                    de: 'Titel',
-                  },
-                  type: 'text',
-                  required: true,
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSES,
+              hasMany: true,
+              required: false,
+              admin: {
+                description: {
+                  en: 'Select courses to display in this list',
+                  de: 'Wählen Sie Kurse aus, die in dieser Liste angezeigt werden sollen',
                 },
-                {
-                  name: 'place',
-                  label: {
-                    en: 'Place',
-                    de: 'Ort',
-                  },
-                  type: 'text',
-                  required: false,
-                },
-                {
-                  name: 'description',
-                  label: {
-                    en: 'Description',
-                    de: 'Beschreibung',
-                  },
-                  type: 'richText',
-                  editor: lexicalEditor({}),
-                },
-                link,
-              ],
+              },
             },
           ],
         },

@@ -139,10 +139,13 @@ export const COURSE_PLACE_OPTIONS = Object.entries(COURSE_PLACE_LABELS).map(([va
  * Type-safe collection slugs for relationships and queries
  */
 export const CollectionSlug = {
+  // Administration
   USERS: 'users',
   ROLES: 'roles',
+  // Courses
   COURSES: 'courses',
   COURSE_MODULES: 'course-modules',
+  // Botanical
   PLANTS: 'plants',
   PLANT_FAMILIES: 'plant-families',
   PLANT_GROUPS: 'plant-groups',
@@ -152,6 +155,7 @@ export const CollectionSlug = {
   WEB_PARTNERS: 'web-partners',
   WEB_SOCIALS: 'web-socials',
   WEB_TEXT_BLOCKS: 'web-text-blocks',
+  WEB_BOOKS: 'web-books',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]

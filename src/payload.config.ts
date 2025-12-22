@@ -25,6 +25,7 @@ import { Sidebar } from './globals/Sidebar'
 import { Contact } from './globals/Contact'
 import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
+import { WebBooks } from './collections/WebBooks'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -42,18 +43,22 @@ export default buildConfig({
     },
   },
   collections: [
+    // Administration
     Users,
     Roles,
-    WebMedia,
-    WebPages,
+    // Courses
     Courses,
     CourseModules,
+    // Botanical
     Plants,
     PlantFamilies,
     PlantGroups,
-    // Globals
-    WebSocials,
+    // Web
+    WebMedia,
+    WebPages,
     WebPartners,
+    WebSocials,
+    WebBooks,
   ],
   globals: [Footer, Header, Sidebar, Contact],
   editor: lexicalEditor(),

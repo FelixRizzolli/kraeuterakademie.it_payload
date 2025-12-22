@@ -1,8 +1,6 @@
-import { link } from '@/fields/shared'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
 import { CollectionSlug } from '@/lib/constants'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
 export const WebBookList: Block = {
@@ -33,46 +31,16 @@ export const WebBookList: Block = {
                 en: 'Books',
                 de: 'Bücher',
               },
-              type: 'array',
-              fields: [
-                {
-                  name: 'title',
-                  label: {
-                    en: 'Title',
-                    de: 'Titel',
-                  },
-                  type: 'text',
-                  required: true,
+              type: 'relationship',
+              relationTo: CollectionSlug.WEB_BOOKS,
+              hasMany: true,
+              required: false,
+              admin: {
+                description: {
+                  en: 'Select books to display in this list',
+                  de: 'Wählen Sie Bücher aus, die in dieser Liste angezeigt werden sollen',
                 },
-                {
-                  name: 'infos',
-                  label: {
-                    en: 'Infos',
-                    de: 'Infos',
-                  },
-                  type: 'text',
-                  required: true,
-                },
-                {
-                  name: 'description',
-                  label: {
-                    en: 'Description',
-                    de: 'Beschreibung',
-                  },
-                  type: 'richText',
-                  editor: lexicalEditor({}),
-                },
-                {
-                  name: 'cover',
-                  label: {
-                    en: 'Cover Image',
-                    de: 'Cover Bild',
-                  },
-                  type: 'upload',
-                  relationTo: CollectionSlug.WEB_MEDIA,
-                },
-                link,
-              ],
+              },
             },
           ],
         },

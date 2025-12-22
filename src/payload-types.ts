@@ -69,15 +69,16 @@ export interface Config {
   collections: {
     users: User;
     roles: Role;
-    'web-media': WebMedia;
-    'web-pages': WebPage;
     courses: Course;
     'course-modules': CourseModule;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
-    'web-socials': WebSocial;
+    'web-media': WebMedia;
+    'web-pages': WebPage;
     'web-partners': WebPartner;
+    'web-socials': WebSocial;
+    'web-books': WebBook;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -95,15 +96,16 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
-    'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
-    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
     'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
-    'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
+    'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
+    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
+    'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
+    'web-books': WebBooksSelect<false> | WebBooksSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -489,34 +491,10 @@ export interface WebPage {
         | {
             content?: {
               title?: string | null;
-              books?:
-                | {
-                    title: string;
-                    infos: string;
-                    description?: {
-                      root: {
-                        type: string;
-                        children: {
-                          type: any;
-                          version: number;
-                          [k: string]: unknown;
-                        }[];
-                        direction: ('ltr' | 'rtl') | null;
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                        indent: number;
-                        version: number;
-                      };
-                      [k: string]: unknown;
-                    } | null;
-                    cover?: (number | null) | WebMedia;
-                    link?: {
-                      href?: string | null;
-                      text?: string | null;
-                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
-                    };
-                    id?: string | null;
-                  }[]
-                | null;
+              /**
+               * Select books to display in this list
+               */
+              books?: (number | WebBook)[] | null;
             };
             settings: {
               spacing: {
@@ -534,33 +512,10 @@ export interface WebPage {
         | {
             content?: {
               title?: string | null;
-              courses?:
-                | {
-                    title: string;
-                    place?: string | null;
-                    description?: {
-                      root: {
-                        type: string;
-                        children: {
-                          type: any;
-                          version: number;
-                          [k: string]: unknown;
-                        }[];
-                        direction: ('ltr' | 'rtl') | null;
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                        indent: number;
-                        version: number;
-                      };
-                      [k: string]: unknown;
-                    } | null;
-                    link?: {
-                      href?: string | null;
-                      text?: string | null;
-                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
-                    };
-                    id?: string | null;
-                  }[]
-                | null;
+              /**
+               * Select courses to display in this list
+               */
+              courses?: (number | Course)[] | null;
             };
             settings: {
               spacing: {
@@ -904,19 +859,44 @@ export interface WebPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-socials".
+ * via the `definition` "web-books".
  */
-export interface WebSocial {
+export interface WebBook {
   id: number;
+  title: string;
+  infos: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  cover?: (number | null) | WebMedia;
   link?: {
     href?: string | null;
     text?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
-  icon?: ('facebook' | 'instagram') | null;
-  backgroundImage?: (number | null) | WebMedia;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -931,6 +911,22 @@ export interface WebPartner {
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
   image?: (number | null) | WebMedia;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-socials".
+ */
+export interface WebSocial {
+  id: number;
+  link?: {
+    href?: string | null;
+    text?: string | null;
+    target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+  };
+  icon?: ('facebook' | 'instagram') | null;
+  backgroundImage?: (number | null) | WebMedia;
   updatedAt: string;
   createdAt: string;
 }
@@ -967,14 +963,6 @@ export interface PayloadLockedDocument {
         value: number | Role;
       } | null)
     | ({
-        relationTo: 'web-media';
-        value: number | WebMedia;
-      } | null)
-    | ({
-        relationTo: 'web-pages';
-        value: number | WebPage;
-      } | null)
-    | ({
         relationTo: 'courses';
         value: number | Course;
       } | null)
@@ -995,12 +983,24 @@ export interface PayloadLockedDocument {
         value: number | PlantGroup;
       } | null)
     | ({
-        relationTo: 'web-socials';
-        value: number | WebSocial;
+        relationTo: 'web-media';
+        value: number | WebMedia;
+      } | null)
+    | ({
+        relationTo: 'web-pages';
+        value: number | WebPage;
       } | null)
     | ({
         relationTo: 'web-partners';
         value: number | WebPartner;
+      } | null)
+    | ({
+        relationTo: 'web-socials';
+        value: number | WebSocial;
+      } | null)
+    | ({
+        relationTo: 'web-books';
+        value: number | WebBook;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1078,6 +1078,73 @@ export interface UsersSelect<T extends boolean = true> {
 export interface RolesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses_select".
+ */
+export interface CoursesSelect<T extends boolean = true> {
+  name?: T;
+  place?: T;
+  description?: T;
+  status?: T;
+  participants?: T;
+  modules?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-modules_select".
+ */
+export interface CourseModulesSelect<T extends boolean = true> {
+  title?: T;
+  course?: T;
+  date?: T;
+  description?: T;
+  plants?:
+    | T
+    | {
+        plant?: T;
+        studied?: T;
+        id?: T;
+      };
+  participants?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plants_select".
+ */
+export interface PlantsSelect<T extends boolean = true> {
+  germanName?: T;
+  latinName?: T;
+  images?: T;
+  family?: T;
+  groups?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-families_select".
+ */
+export interface PlantFamiliesSelect<T extends boolean = true> {
+  germanName?: T;
+  latinName?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-groups_select".
+ */
+export interface PlantGroupsSelect<T extends boolean = true> {
+  name?: T;
   description?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1172,22 +1239,7 @@ export interface WebPagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
-                    books?:
-                      | T
-                      | {
-                          title?: T;
-                          infos?: T;
-                          description?: T;
-                          cover?: T;
-                          link?:
-                            | T
-                            | {
-                                href?: T;
-                                text?: T;
-                                target?: T;
-                              };
-                          id?: T;
-                        };
+                    books?: T;
                   };
               settings?:
                 | T
@@ -1212,21 +1264,7 @@ export interface WebPagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
-                    courses?:
-                      | T
-                      | {
-                          title?: T;
-                          place?: T;
-                          description?: T;
-                          link?:
-                            | T
-                            | {
-                                href?: T;
-                                text?: T;
-                                target?: T;
-                              };
-                          id?: T;
-                        };
+                    courses?: T;
                   };
               settings?:
                 | T
@@ -1583,68 +1621,18 @@ export interface WebPagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "courses_select".
+ * via the `definition` "web-partners_select".
  */
-export interface CoursesSelect<T extends boolean = true> {
+export interface WebPartnersSelect<T extends boolean = true> {
   name?: T;
-  place?: T;
-  description?: T;
-  status?: T;
-  participants?: T;
-  modules?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-modules_select".
- */
-export interface CourseModulesSelect<T extends boolean = true> {
-  title?: T;
-  course?: T;
-  date?: T;
-  description?: T;
-  plants?:
+  link?:
     | T
     | {
-        plant?: T;
-        studied?: T;
-        id?: T;
+        href?: T;
+        text?: T;
+        target?: T;
       };
-  participants?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "plants_select".
- */
-export interface PlantsSelect<T extends boolean = true> {
-  germanName?: T;
-  latinName?: T;
-  images?: T;
-  family?: T;
-  groups?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "plant-families_select".
- */
-export interface PlantFamiliesSelect<T extends boolean = true> {
-  germanName?: T;
-  latinName?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "plant-groups_select".
- */
-export interface PlantGroupsSelect<T extends boolean = true> {
-  name?: T;
-  description?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1667,10 +1655,13 @@ export interface WebSocialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-partners_select".
+ * via the `definition` "web-books_select".
  */
-export interface WebPartnersSelect<T extends boolean = true> {
-  name?: T;
+export interface WebBooksSelect<T extends boolean = true> {
+  title?: T;
+  infos?: T;
+  description?: T;
+  cover?: T;
   link?:
     | T
     | {
@@ -1678,9 +1669,17 @@ export interface WebPartnersSelect<T extends boolean = true> {
         text?: T;
         target?: T;
       };
-  image?: T;
   updatedAt?: T;
   createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
