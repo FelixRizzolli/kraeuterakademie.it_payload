@@ -7,12 +7,12 @@ export const WebSocials: CollectionConfig = {
   slug: CollectionSlug.WEB_SOCIALS,
   labels: {
     singular: {
-      en: 'Social',
-      de: 'Sozial',
+      en: 'Web Social',
+      de: 'Web Sozial',
     },
     plural: {
-      en: 'Socials',
-      de: 'Socials',
+      en: 'Web Socials',
+      de: 'Web Socials',
     },
   },
   admin: {

@@ -7,12 +7,12 @@ export const WebPartners: CollectionConfig = {
   slug: CollectionSlug.WEB_PARTNERS,
   labels: {
     singular: {
-      en: 'Partner',
-      de: 'Partner',
+      en: 'Web Partner',
+      de: 'Web Partner',
     },
     plural: {
-      en: 'Partners',
-      de: 'Partner',
+      en: 'Web Partners',
+      de: 'Web Partner',
     },
   },
   admin: {
