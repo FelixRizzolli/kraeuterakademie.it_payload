@@ -17,8 +17,14 @@ import { CourseModules } from './collections/CourseModules'
 import { Plants } from './collections/Plants'
 import { PlantFamilies } from './collections/PlantFamilies'
 import { PlantGroups } from './collections/PlantGroups'
+import { Footer } from './globals/Footer'
+import { Header } from './globals/Header'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { CollectionSlug } from './lib/constants'
+import { Sidebar } from './globals/Sidebar'
+import { Contact } from './globals/Contact'
+import { WebPartners } from './collections/WebPartners'
+import { WebSocials } from './collections/WebSocials'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -45,7 +51,11 @@ export default buildConfig({
     Plants,
     PlantFamilies,
     PlantGroups,
+    // Globals
+    WebSocials,
+    WebPartners,
   ],
+  globals: [Footer, Header, Sidebar, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

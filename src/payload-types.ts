@@ -76,6 +76,8 @@ export interface Config {
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
+    'web-socials': WebSocial;
+    'web-partners': WebPartner;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -100,6 +102,8 @@ export interface Config {
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
+    'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
+    'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -109,8 +113,18 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    footer: Footer;
+    header: Header;
+    sidebar: Sidebar;
+    contact: Contact;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    sidebar: SidebarSelect<false> | SidebarSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -495,10 +509,10 @@ export interface WebPage {
                       [k: string]: unknown;
                     } | null;
                     cover?: (number | null) | WebMedia;
-                    link: {
-                      text: string;
-                      href: string;
-                      target?: ('_self' | '_blank') | null;
+                    link?: {
+                      href?: string | null;
+                      text?: string | null;
+                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
                   }[]
@@ -539,10 +553,10 @@ export interface WebPage {
                       };
                       [k: string]: unknown;
                     } | null;
-                    link: {
-                      text: string;
-                      href: string;
-                      target?: ('_self' | '_blank') | null;
+                    link?: {
+                      href?: string | null;
+                      text?: string | null;
+                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
                   }[]
@@ -582,10 +596,10 @@ export interface WebPage {
             content: {
               image?: (number | null) | WebMedia;
               title: string;
-              link: {
-                text: string;
-                href: string;
-                target?: ('_self' | '_blank') | null;
+              link?: {
+                href?: string | null;
+                text?: string | null;
+                target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
             settings: {
@@ -625,7 +639,7 @@ export interface WebPage {
             blockType: 'web-highlighted-links';
           }
         | {
-            content: {
+            content?: {
               title?: string | null;
               image?: (number | null) | WebMedia;
               textTop?: {
@@ -659,10 +673,10 @@ export interface WebPage {
                 };
                 [k: string]: unknown;
               } | null;
-              link: {
-                text: string;
-                href: string;
-                target?: ('_self' | '_blank') | null;
+              link?: {
+                href?: string | null;
+                text?: string | null;
+                target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
             settings: {
@@ -699,10 +713,10 @@ export interface WebPage {
                         [k: string]: unknown;
                       } | null;
                     };
-                    link: {
-                      text: string;
-                      href: string;
-                      target?: ('_self' | '_blank') | null;
+                    link?: {
+                      href?: string | null;
+                      text?: string | null;
+                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
                   }[]
@@ -746,10 +760,10 @@ export interface WebPage {
                     info?: string | null;
                     date?: string | null;
                     title?: string | null;
-                    link: {
-                      text: string;
-                      href: string;
-                      target?: ('_self' | '_blank') | null;
+                    link?: {
+                      href?: string | null;
+                      text?: string | null;
+                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
                   }[]
@@ -791,10 +805,10 @@ export interface WebPage {
                       };
                       [k: string]: unknown;
                     } | null;
-                    link: {
-                      text: string;
-                      href: string;
-                      target?: ('_self' | '_blank') | null;
+                    link?: {
+                      href?: string | null;
+                      text?: string | null;
+                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
                   }[]
@@ -859,10 +873,10 @@ export interface WebPage {
                 };
                 [k: string]: unknown;
               };
-              link: {
-                text: string;
-                href: string;
-                target?: ('_self' | '_blank') | null;
+              link?: {
+                href?: string | null;
+                text?: string | null;
+                target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
             settings: {
@@ -884,6 +898,38 @@ export interface WebPage {
   /**
    * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
    */
+  image?: (number | null) | WebMedia;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-socials".
+ */
+export interface WebSocial {
+  id: number;
+  link?: {
+    href?: string | null;
+    text?: string | null;
+    target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+  };
+  icon?: ('facebook' | 'instagram') | null;
+  backgroundImage?: (number | null) | WebMedia;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-partners".
+ */
+export interface WebPartner {
+  id: number;
+  name?: string | null;
+  link?: {
+    href?: string | null;
+    text?: string | null;
+    target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+  };
   image?: (number | null) | WebMedia;
   updatedAt: string;
   createdAt: string;
@@ -947,6 +993,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'plant-groups';
         value: number | PlantGroup;
+      } | null)
+    | ({
+        relationTo: 'web-socials';
+        value: number | WebSocial;
+      } | null)
+    | ({
+        relationTo: 'web-partners';
+        value: number | WebPartner;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1128,8 +1182,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                text?: T;
                                 href?: T;
+                                text?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1167,8 +1221,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                text?: T;
                                 href?: T;
+                                text?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1225,8 +1279,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          text?: T;
                           href?: T;
+                          text?: T;
                           target?: T;
                         };
                   };
@@ -1290,8 +1344,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          text?: T;
                           href?: T;
+                          text?: T;
                           target?: T;
                         };
                   };
@@ -1328,8 +1382,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                text?: T;
                                 href?: T;
+                                text?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1391,8 +1445,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                text?: T;
                                 href?: T;
+                                text?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1431,8 +1485,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                text?: T;
                                 href?: T;
+                                text?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1500,8 +1554,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          text?: T;
                           href?: T;
+                          text?: T;
                           target?: T;
                         };
                   };
@@ -1596,6 +1650,40 @@ export interface PlantGroupsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-socials_select".
+ */
+export interface WebSocialsSelect<T extends boolean = true> {
+  link?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+      };
+  icon?: T;
+  backgroundImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-partners_select".
+ */
+export interface WebPartnersSelect<T extends boolean = true> {
+  name?: T;
+  link?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+      };
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1633,6 +1721,202 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  text1?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  text2?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        href?: string | null;
+        text?: string | null;
+        target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  links?:
+    | {
+        href?: string | null;
+        text?: string | null;
+        target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sidebar".
+ */
+export interface Sidebar {
+  id: number;
+  links?:
+    | {
+        href?: string | null;
+        text?: string | null;
+        target?: ('_self' | '_blank') | null;
+        id?: string | null;
+      }[]
+    | null;
+  logoLink?: {
+    href?: string | null;
+    text?: string | null;
+    target?: ('_self' | '_blank') | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: number;
+  name?: string | null;
+  phone?: {
+    href?: string | null;
+    text?: string | null;
+  };
+  mail?: {
+    href?: string | null;
+    text?: string | null;
+  };
+  address?: {
+    street?: string | null;
+    place?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  text1?: T;
+  text2?: T;
+  links?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sidebar_select".
+ */
+export interface SidebarSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+        id?: T;
+      };
+  logoLink?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+        target?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  name?: T;
+  phone?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+      };
+  mail?:
+    | T
+    | {
+        href?: T;
+        text?: T;
+      };
+  address?:
+    | T
+    | {
+        street?: T;
+        place?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

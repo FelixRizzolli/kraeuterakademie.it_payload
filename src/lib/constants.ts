@@ -12,6 +12,7 @@ export enum CollectionGroup {
   WEB_CONTENT = 'Web Content',
   COURSES = 'Courses',
   BOTANICAL = 'Botanical',
+  GLOBALS = 'Globals',
 }
 
 /**
@@ -140,13 +141,18 @@ export const COURSE_PLACE_OPTIONS = Object.entries(COURSE_PLACE_LABELS).map(([va
 export const CollectionSlug = {
   USERS: 'users',
   ROLES: 'roles',
-  WEB_MEDIA: 'web-media',
-  WEB_PAGES: 'web-pages',
   COURSES: 'courses',
   COURSE_MODULES: 'course-modules',
   PLANTS: 'plants',
   PLANT_FAMILIES: 'plant-families',
   PLANT_GROUPS: 'plant-groups',
+  // Web
+  WEB_MEDIA: 'web-media',
+  WEB_PAGES: 'web-pages',
+  WEB_PARTNERS: 'web-partners',
+  WEB_SOCIALS: 'web-socials',
+  // Globals
+  TEXT_BLOCKS: 'text-blocks',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]
