@@ -141,6 +141,7 @@ export const Users: CollectionConfig = {
                   en: 'Courses this user is enrolled in',
                   de: 'Kurse, in die dieser Benutzer eingeschrieben ist',
                 },
+                allowCreate: false,
               },
             },
             {
@@ -157,6 +158,7 @@ export const Users: CollectionConfig = {
                   en: 'Modules this user has attended',
                   de: 'Module, die dieser Benutzer besucht hat',
                 },
+                allowCreate: false,
               },
             },
           ],
