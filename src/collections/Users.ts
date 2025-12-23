@@ -63,7 +63,10 @@ export const Users: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Account',
+          label: {
+            en: 'Basic Information',
+            de: 'Grundinformationen',
+          },
           fields: [
             {
               name: 'firstName',
@@ -92,23 +95,37 @@ export const Users: CollectionConfig = {
                 de: 'Rollen',
               },
               admin: {
-                description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
-                // Hide roles field during first user creation (will be auto-assigned as super-admin)
-                condition: (data, siblingData, { user }) => {
-                  // Show field if there's an authenticated user (not first user creation)
-                  return Boolean(user)
+                description: {
+                  en: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
+                  de: 'Benutzer können mehrere Rollen haben (z. B. Dashboard-Benutzer + Quiz-Teilnehmer)',
                 },
               },
               access: {
-                // Only administrators can modify roles
                 create: isAdministratorFieldLevel,
                 update: isAdministratorFieldLevel,
+              },
+            },
+            {
+              name: 'notes',
+              label: {
+                en: 'Notes',
+                de: 'Notizen',
+              },
+              type: 'textarea',
+              admin: {
+                description: {
+                  en: 'Internal notes about the user (not visible to the user)',
+                  de: 'Interne Notizen über den Benutzer (für den Benutzer nicht sichtbar)',
+                },
               },
             },
           ],
         },
         {
-          label: 'Courses',
+          label: {
+            en: 'Course Information',
+            de: 'Kursinformationen',
+          },
           fields: [
             {
               name: 'enrolledCourses',
@@ -120,18 +137,9 @@ export const Users: CollectionConfig = {
                 de: 'Eingeschriebene Kurse',
               },
               admin: {
-                description: 'Courses this user is enrolled in',
-                condition: (data) => {
-                  // Show if user has dashboard access role
-                  return (
-                    data.roles?.some(
-                      (role: any) =>
-                        role?.slug === 'dashboard-user' ||
-                        role?.slug === 'demo-dashboard-user' ||
-                        role?.slug === 'administrator' ||
-                        role?.slug === 'super-admin',
-                    ) || false
-                  )
+                description: {
+                  en: 'Courses this user is enrolled in',
+                  de: 'Kurse, in die dieser Benutzer eingeschrieben ist',
                 },
               },
             },
@@ -145,25 +153,19 @@ export const Users: CollectionConfig = {
                 de: 'Besuchte Module',
               },
               admin: {
-                description: 'Modules this user has attended',
-                condition: (data) => {
-                  // Show if user has dashboard access role
-                  return (
-                    data.roles?.some(
-                      (role: any) =>
-                        role?.slug === 'dashboard-user' ||
-                        role?.slug === 'demo-dashboard-user' ||
-                        role?.slug === 'administrator' ||
-                        role?.slug === 'super-admin',
-                    ) || false
-                  )
+                description: {
+                  en: 'Modules this user has attended',
+                  de: 'Module, die dieser Benutzer besucht hat',
                 },
               },
             },
           ],
         },
         {
-          label: 'Address',
+          label: {
+            en: 'Personal Information',
+            de: 'Persönliche Informationen',
+          },
           fields: [
             {
               name: 'address',
@@ -252,7 +254,10 @@ export const Users: CollectionConfig = {
           ],
         },
         {
-          label: 'Profile',
+          label: {
+            en: 'Profile',
+            de: 'Profil',
+          },
           fields: [
             {
               name: 'profilename',

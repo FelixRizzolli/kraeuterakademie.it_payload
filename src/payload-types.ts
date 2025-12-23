@@ -177,7 +177,11 @@ export interface User {
   /**
    * User can have multiple roles (e.g., Dashboard User + Quiz Player)
    */
-  roles?: (number | Role)[] | null;
+  roles: (number | Role)[];
+  /**
+   * Internal notes about the user (not visible to the user)
+   */
+  notes?: string | null;
   /**
    * Courses this user is enrolled in
    */
@@ -1155,6 +1159,7 @@ export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
   roles?: T;
+  notes?: T;
   enrolledCourses?: T;
   attendedModules?: T;
   address?:
