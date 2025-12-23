@@ -304,7 +304,7 @@ export interface CourseModule {
    * Date when the module takes place
    */
   date: string;
-  description?: {
+  notes?: {
     root: {
       type: string;
       children: {
@@ -320,22 +320,13 @@ export interface CourseModule {
     [k: string]: unknown;
   } | null;
   /**
-   * Plants assigned to this module with checklist status
-   */
-  plants?:
-    | {
-        plant: number | Plant;
-        /**
-         * Check if this plant was studied during the module
-         */
-        studied?: boolean | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
    * Participants who attended this specific module
    */
   participants?: (number | User)[] | null;
+  /**
+   * Plants associated with this module
+   */
+  plants?: (number | Plant)[] | null;
   /**
    * Excoursions associated with this module
    */
@@ -1161,15 +1152,9 @@ export interface CourseModulesSelect<T extends boolean = true> {
   title?: T;
   course?: T;
   date?: T;
-  description?: T;
-  plants?:
-    | T
-    | {
-        plant?: T;
-        studied?: T;
-        id?: T;
-      };
+  notes?: T;
   participants?: T;
+  plants?: T;
   excoursions?: T;
   practiceUnits?: T;
   updatedAt?: T;
