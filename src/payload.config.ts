@@ -26,6 +26,7 @@ import { Contact } from './globals/Contact'
 import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
 import { WebBooks } from './collections/WebBooks'
+import { WebTextBlocks } from './collections/WebTextBlocks'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -59,6 +60,7 @@ export default buildConfig({
     WebPartners,
     WebSocials,
     WebBooks,
+    WebTextBlocks,
   ],
   globals: [Footer, Header, Sidebar, Contact],
   editor: lexicalEditor(),

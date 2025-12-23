@@ -37,6 +37,11 @@ export const Footer: GlobalConfig = {
       },
       type: 'array',
       fields: link.type === 'group' ? link.fields : [],
+      admin: {
+        components: {
+          RowLabel: '@/components/admin/LinkArrayRowLabel#LinkArrayRowLabel',
+        },
+      },
     },
   ],
 }

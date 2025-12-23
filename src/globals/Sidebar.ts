@@ -18,35 +18,12 @@ export const Sidebar: GlobalConfig = {
         de: 'Links',
       },
       type: 'array',
-      fields: [
-        {
-          name: 'href',
-          label: {
-            en: 'URL',
-            de: 'URL',
-          },
-          type: 'text',
+      fields: link.type === 'group' ? link.fields : [],
+      admin: {
+        components: {
+          RowLabel: '@/components/admin/LinkArrayRowLabel#LinkArrayRowLabel',
         },
-        {
-          name: 'text',
-          label: {
-            en: 'Text',
-            de: 'Text',
-          },
-          type: 'text',
-        },
-        {
-          name: 'target',
-          enumName: 'sidebar_link_target_enum',
-          label: {
-            en: 'Target',
-            de: 'Ziel',
-          },
-          type: 'select',
-          options: ['_self', '_blank'],
-          defaultValue: '_self',
-        },
-      ],
+      },
     },
     {
       name: 'logoLink',
@@ -55,35 +32,7 @@ export const Sidebar: GlobalConfig = {
         de: 'Logo Link',
       },
       type: 'group',
-      fields: [
-        {
-          name: 'href',
-          label: {
-            en: 'URL',
-            de: 'URL',
-          },
-          type: 'text',
-        },
-        {
-          name: 'text',
-          label: {
-            en: 'Text',
-            de: 'Text',
-          },
-          type: 'text',
-        },
-        {
-          name: 'target',
-          enumName: 'sidebar_logo_target_enum',
-          label: {
-            en: 'Target',
-            de: 'Ziel',
-          },
-          type: 'select',
-          options: ['_self', '_blank'],
-          defaultValue: '_self',
-        },
-      ],
+      fields: link.type === 'group' ? link.fields : [],
     },
   ],
 }

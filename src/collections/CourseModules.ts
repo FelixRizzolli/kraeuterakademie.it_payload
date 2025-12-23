@@ -17,7 +17,7 @@ export const CourseModules: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'date', 'course'],
+    defaultColumns: ['course', 'title', 'date'],
     group: CollectionGroup.COURSES,
   },
   access: administratorWritePublicRead,

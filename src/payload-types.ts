@@ -79,6 +79,7 @@ export interface Config {
     'web-partners': WebPartner;
     'web-socials': WebSocial;
     'web-books': WebBook;
+    'web-text-blocks': WebTextBlock;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -106,6 +107,7 @@ export interface Config {
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
     'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
     'web-books': WebBooksSelect<false> | WebBooksSelect<true>;
+    'web-text-blocks': WebTextBlocksSelect<false> | WebTextBlocksSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -932,6 +934,17 @@ export interface WebSocial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-text-blocks".
+ */
+export interface WebTextBlock {
+  id: number;
+  slug: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1001,6 +1014,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'web-books';
         value: number | WebBook;
+      } | null)
+    | ({
+        relationTo: 'web-text-blocks';
+        value: number | WebTextBlock;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1683,6 +1700,16 @@ export interface WebBooksSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-text-blocks_select".
+ */
+export interface WebTextBlocksSelect<T extends boolean = true> {
+  slug?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1795,14 +1822,15 @@ export interface Sidebar {
     | {
         href?: string | null;
         text?: string | null;
-        target?: ('_self' | '_blank') | null;
+        target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
         id?: string | null;
       }[]
     | null;
   logoLink?: {
     href?: string | null;
     text?: string | null;
-    target?: ('_self' | '_blank') | null;
+    target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+    id?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1884,6 +1912,7 @@ export interface SidebarSelect<T extends boolean = true> {
         href?: T;
         text?: T;
         target?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
