@@ -358,6 +358,10 @@ export interface CourseModule {
    */
   practiceUnits?: (number | CoursePracticeUnit)[] | null;
   /**
+   * Speakers associated with this module
+   */
+  speakers?: (number | CourseSpeaker)[] | null;
+  /**
    * Gardens associated with this module
    */
   gardens?: (number | CourseGarden)[] | null;
@@ -471,6 +475,16 @@ export interface CourseExcursion {
 export interface CoursePracticeUnit {
   id: number;
   title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-speakers".
+ */
+export interface CourseSpeaker {
+  id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1229,6 +1243,7 @@ export interface CourseModulesSelect<T extends boolean = true> {
   plants?: T;
   excursions?: T;
   practiceUnits?: T;
+  speakers?: T;
   gardens?: T;
   updatedAt?: T;
   createdAt?: T;
