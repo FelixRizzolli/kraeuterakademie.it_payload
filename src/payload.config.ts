@@ -27,6 +27,8 @@ import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
 import { WebBooks } from './collections/WebBooks'
 import { WebTextBlocks } from './collections/WebTextBlocks'
+import { CourseExcoursion } from './collections/CourseExcoursion'
+import { CoursePracticeUnit } from './collections/CoursePracticeUnit'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,6 +52,8 @@ export default buildConfig({
     // Courses
     Courses,
     CourseModules,
+    CourseExcoursion,
+    CoursePracticeUnit,
     // Botanical
     Plants,
     PlantFamilies,

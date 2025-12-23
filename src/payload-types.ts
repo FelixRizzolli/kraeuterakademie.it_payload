@@ -71,6 +71,8 @@ export interface Config {
     roles: Role;
     courses: Course;
     'course-modules': CourseModule;
+    'course-excoursion': CourseExcoursion;
+    'course-practice-unit': CoursePracticeUnit;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
@@ -99,6 +101,8 @@ export interface Config {
     roles: RolesSelect<false> | RolesSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
     'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
+    'course-excoursion': CourseExcoursionSelect<false> | CourseExcoursionSelect<true>;
+    'course-practice-unit': CoursePracticeUnitSelect<false> | CoursePracticeUnitSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
@@ -332,6 +336,14 @@ export interface CourseModule {
    * Participants who attended this specific module
    */
   participants?: (number | User)[] | null;
+  /**
+   * Excoursions associated with this module
+   */
+  excoursions?: (number | CourseExcoursion)[] | null;
+  /**
+   * Practice units associated with this module
+   */
+  practiceUnits?: (number | CoursePracticeUnit)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -422,6 +434,26 @@ export interface PlantGroup {
     };
     [k: string]: unknown;
   } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-excoursion".
+ */
+export interface CourseExcoursion {
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-practice-unit".
+ */
+export interface CoursePracticeUnit {
+  id: number;
+  title: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -984,6 +1016,14 @@ export interface PayloadLockedDocument {
         value: number | CourseModule;
       } | null)
     | ({
+        relationTo: 'course-excoursion';
+        value: number | CourseExcoursion;
+      } | null)
+    | ({
+        relationTo: 'course-practice-unit';
+        value: number | CoursePracticeUnit;
+      } | null)
+    | ({
         relationTo: 'plants';
         value: number | Plant;
       } | null)
@@ -1130,6 +1170,26 @@ export interface CourseModulesSelect<T extends boolean = true> {
         id?: T;
       };
   participants?: T;
+  excoursions?: T;
+  practiceUnits?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-excoursion_select".
+ */
+export interface CourseExcoursionSelect<T extends boolean = true> {
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-practice-unit_select".
+ */
+export interface CoursePracticeUnitSelect<T extends boolean = true> {
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }

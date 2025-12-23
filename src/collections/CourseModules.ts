@@ -8,11 +8,11 @@ export const CourseModules: CollectionConfig = {
   labels: {
     singular: {
       en: 'Course Module',
-      de: 'Kursmodul',
+      de: 'Kurs Modul',
     },
     plural: {
       en: 'Course Modules',
-      de: 'Kursmodule',
+      de: 'Kurs Module',
     },
   },
   admin: {
@@ -138,6 +138,38 @@ export const CourseModules: CollectionConfig = {
         description: {
           en: 'Participants who attended this specific module',
           de: 'Teilnehmer, die an diesem speziellen Modul teilgenommen haben',
+        },
+      },
+    },
+    {
+      name: 'excoursions',
+      type: 'relationship',
+      relationTo: CollectionSlug.COURSE_EXCOURSION,
+      hasMany: true,
+      label: {
+        en: 'Excoursions',
+        de: 'Exkursionen',
+      },
+      admin: {
+        description: {
+          en: 'Excoursions associated with this module',
+          de: 'Exkursionen, die diesem Modul zugeordnet sind',
+        },
+      },
+    },
+    {
+      name: 'practiceUnits',
+      type: 'relationship',
+      relationTo: CollectionSlug.COURSE_PRACTICE_UNIT,
+      hasMany: true,
+      label: {
+        en: 'Practice Units',
+        de: 'Praxiseinheiten',
+      },
+      admin: {
+        description: {
+          en: 'Practice units associated with this module',
+          de: 'Praxiseinheiten, die diesem Modul zugeordnet sind',
         },
       },
     },
