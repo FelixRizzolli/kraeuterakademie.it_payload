@@ -174,6 +174,38 @@ export const CourseModules: CollectionConfig = {
                 },
               },
             },
+            {
+              name: 'speakers',
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSE_SPEAKER,
+              hasMany: true,
+              label: {
+                en: 'Speakers',
+                de: 'Referenten',
+              },
+              admin: {
+                description: {
+                  en: 'Speakers associated with this module',
+                  de: 'Referenten, die diesem Modul zugeordnet sind',
+                },
+              },
+            },
+            {
+              name: 'gardens',
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSE_GARDEN,
+              hasMany: true,
+              label: {
+                en: 'Gardens',
+                de: 'Gärten',
+              },
+              admin: {
+                description: {
+                  en: 'Gardens associated with this module',
+                  de: 'Gärten, die diesem Modul zugeordnet sind',
+                },
+              },
+            },
           ],
         },
       ],

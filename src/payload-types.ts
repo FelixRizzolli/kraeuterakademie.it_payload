@@ -73,6 +73,8 @@ export interface Config {
     'course-modules': CourseModule;
     'course-excoursion': CourseExcoursion;
     'course-practice-unit': CoursePracticeUnit;
+    'course-speaker': CourseSpeaker;
+    'course-garden': CourseGarden;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
@@ -103,6 +105,8 @@ export interface Config {
     'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
     'course-excoursion': CourseExcoursionSelect<false> | CourseExcoursionSelect<true>;
     'course-practice-unit': CoursePracticeUnitSelect<false> | CoursePracticeUnitSelect<true>;
+    'course-speaker': CourseSpeakerSelect<false> | CourseSpeakerSelect<true>;
+    'course-garden': CourseGardenSelect<false> | CourseGardenSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
@@ -335,6 +339,14 @@ export interface CourseModule {
    * Practice units associated with this module
    */
   practiceUnits?: (number | CoursePracticeUnit)[] | null;
+  /**
+   * Speakers associated with this module
+   */
+  speakers?: (number | CourseSpeaker)[] | null;
+  /**
+   * Gardens associated with this module
+   */
+  gardens?: (number | CourseGarden)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -445,6 +457,27 @@ export interface CourseExcoursion {
 export interface CoursePracticeUnit {
   id: number;
   title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-speaker".
+ */
+export interface CourseSpeaker {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-garden".
+ */
+export interface CourseGarden {
+  id: number;
+  name: string;
+  link: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1015,6 +1048,14 @@ export interface PayloadLockedDocument {
         value: number | CoursePracticeUnit;
       } | null)
     | ({
+        relationTo: 'course-speaker';
+        value: number | CourseSpeaker;
+      } | null)
+    | ({
+        relationTo: 'course-garden';
+        value: number | CourseGarden;
+      } | null)
+    | ({
         relationTo: 'plants';
         value: number | Plant;
       } | null)
@@ -1157,6 +1198,8 @@ export interface CourseModulesSelect<T extends boolean = true> {
   plants?: T;
   excoursions?: T;
   practiceUnits?: T;
+  speakers?: T;
+  gardens?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1175,6 +1218,25 @@ export interface CourseExcoursionSelect<T extends boolean = true> {
  */
 export interface CoursePracticeUnitSelect<T extends boolean = true> {
   title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-speaker_select".
+ */
+export interface CourseSpeakerSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-garden_select".
+ */
+export interface CourseGardenSelect<T extends boolean = true> {
+  name?: T;
+  link?: T;
   updatedAt?: T;
   createdAt?: T;
 }
