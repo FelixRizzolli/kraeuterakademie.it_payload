@@ -60,94 +60,243 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
-      name: 'firstName',
-      type: 'text',
-      label: {
-        en: 'First Name',
-        de: 'Vorname',
-      },
-    },
-    {
-      name: 'lastName',
-      type: 'text',
-      label: {
-        en: 'Last Name',
-        de: 'Nachname',
-      },
-    },
-    {
-      name: 'roles',
-      type: 'relationship',
-      relationTo: CollectionSlug.ROLES,
-      hasMany: true,
-      required: true,
-      label: {
-        en: 'Roles',
-        de: 'Rollen',
-      },
-      admin: {
-        description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
-        // Hide roles field during first user creation (will be auto-assigned as super-admin)
-        condition: (data, siblingData, { user }) => {
-          // Show field if there's an authenticated user (not first user creation)
-          return Boolean(user)
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Account',
+          fields: [
+            {
+              name: 'firstName',
+              type: 'text',
+              label: {
+                en: 'First Name',
+                de: 'Vorname',
+              },
+            },
+            {
+              name: 'lastName',
+              type: 'text',
+              label: {
+                en: 'Last Name',
+                de: 'Nachname',
+              },
+            },
+            {
+              name: 'roles',
+              type: 'relationship',
+              relationTo: CollectionSlug.ROLES,
+              hasMany: true,
+              required: true,
+              label: {
+                en: 'Roles',
+                de: 'Rollen',
+              },
+              admin: {
+                description: 'User can have multiple roles (e.g., Dashboard User + Quiz Player)',
+                // Hide roles field during first user creation (will be auto-assigned as super-admin)
+                condition: (data, siblingData, { user }) => {
+                  // Show field if there's an authenticated user (not first user creation)
+                  return Boolean(user)
+                },
+              },
+              access: {
+                // Only administrators can modify roles
+                create: isAdministratorFieldLevel,
+                update: isAdministratorFieldLevel,
+              },
+            },
+          ],
         },
-      },
-      access: {
-        // Only administrators can modify roles
-        create: isAdministratorFieldLevel,
-        update: isAdministratorFieldLevel,
-      },
-    },
-    {
-      name: 'enrolledCourses',
-      type: 'join',
-      collection: CollectionSlug.COURSES,
-      on: 'participants',
-      label: {
-        en: 'Enrolled Courses',
-        de: 'Eingeschriebene Kurse',
-      },
-      admin: {
-        description: 'Courses this user is enrolled in',
-        condition: (data) => {
-          // Show if user has dashboard access role
-          return (
-            data.roles?.some(
-              (role: any) =>
-                role?.slug === 'dashboard-user' ||
-                role?.slug === 'demo-dashboard-user' ||
-                role?.slug === 'administrator' ||
-                role?.slug === 'super-admin',
-            ) || false
-          )
+        {
+          label: 'Courses',
+          fields: [
+            {
+              name: 'enrolledCourses',
+              type: 'join',
+              collection: CollectionSlug.COURSES,
+              on: 'participants',
+              label: {
+                en: 'Enrolled Courses',
+                de: 'Eingeschriebene Kurse',
+              },
+              admin: {
+                description: 'Courses this user is enrolled in',
+                condition: (data) => {
+                  // Show if user has dashboard access role
+                  return (
+                    data.roles?.some(
+                      (role: any) =>
+                        role?.slug === 'dashboard-user' ||
+                        role?.slug === 'demo-dashboard-user' ||
+                        role?.slug === 'administrator' ||
+                        role?.slug === 'super-admin',
+                    ) || false
+                  )
+                },
+              },
+            },
+            {
+              name: 'attendedModules',
+              type: 'join',
+              collection: CollectionSlug.COURSE_MODULES,
+              on: 'participants',
+              label: {
+                en: 'Attended Modules',
+                de: 'Besuchte Module',
+              },
+              admin: {
+                description: 'Modules this user has attended',
+                condition: (data) => {
+                  // Show if user has dashboard access role
+                  return (
+                    data.roles?.some(
+                      (role: any) =>
+                        role?.slug === 'dashboard-user' ||
+                        role?.slug === 'demo-dashboard-user' ||
+                        role?.slug === 'administrator' ||
+                        role?.slug === 'super-admin',
+                    ) || false
+                  )
+                },
+              },
+            },
+          ],
         },
-      },
-    },
-    {
-      name: 'attendedModules',
-      type: 'join',
-      collection: CollectionSlug.COURSE_MODULES,
-      on: 'participants',
-      label: {
-        en: 'Attended Modules',
-        de: 'Besuchte Module',
-      },
-      admin: {
-        description: 'Modules this user has attended',
-        condition: (data) => {
-          // Show if user has dashboard access role
-          return (
-            data.roles?.some(
-              (role: any) =>
-                role?.slug === 'dashboard-user' ||
-                role?.slug === 'demo-dashboard-user' ||
-                role?.slug === 'administrator' ||
-                role?.slug === 'super-admin',
-            ) || false
-          )
+        {
+          label: 'Address',
+          fields: [
+            {
+              name: 'address',
+              type: 'group',
+              label: {
+                en: 'Address Information',
+                de: 'Adressinformationen',
+              },
+              fields: [
+                {
+                  name: 'street',
+                  type: 'text',
+                  label: {
+                    en: 'Street',
+                    de: 'Straße',
+                  },
+                },
+                {
+                  name: 'zip',
+                  type: 'text',
+                  label: {
+                    en: 'ZIP Code',
+                    de: 'PLZ',
+                  },
+                },
+                {
+                  name: 'place',
+                  type: 'text',
+                  label: {
+                    en: 'Place',
+                    de: 'Ort',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'group',
+              label: {
+                en: 'Birth Information',
+                de: 'Geburtsinformationen',
+              },
+              fields: [
+                {
+                  name: 'birthDate',
+                  type: 'date',
+                  label: {
+                    en: 'Birth Date',
+                    de: 'Geburtsdatum',
+                  },
+                },
+                {
+                  name: 'birthPlace',
+                  type: 'text',
+                  label: {
+                    en: 'Birth Place',
+                    de: 'Geburtsort',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'group',
+              label: {
+                en: 'Other Information',
+                de: 'Sonstige Informationen',
+              },
+              fields: [
+                {
+                  name: 'phone',
+                  type: 'text',
+                  label: {
+                    en: 'Phone',
+                    de: 'Telefon',
+                  },
+                },
+                {
+                  name: 'taxNumber',
+                  type: 'text',
+                  label: {
+                    en: 'Tax Number',
+                    de: 'Steuernummer',
+                  },
+                },
+              ],
+            },
+          ],
         },
-      },
+        {
+          label: 'Profile',
+          fields: [
+            {
+              name: 'profilename',
+              type: 'text',
+              label: {
+                en: 'Profile Name',
+                de: 'Profilname',
+              },
+            },
+            {
+              name: 'description',
+              type: 'textarea',
+              label: {
+                en: 'Description',
+                de: 'Beschreibung',
+              },
+            },
+            {
+              name: 'linkedin',
+              type: 'text',
+              label: {
+                en: 'LinkedIn',
+                de: 'LinkedIn',
+              },
+            },
+            {
+              name: 'instagram',
+              type: 'text',
+              label: {
+                en: 'Instagram',
+                de: 'Instagram',
+              },
+            },
+            {
+              name: 'facebook',
+              type: 'text',
+              label: {
+                en: 'Facebook',
+                de: 'Facebook',
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 }

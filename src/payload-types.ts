@@ -194,6 +194,20 @@ export interface User {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  address?: {
+    street?: string | null;
+    zip?: string | null;
+    place?: string | null;
+  };
+  birthDate?: string | null;
+  birthPlace?: string | null;
+  phone?: string | null;
+  taxNumber?: string | null;
+  profilename?: string | null;
+  description?: string | null;
+  linkedin?: string | null;
+  instagram?: string | null;
+  facebook?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1143,6 +1157,22 @@ export interface UsersSelect<T extends boolean = true> {
   roles?: T;
   enrolledCourses?: T;
   attendedModules?: T;
+  address?:
+    | T
+    | {
+        street?: T;
+        zip?: T;
+        place?: T;
+      };
+  birthDate?: T;
+  birthPlace?: T;
+  phone?: T;
+  taxNumber?: T;
+  profilename?: T;
+  description?: T;
+  linkedin?: T;
+  instagram?: T;
+  facebook?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
