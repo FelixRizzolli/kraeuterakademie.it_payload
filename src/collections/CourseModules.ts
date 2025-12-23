@@ -208,6 +208,30 @@ export const CourseModules: CollectionConfig = {
             },
           ],
         },
+        {
+          label: {
+            en: 'Other',
+            de: 'Weiteres',
+          },
+          fields: [
+            {
+              name: 'sharedDocuments',
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSE_SHARED_DOCUMENTS,
+              hasMany: true,
+              label: {
+                en: 'Shared Documents',
+                de: 'Geteilte Dokumente',
+              },
+              admin: {
+                description: {
+                  en: 'Shared documents associated with this module',
+                  de: 'Geteilte Dokumente, die diesem Modul zugeordnet sind',
+                },
+              },
+            },
+          ],
+        },
       ],
     },
   ],

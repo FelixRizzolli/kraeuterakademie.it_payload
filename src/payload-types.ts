@@ -75,6 +75,7 @@ export interface Config {
     'course-practice-units': CoursePracticeUnit;
     'course-speakers': CourseSpeaker;
     'course-gardens': CourseGarden;
+    'course-shared-documents': CourseSharedDocument;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
@@ -107,6 +108,7 @@ export interface Config {
     'course-practice-units': CoursePracticeUnitsSelect<false> | CoursePracticeUnitsSelect<true>;
     'course-speakers': CourseSpeakersSelect<false> | CourseSpeakersSelect<true>;
     'course-gardens': CourseGardensSelect<false> | CourseGardensSelect<true>;
+    'course-shared-documents': CourseSharedDocumentsSelect<false> | CourseSharedDocumentsSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
@@ -365,6 +367,10 @@ export interface CourseModule {
    * Gardens associated with this module
    */
   gardens?: (number | CourseGarden)[] | null;
+  /**
+   * Shared documents associated with this module
+   */
+  sharedDocuments?: (number | CourseSharedDocument)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -501,11 +507,14 @@ export interface CourseGarden {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-speakers".
+ * via the `definition` "course-shared-documents".
  */
-export interface CourseSpeaker {
+export interface CourseSharedDocument {
   id: number;
-  name: string;
+  filename: string;
+  filetype: string;
+  url: string;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1084,6 +1093,10 @@ export interface PayloadLockedDocument {
         value: number | CourseGarden;
       } | null)
     | ({
+        relationTo: 'course-shared-documents';
+        value: number | CourseSharedDocument;
+      } | null)
+    | ({
         relationTo: 'plants';
         value: number | Plant;
       } | null)
@@ -1245,6 +1258,7 @@ export interface CourseModulesSelect<T extends boolean = true> {
   practiceUnits?: T;
   speakers?: T;
   gardens?: T;
+  sharedDocuments?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1282,6 +1296,18 @@ export interface CourseSpeakersSelect<T extends boolean = true> {
 export interface CourseGardensSelect<T extends boolean = true> {
   name?: T;
   link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-shared-documents_select".
+ */
+export interface CourseSharedDocumentsSelect<T extends boolean = true> {
+  filename?: T;
+  filetype?: T;
+  url?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

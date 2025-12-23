@@ -31,6 +31,7 @@ import { CourseExcursions } from './collections/CourseExcoursions'
 import { CoursePracticeUnits } from './collections/CoursePracticeUnits'
 import { CourseSpeakers } from './collections/CourseSpeakers'
 import { CourseGardens } from './collections/CourseGardens'
+import { CourseSharedDocuments } from './collections/CourseSharedDocuments'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -58,6 +59,7 @@ export default buildConfig({
     CoursePracticeUnits,
     CourseSpeakers,
     CourseGardens,
+    CourseSharedDocuments,
     // Botanical
     Plants,
     PlantFamilies,
