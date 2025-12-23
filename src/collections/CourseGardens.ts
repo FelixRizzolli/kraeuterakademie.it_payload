@@ -2,8 +2,8 @@ import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
 import { administratorWritePublicRead } from '../lib/access'
 
-export const CourseGarden: CollectionConfig = {
-  slug: CollectionSlug.COURSE_GARDEN,
+export const CourseGardens: CollectionConfig = {
+  slug: CollectionSlug.COURSE_GARDENS,
   labels: {
     singular: {
       en: 'Course Garden',

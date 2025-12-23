@@ -71,10 +71,10 @@ export interface Config {
     roles: Role;
     courses: Course;
     'course-modules': CourseModule;
-    'course-excoursion': CourseExcoursion;
-    'course-practice-unit': CoursePracticeUnit;
-    'course-speaker': CourseSpeaker;
-    'course-garden': CourseGarden;
+    'course-excursions': CourseExcursion;
+    'course-practice-units': CoursePracticeUnit;
+    'course-speakers': CourseSpeaker;
+    'course-gardens': CourseGarden;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
@@ -103,10 +103,10 @@ export interface Config {
     roles: RolesSelect<false> | RolesSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
     'course-modules': CourseModulesSelect<false> | CourseModulesSelect<true>;
-    'course-excoursion': CourseExcoursionSelect<false> | CourseExcoursionSelect<true>;
-    'course-practice-unit': CoursePracticeUnitSelect<false> | CoursePracticeUnitSelect<true>;
-    'course-speaker': CourseSpeakerSelect<false> | CourseSpeakerSelect<true>;
-    'course-garden': CourseGardenSelect<false> | CourseGardenSelect<true>;
+    'course-excursions': CourseExcursionsSelect<false> | CourseExcursionsSelect<true>;
+    'course-practice-units': CoursePracticeUnitsSelect<false> | CoursePracticeUnitsSelect<true>;
+    'course-speakers': CourseSpeakersSelect<false> | CourseSpeakersSelect<true>;
+    'course-gardens': CourseGardensSelect<false> | CourseGardensSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
@@ -350,17 +350,13 @@ export interface CourseModule {
    */
   plants?: (number | Plant)[] | null;
   /**
-   * Excoursions associated with this module
+   * Excursions associated with this module
    */
-  excoursions?: (number | CourseExcoursion)[] | null;
+  excursions?: (number | CourseExcursion)[] | null;
   /**
    * Practice units associated with this module
    */
   practiceUnits?: (number | CoursePracticeUnit)[] | null;
-  /**
-   * Speakers associated with this module
-   */
-  speakers?: (number | CourseSpeaker)[] | null;
   /**
    * Gardens associated with this module
    */
@@ -460,9 +456,9 @@ export interface PlantGroup {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-excoursion".
+ * via the `definition` "course-excursions".
  */
-export interface CourseExcoursion {
+export interface CourseExcursion {
   id: number;
   title: string;
   updatedAt: string;
@@ -470,7 +466,7 @@ export interface CourseExcoursion {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-practice-unit".
+ * via the `definition` "course-practice-units".
  */
 export interface CoursePracticeUnit {
   id: number;
@@ -480,22 +476,22 @@ export interface CoursePracticeUnit {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-speaker".
- */
-export interface CourseSpeaker {
-  id: number;
-  name: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-garden".
+ * via the `definition` "course-gardens".
  */
 export interface CourseGarden {
   id: number;
   name: string;
   link: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-speakers".
+ */
+export interface CourseSpeaker {
+  id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1058,19 +1054,19 @@ export interface PayloadLockedDocument {
         value: number | CourseModule;
       } | null)
     | ({
-        relationTo: 'course-excoursion';
-        value: number | CourseExcoursion;
+        relationTo: 'course-excursions';
+        value: number | CourseExcursion;
       } | null)
     | ({
-        relationTo: 'course-practice-unit';
+        relationTo: 'course-practice-units';
         value: number | CoursePracticeUnit;
       } | null)
     | ({
-        relationTo: 'course-speaker';
+        relationTo: 'course-speakers';
         value: number | CourseSpeaker;
       } | null)
     | ({
-        relationTo: 'course-garden';
+        relationTo: 'course-gardens';
         value: number | CourseGarden;
       } | null)
     | ({
@@ -1231,45 +1227,44 @@ export interface CourseModulesSelect<T extends boolean = true> {
   notes?: T;
   participants?: T;
   plants?: T;
-  excoursions?: T;
+  excursions?: T;
   practiceUnits?: T;
-  speakers?: T;
   gardens?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-excoursion_select".
+ * via the `definition` "course-excursions_select".
  */
-export interface CourseExcoursionSelect<T extends boolean = true> {
+export interface CourseExcursionsSelect<T extends boolean = true> {
   title?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-practice-unit_select".
+ * via the `definition` "course-practice-units_select".
  */
-export interface CoursePracticeUnitSelect<T extends boolean = true> {
+export interface CoursePracticeUnitsSelect<T extends boolean = true> {
   title?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-speaker_select".
+ * via the `definition` "course-speakers_select".
  */
-export interface CourseSpeakerSelect<T extends boolean = true> {
+export interface CourseSpeakersSelect<T extends boolean = true> {
   name?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "course-garden_select".
+ * via the `definition` "course-gardens_select".
  */
-export interface CourseGardenSelect<T extends boolean = true> {
+export interface CourseGardensSelect<T extends boolean = true> {
   name?: T;
   link?: T;
   updatedAt?: T;

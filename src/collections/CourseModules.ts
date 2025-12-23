@@ -143,17 +143,17 @@ export const CourseModules: CollectionConfig = {
               },
             },
             {
-              name: 'excoursions',
+              name: 'excursions',
               type: 'relationship',
-              relationTo: CollectionSlug.COURSE_EXCOURSION,
+              relationTo: CollectionSlug.COURSE_EXCURSIONS,
               hasMany: true,
               label: {
-                en: 'Excoursions',
+                en: 'Excursions',
                 de: 'Exkursionen',
               },
               admin: {
                 description: {
-                  en: 'Excoursions associated with this module',
+                  en: 'Excursions associated with this module',
                   de: 'Exkursionen, die diesem Modul zugeordnet sind',
                 },
               },
@@ -161,7 +161,7 @@ export const CourseModules: CollectionConfig = {
             {
               name: 'practiceUnits',
               type: 'relationship',
-              relationTo: CollectionSlug.COURSE_PRACTICE_UNIT,
+              relationTo: CollectionSlug.COURSE_PRACTICE_UNITS,
               hasMany: true,
               label: {
                 en: 'Practice Units',
@@ -174,26 +174,26 @@ export const CourseModules: CollectionConfig = {
                 },
               },
             },
-            {
-              name: 'speakers',
-              type: 'relationship',
-              relationTo: CollectionSlug.COURSE_SPEAKER,
-              hasMany: true,
-              label: {
-                en: 'Speakers',
-                de: 'Referenten',
-              },
-              admin: {
-                description: {
-                  en: 'Speakers associated with this module',
-                  de: 'Referenten, die diesem Modul zugeordnet sind',
-                },
-              },
-            },
+            // {
+            //   name: 'speakers',
+            //   type: 'relationship',
+            //   relationTo: CollectionSlug.COURSE_SPEAKERS,
+            //   hasMany: true,
+            //   label: {
+            //     en: 'Speakers',
+            //     de: 'Referenten',
+            //   },
+            //   admin: {
+            //     description: {
+            //       en: 'Speakers associated with this module',
+            //       de: 'Referenten, die diesem Modul zugeordnet sind',
+            //     },
+            //   },
+            // },
             {
               name: 'gardens',
               type: 'relationship',
-              relationTo: CollectionSlug.COURSE_GARDEN,
+              relationTo: CollectionSlug.COURSE_GARDENS,
               hasMany: true,
               label: {
                 en: 'Gardens',

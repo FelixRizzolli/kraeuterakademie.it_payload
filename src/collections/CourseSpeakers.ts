@@ -2,32 +2,32 @@ import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
 import { administratorWritePublicRead } from '../lib/access'
 
-export const CoursePracticeUnit: CollectionConfig = {
-  slug: CollectionSlug.COURSE_PRACTICE_UNIT,
+export const CourseSpeakers: CollectionConfig = {
+  slug: CollectionSlug.COURSE_SPEAKERS,
   labels: {
     singular: {
-      en: 'Course Practice Unit',
-      de: 'Kurs Praxiseinheit',
+      en: 'Course Speaker',
+      de: 'Kurs Referent',
     },
     plural: {
-      en: 'Course Practice Units',
-      de: 'Kurs Praxiseinheiten',
+      en: 'Course Speakers',
+      de: 'Kurs Referenten',
     },
   },
   admin: {
-    useAsTitle: 'title',
-    defaultColumns: ['title'],
+    useAsTitle: 'name',
+    defaultColumns: ['name'],
     group: CollectionGroup.COURSES,
   },
   access: administratorWritePublicRead,
   fields: [
     {
-      name: 'title',
+      name: 'name',
       type: 'text',
       required: true,
       label: {
-        en: 'Practice Unit Title',
-        de: 'Praxiseinheitstitel',
+        en: 'Speaker Name',
+        de: 'Referentenname',
       },
     },
   ],

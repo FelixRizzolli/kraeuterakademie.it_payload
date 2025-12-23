@@ -145,10 +145,10 @@ export const CollectionSlug = {
   // Courses
   COURSES: 'courses',
   COURSE_MODULES: 'course-modules',
-  COURSE_EXCOURSION: 'course-excoursion',
-  COURSE_PRACTICE_UNIT: 'course-practice-unit',
-  COURSE_SPEAKER: 'course-speaker',
-  COURSE_GARDEN: 'course-garden',
+  COURSE_EXCURSIONS: 'course-excursions',
+  COURSE_PRACTICE_UNITS: 'course-practice-units',
+  COURSE_SPEAKERS: 'course-speakers',
+  COURSE_GARDENS: 'course-gardens',
   // Botanical
   PLANTS: 'plants',
   PLANT_FAMILIES: 'plant-families',

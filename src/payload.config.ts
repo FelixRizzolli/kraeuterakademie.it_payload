@@ -27,10 +27,10 @@ import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
 import { WebBooks } from './collections/WebBooks'
 import { WebTextBlocks } from './collections/WebTextBlocks'
-import { CourseExcoursion } from './collections/CourseExcoursion'
-import { CoursePracticeUnit } from './collections/CoursePracticeUnit'
-import { CourseSpeaker } from './collections/CourseSpeaker'
-import { CourseGarden } from './collections/CourseGarden'
+import { CourseExcursions } from './collections/CourseExcoursions'
+import { CoursePracticeUnits } from './collections/CoursePracticeUnits'
+import { CourseSpeakers } from './collections/CourseSpeakers'
+import { CourseGardens } from './collections/CourseGardens'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -54,10 +54,10 @@ export default buildConfig({
     // Courses
     Courses,
     CourseModules,
-    CourseExcoursion,
-    CoursePracticeUnit,
-    CourseSpeaker,
-    CourseGarden,
+    CourseExcursions,
+    CoursePracticeUnits,
+    CourseSpeakers,
+    CourseGardens,
     // Botanical
     Plants,
     PlantFamilies,

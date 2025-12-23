@@ -2,16 +2,16 @@ import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
 import { administratorWritePublicRead } from '../lib/access'
 
-export const CourseExcoursion: CollectionConfig = {
-  slug: CollectionSlug.COURSE_EXCOURSION,
+export const CoursePracticeUnits: CollectionConfig = {
+  slug: CollectionSlug.COURSE_PRACTICE_UNITS,
   labels: {
     singular: {
-      en: 'Course Excoursion',
-      de: 'Kurs Exkursion',
+      en: 'Course Practice Unit',
+      de: 'Kurs Praxiseinheit',
     },
     plural: {
-      en: 'Course Excoursions',
-      de: 'Kurs Exkursionen',
+      en: 'Course Practice Units',
+      de: 'Kurs Praxiseinheiten',
     },
   },
   admin: {
@@ -26,8 +26,8 @@ export const CourseExcoursion: CollectionConfig = {
       type: 'text',
       required: true,
       label: {
-        en: 'Excoursion Title',
-        de: 'Exkursionstitel',
+        en: 'Practice Unit Title',
+        de: 'Praxiseinheitstitel',
       },
     },
   ],
