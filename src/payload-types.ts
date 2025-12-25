@@ -296,10 +296,6 @@ export interface Course {
    */
   status: 'open' | 'running' | 'closed';
   /**
-   * Users enrolled in this course
-   */
-  participants?: (number | User)[] | null;
-  /**
    * Modules that belong to this course
    */
   modules?: {
@@ -307,6 +303,10 @@ export interface Course {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  /**
+   * Users enrolled in this course
+   */
+  participants?: (number | User)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1238,8 +1238,8 @@ export interface CoursesSelect<T extends boolean = true> {
   place?: T;
   description?: T;
   status?: T;
-  participants?: T;
   modules?: T;
+  participants?: T;
   updatedAt?: T;
   createdAt?: T;
 }

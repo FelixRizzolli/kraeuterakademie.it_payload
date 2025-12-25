@@ -29,96 +29,123 @@ export const Courses: CollectionConfig = {
   access: administratorWritePublicRead,
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-      unique: true,
-      label: {
-        en: 'Course Name',
-        de: 'Kursname',
-      },
-      admin: {
-        description: {
-          en: 'Unique course identifier (e.g., K1, K2, K3)',
-          de: 'Eindeutiger Kursbezeichner (z.B. K1, K2, K3)',
+      type: 'tabs',
+      tabs: [
+        {
+          label: {
+            en: 'General',
+            de: 'Generell',
+          },
+          fields: [
+            {
+              name: 'name',
+              type: 'text',
+              required: true,
+              unique: true,
+              label: {
+                en: 'Course Name',
+                de: 'Kursname',
+              },
+              admin: {
+                description: {
+                  en: 'Unique course identifier (e.g., K1, K2, K3)',
+                  de: 'Eindeutiger Kursbezeichner (z.B. K1, K2, K3)',
+                },
+              },
+            },
+            {
+              name: 'place',
+              type: 'select',
+              required: true,
+              label: {
+                en: 'Place',
+                de: 'Ort',
+              },
+              options: COURSE_PLACE_OPTIONS,
+              admin: {
+                description: {
+                  en: 'Location where the course takes place',
+                  de: 'Ort, an dem der Kurs stattfindet',
+                },
+              },
+            },
+            {
+              name: 'description',
+              type: 'richText',
+              editor: lexicalEditor(),
+              label: {
+                en: 'Course Description',
+                de: 'Kursbeschreibung',
+              },
+            },
+            {
+              name: 'status',
+              type: 'select',
+              required: true,
+              defaultValue: CourseStatus.OPEN,
+              label: {
+                en: 'Status',
+                de: 'Status',
+              },
+              options: COURSE_STATUS_OPTIONS,
+              admin: {
+                description: {
+                  en: 'Current status of the course',
+                  de: 'Aktueller Status des Kurses',
+                },
+              },
+            },
+          ],
         },
-      },
-    },
-    {
-      name: 'place',
-      type: 'select',
-      required: true,
-      label: {
-        en: 'Place',
-        de: 'Ort',
-      },
-      options: COURSE_PLACE_OPTIONS,
-      admin: {
-        description: {
-          en: 'Location where the course takes place',
-          de: 'Ort, an dem der Kurs stattfindet',
+        {
+          label: {
+            en: 'Modules',
+            de: 'Module',
+          },
+          fields: [
+            {
+              name: 'modules',
+              type: 'join',
+              collection: CollectionSlug.COURSE_MODULES,
+              on: 'course',
+              label: {
+                en: 'Course Modules',
+                de: 'Kursmodule',
+              },
+              admin: {
+                description: {
+                  en: 'Modules that belong to this course',
+                  de: 'Module, die zu diesem Kurs gehören',
+                },
+              },
+            },
+          ],
         },
-      },
-    },
-    {
-      name: 'description',
-      type: 'richText',
-      editor: lexicalEditor(),
-      label: {
-        en: 'Course Description',
-        de: 'Kursbeschreibung',
-      },
-    },
-    {
-      name: 'status',
-      type: 'select',
-      required: true,
-      defaultValue: CourseStatus.OPEN,
-      label: {
-        en: 'Status',
-        de: 'Status',
-      },
-      options: COURSE_STATUS_OPTIONS,
-      admin: {
-        description: {
-          en: 'Current status of the course',
-          de: 'Aktueller Status des Kurses',
+        {
+          label: {
+            en: 'Administration',
+            de: 'Administration',
+          },
+          fields: [
+            {
+              name: 'participants',
+              type: 'relationship',
+              relationTo: CollectionSlug.USERS,
+              hasMany: true,
+              label: {
+                en: 'Course Participants',
+                de: 'Kursteilnehmer',
+              },
+              admin: {
+                description: {
+                  en: 'Users enrolled in this course',
+                  de: 'Benutzer, die in diesem Kurs eingeschrieben sind',
+                },
+              },
+            },
+          ],
         },
-      },
-    },
-    {
-      name: 'participants',
-      type: 'relationship',
-      relationTo: CollectionSlug.USERS,
-      hasMany: true,
-      label: {
-        en: 'Course Participants',
-        de: 'Kursteilnehmer',
-      },
-      admin: {
-        description: {
-          en: 'Users enrolled in this course',
-          de: 'Benutzer, die in diesem Kurs eingeschrieben sind',
-        },
-      },
-      // Note: filterOptions removed since we now use roles relationship
-      // Filtering will be done in the UI or via custom queries
-    },
-    {
-      name: 'modules',
-      type: 'join',
-      collection: CollectionSlug.COURSE_MODULES,
-      on: 'course',
-      label: {
-        en: 'Course Modules',
-        de: 'Kursmodule',
-      },
-      admin: {
-        description: {
-          en: 'Modules that belong to this course',
-          de: 'Module, die zu diesem Kurs gehören',
-        },
-      },
+      ],
     },
   ],
 }
