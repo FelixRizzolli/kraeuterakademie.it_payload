@@ -389,7 +389,7 @@ export interface Plant {
   /**
    * Scientific/Latin name of the plant
    */
-  latinName: string;
+  scientificName: string;
   /**
    * Images of the plant
    */
@@ -441,7 +441,7 @@ export interface PlantFamily {
   /**
    * Scientific/Latin name of the plant family
    */
-  latinName: string;
+  scientificName: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1337,7 +1337,7 @@ export interface CourseSharedDocumentsSelect<T extends boolean = true> {
  */
 export interface PlantsSelect<T extends boolean = true> {
   germanName?: T;
-  latinName?: T;
+  scientificName?: T;
   images?: T;
   family?: T;
   groups?: T;
@@ -1351,7 +1351,7 @@ export interface PlantsSelect<T extends boolean = true> {
  */
 export interface PlantFamiliesSelect<T extends boolean = true> {
   germanName?: T;
-  latinName?: T;
+  scientificName?: T;
   updatedAt?: T;
   createdAt?: T;
 }

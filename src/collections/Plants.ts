@@ -37,12 +37,12 @@ export const Plants: CollectionConfig = {
       },
     },
     {
-      name: 'latinName',
+      name: 'scientificName',
       type: 'text',
       required: true,
       label: {
-        en: 'Latin Name',
-        de: 'Lateinischer Name',
+        en: 'Scientific/Latin Name',
+        de: 'Wissenschaftlicher/Lateinischer Name',
       },
       admin: {
         description: {
