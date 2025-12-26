@@ -99,5 +99,20 @@ export const Plants: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'toxicityLevel',
+      type: 'relationship',
+      relationTo: CollectionSlug.PLANT_TOXICITY_LEVELS,
+      label: {
+        en: 'Toxicity Level',
+        de: 'Giftigkeitsstufe',
+      },
+      admin: {
+        description: {
+          en: 'The toxicity level of this plant, if applicable',
+          de: 'Die Giftigkeitsstufe dieser Pflanze, falls zutreffend',
+        },
+      },
+    },
   ],
 }
