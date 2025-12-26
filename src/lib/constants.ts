@@ -150,6 +150,7 @@ export const CollectionSlug = {
   COURSE_SPEAKERS: 'course-speakers',
   COURSE_GARDENS: 'course-gardens',
   COURSE_SHARED_DOCUMENTS: 'course-shared-documents',
+  COURSE_VIDEO_LESSONS: 'course-video-lessons',
   // Botanical
   PLANTS: 'plants',
   PLANT_FAMILIES: 'plant-families',

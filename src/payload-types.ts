@@ -316,6 +316,10 @@ export interface Course {
    * Users enrolled in this course
    */
   participants?: (number | User)[] | null;
+  /**
+   * Shared documents associated with this module
+   */
+  sharedDocuments?: (number | CourseSharedDocument)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1341,6 +1345,7 @@ export interface CoursesSelect<T extends boolean = true> {
   status?: T;
   modules?: T;
   participants?: T;
+  sharedDocuments?: T;
   updatedAt?: T;
   createdAt?: T;
 }
