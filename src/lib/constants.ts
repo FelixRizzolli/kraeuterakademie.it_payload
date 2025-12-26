@@ -155,6 +155,7 @@ export const CollectionSlug = {
   PLANT_FAMILIES: 'plant-families',
   PLANT_GROUPS: 'plant-groups',
   PLANT_TOXICITY_LEVELS: 'plant-toxicity-levels',
+  PLANT_RECOGNITION_FEATURES: 'plant-recognition-features',
   // Web
   WEB_MEDIA: 'web-media',
   WEB_PAGES: 'web-pages',

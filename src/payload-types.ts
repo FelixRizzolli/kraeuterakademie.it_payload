@@ -80,6 +80,7 @@ export interface Config {
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
     'plant-toxicity-levels': PlantToxicityLevel;
+    'plant-recognition-features': PlantRecognitionFeature;
     'web-media': WebMedia;
     'web-pages': WebPage;
     'web-partners': WebPartner;
@@ -114,6 +115,7 @@ export interface Config {
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
     'plant-toxicity-levels': PlantToxicityLevelsSelect<false> | PlantToxicityLevelsSelect<true>;
+    'plant-recognition-features': PlantRecognitionFeaturesSelect<false> | PlantRecognitionFeaturesSelect<true>;
     'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
@@ -406,6 +408,10 @@ export interface Plant {
    * The toxicity level of this plant, if applicable
    */
   toxicityLevel?: (number | null) | PlantToxicityLevel;
+  /**
+   * Recognition features of this plant
+   */
+  recognitionFeatures?: (number | PlantRecognitionFeature)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -475,6 +481,16 @@ export interface PlantGroup {
  * via the `definition` "plant-toxicity-levels".
  */
 export interface PlantToxicityLevel {
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-recognition-features".
+ */
+export interface PlantRecognitionFeature {
   id: number;
   title: string;
   updatedAt: string;
@@ -1129,6 +1145,10 @@ export interface PayloadLockedDocument {
         value: number | PlantToxicityLevel;
       } | null)
     | ({
+        relationTo: 'plant-recognition-features';
+        value: number | PlantRecognitionFeature;
+      } | null)
+    | ({
         relationTo: 'web-media';
         value: number | WebMedia;
       } | null)
@@ -1342,6 +1362,7 @@ export interface PlantsSelect<T extends boolean = true> {
   family?: T;
   groups?: T;
   toxicityLevel?: T;
+  recognitionFeatures?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1370,6 +1391,15 @@ export interface PlantGroupsSelect<T extends boolean = true> {
  * via the `definition` "plant-toxicity-levels_select".
  */
 export interface PlantToxicityLevelsSelect<T extends boolean = true> {
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-recognition-features_select".
+ */
+export interface PlantRecognitionFeaturesSelect<T extends boolean = true> {
   title?: T;
   updatedAt?: T;
   createdAt?: T;

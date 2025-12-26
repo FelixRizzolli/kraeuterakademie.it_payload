@@ -33,6 +33,7 @@ import { CourseSpeakers } from './collections/CourseSpeakers'
 import { CourseGardens } from './collections/CourseGardens'
 import { CourseSharedDocuments } from './collections/CourseSharedDocuments'
 import { PlantToxicityLevels } from './collections/PlantToxicityLevels'
+import { PlantRecognitionFeatures } from './collections/PlantRecognitionFeatures'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -66,6 +67,7 @@ export default buildConfig({
     PlantFamilies,
     PlantGroups,
     PlantToxicityLevels,
+    PlantRecognitionFeatures,
     // Web
     WebMedia,
     WebPages,

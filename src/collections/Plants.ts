@@ -114,5 +114,21 @@ export const Plants: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'recognitionFeatures',
+      type: 'relationship',
+      relationTo: CollectionSlug.PLANT_RECOGNITION_FEATURES,
+      hasMany: true,
+      label: {
+        en: 'Recognition Features',
+        de: 'Erkennungsmerkmale',
+      },
+      admin: {
+        description: {
+          en: 'Recognition features of this plant',
+          de: 'Erkennungsmerkmale dieser Pflanze',
+        },
+      },
+    }
   ],
 }
