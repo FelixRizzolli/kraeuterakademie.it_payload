@@ -54,7 +54,7 @@ export const Plants: CollectionConfig = {
     {
       name: 'images',
       type: 'upload',
-      relationTo: CollectionSlug.WEB_MEDIA,
+      relationTo: CollectionSlug.PLANT_IMAGES,
       hasMany: true,
       label: {
         en: 'Images',

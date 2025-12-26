@@ -81,6 +81,7 @@ export interface Config {
     'plant-groups': PlantGroup;
     'plant-toxicity-levels': PlantToxicityLevel;
     'plant-recognition-features': PlantRecognitionFeature;
+    'plant-images': PlantImage;
     'web-media': WebMedia;
     'web-pages': WebPage;
     'web-partners': WebPartner;
@@ -116,6 +117,7 @@ export interface Config {
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
     'plant-toxicity-levels': PlantToxicityLevelsSelect<false> | PlantToxicityLevelsSelect<true>;
     'plant-recognition-features': PlantRecognitionFeaturesSelect<false> | PlantRecognitionFeaturesSelect<true>;
+    'plant-images': PlantImagesSelect<false> | PlantImagesSelect<true>;
     'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
@@ -395,7 +397,7 @@ export interface Plant {
   /**
    * Images of the plant
    */
-  images?: (number | WebMedia)[] | null;
+  images?: (number | PlantImage)[] | null;
   /**
    * The botanical family this plant belongs to
    */
@@ -417,11 +419,12 @@ export interface Plant {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-media".
+ * via the `definition` "plant-images".
  */
-export interface WebMedia {
+export interface PlantImage {
   id: number;
-  alt: string;
+  recognitionFeatures?: (number | PlantRecognitionFeature)[] | null;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -433,6 +436,16 @@ export interface WebMedia {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-recognition-features".
+ */
+export interface PlantRecognitionFeature {
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -481,16 +494,6 @@ export interface PlantGroup {
  * via the `definition` "plant-toxicity-levels".
  */
 export interface PlantToxicityLevel {
-  id: number;
-  title: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "plant-recognition-features".
- */
-export interface PlantRecognitionFeature {
   id: number;
   title: string;
   updatedAt: string;
@@ -549,6 +552,25 @@ export interface CourseSharedDocument {
   description?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-media".
+ */
+export interface WebMedia {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1149,6 +1171,10 @@ export interface PayloadLockedDocument {
         value: number | PlantRecognitionFeature;
       } | null)
     | ({
+        relationTo: 'plant-images';
+        value: number | PlantImage;
+      } | null)
+    | ({
         relationTo: 'web-media';
         value: number | WebMedia;
       } | null)
@@ -1403,6 +1429,25 @@ export interface PlantRecognitionFeaturesSelect<T extends boolean = true> {
   title?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-images_select".
+ */
+export interface PlantImagesSelect<T extends boolean = true> {
+  recognitionFeatures?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
