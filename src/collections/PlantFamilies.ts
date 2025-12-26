@@ -22,34 +22,43 @@ export const PlantFamilies: CollectionConfig = {
   access: administratorWritePublicRead,
   fields: [
     {
-      name: 'germanName',
-      type: 'text',
-      required: true,
+      type: 'group',
       label: {
-        en: 'German Name',
-        de: 'Deutscher Name',
+        en: 'Unique Identifiers',
+        de: 'Eindeutige Bezeichner',
       },
-      admin: {
-        description: {
-          en: 'German name of the plant family',
-          de: 'Deutscher Name der Pflanzenfamilie',
+      fields: [
+        {
+          name: 'germanName',
+          type: 'text',
+          required: true,
+          label: {
+            en: 'German Name',
+            de: 'Deutscher Name',
+          },
+          admin: {
+            description: {
+              en: 'German name of the plant family',
+              de: 'Deutscher Name der Pflanzenfamilie',
+            },
+          },
         },
-      },
-    },
-    {
-      name: 'scientificName',
-      type: 'text',
-      required: true,
-      label: {
-        en: 'Scientific/Latin Name',
-        de: 'Wissenschaftlicher/Lateinischer Name',
-      },
-      admin: {
-        description: {
-          en: 'Scientific/Latin name of the plant family',
-          de: 'Wissenschaftlicher/Lateinischer Name der Pflanzenfamilie',
+        {
+          name: 'scientificName',
+          type: 'text',
+          required: true,
+          label: {
+            en: 'Scientific/Latin Name',
+            de: 'Wissenschaftlicher/Lateinischer Name',
+          },
+          admin: {
+            description: {
+              en: 'Scientific/Latin name of the plant family',
+              de: 'Wissenschaftlicher/Lateinischer Name der Pflanzenfamilie',
+            },
+          },
         },
-      },
+      ],
     },
     {
       name: 'germanNameVariations',

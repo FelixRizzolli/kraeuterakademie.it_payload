@@ -390,6 +390,10 @@ export interface CourseModule {
 export interface Plant {
   id: number;
   /**
+   * The botanical family this plant belongs to
+   */
+  family: number | PlantFamily;
+  /**
    * German name of the plant
    */
   germanName: string;
@@ -418,10 +422,6 @@ export interface Plant {
     totalDocs?: number;
   };
   /**
-   * The botanical family this plant belongs to
-   */
-  family: number | PlantFamily;
-  /**
    * The groups this plant belongs to
    */
   groups?: (number | PlantGroup)[] | null;
@@ -433,6 +433,35 @@ export interface Plant {
    * Recognition features of this plant
    */
   recognitionFeatures?: (number | PlantRecognitionFeature)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-families".
+ */
+export interface PlantFamily {
+  id: number;
+  /**
+   * German name of the plant family
+   */
+  germanName: string;
+  /**
+   * Scientific/Latin name of the plant family
+   */
+  scientificName: string;
+  germanNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
+  scientificNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -467,35 +496,6 @@ export interface PlantImage {
 export interface PlantRecognitionFeature {
   id: number;
   title: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "plant-families".
- */
-export interface PlantFamily {
-  id: number;
-  /**
-   * German name of the plant family
-   */
-  germanName: string;
-  /**
-   * Scientific/Latin name of the plant family
-   */
-  scientificName: string;
-  germanNameVariations?:
-    | {
-        variation: string;
-        id?: string | null;
-      }[]
-    | null;
-  scientificNameVariations?:
-    | {
-        variation: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1417,6 +1417,7 @@ export interface CourseSharedDocumentsSelect<T extends boolean = true> {
  * via the `definition` "plants_select".
  */
 export interface PlantsSelect<T extends boolean = true> {
+  family?: T;
   germanName?: T;
   scientificName?: T;
   germanNameVariations?:
@@ -1432,7 +1433,6 @@ export interface PlantsSelect<T extends boolean = true> {
         id?: T;
       };
   images?: T;
-  family?: T;
   groups?: T;
   toxicityLevel?: T;
   recognitionFeatures?: T;
