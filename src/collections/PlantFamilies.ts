@@ -7,11 +7,11 @@ export const PlantFamilies: CollectionConfig = {
   labels: {
     singular: {
       en: 'Plant Family',
-      de: 'Pflanzenfamilie',
+      de: 'Pflanzen Familie',
     },
     plural: {
       en: 'Plant Families',
-      de: 'Pflanzenfamilien',
+      de: 'Pflanzen Familien',
     },
   },
   admin: {

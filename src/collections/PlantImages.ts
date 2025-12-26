@@ -7,11 +7,11 @@ export const PlantImages: CollectionConfig = {
   labels: {
     singular: {
       en: 'Plant Image',
-      de: 'Pflanzenbild',
+      de: 'Pflanzen Bild',
     },
     plural: {
       en: 'Plant Images',
-      de: 'Pflanzenbilder',
+      de: 'Pflanzen Bilder',
     },
   },
   admin: {

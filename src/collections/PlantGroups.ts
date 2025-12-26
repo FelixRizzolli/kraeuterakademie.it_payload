@@ -8,11 +8,11 @@ export const PlantGroups: CollectionConfig = {
   labels: {
     singular: {
       en: 'Plant Group',
-      de: 'Pflanzengruppe',
+      de: 'Pflanzen Gruppe',
     },
     plural: {
       en: 'Plant Groups',
-      de: 'Pflanzengruppen',
+      de: 'Pflanzen Gruppen',
     },
   },
   admin: {
