@@ -162,8 +162,24 @@ export const Courses: CollectionConfig = {
               },
               admin: {
                 description: {
-                  en: 'Shared documents associated with this module',
-                  de: 'Geteilte Dokumente, die diesem Modul zugeordnet sind',
+                  en: 'Shared documents associated with this course',
+                  de: 'Geteilte Dokumente, die diesem Kurs zugeordnet sind',
+                },
+              },
+            },
+            {
+              name: 'videoLessons',
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSE_VIDEO_LESSONS,
+              hasMany: true,
+              label: {
+                en: 'Video Lessons',
+                de: 'Video Lektionen',
+              },
+              admin: {
+                description: {
+                  en: 'Video lessons associated with this course',
+                  de: 'Video Lektionen, die diesem Kurs zugeordnet sind',
                 },
               },
             },

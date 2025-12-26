@@ -76,6 +76,7 @@ export interface Config {
     'course-speakers': CourseSpeaker;
     'course-gardens': CourseGarden;
     'course-shared-documents': CourseSharedDocument;
+    'course-video-lessons': CourseVideoLesson;
     plants: Plant;
     'plant-families': PlantFamily;
     'plant-groups': PlantGroup;
@@ -115,6 +116,7 @@ export interface Config {
     'course-speakers': CourseSpeakersSelect<false> | CourseSpeakersSelect<true>;
     'course-gardens': CourseGardensSelect<false> | CourseGardensSelect<true>;
     'course-shared-documents': CourseSharedDocumentsSelect<false> | CourseSharedDocumentsSelect<true>;
+    'course-video-lessons': CourseVideoLessonsSelect<false> | CourseVideoLessonsSelect<true>;
     plants: PlantsSelect<false> | PlantsSelect<true>;
     'plant-families': PlantFamiliesSelect<false> | PlantFamiliesSelect<true>;
     'plant-groups': PlantGroupsSelect<false> | PlantGroupsSelect<true>;
@@ -317,9 +319,13 @@ export interface Course {
    */
   participants?: (number | User)[] | null;
   /**
-   * Shared documents associated with this module
+   * Shared documents associated with this course
    */
   sharedDocuments?: (number | CourseSharedDocument)[] | null;
+  /**
+   * Video lessons associated with this course
+   */
+  videoLessons?: (number | CourseVideoLesson)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -589,6 +595,17 @@ export interface CourseSharedDocument {
   filetype: string;
   url: string;
   description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-video-lessons".
+ */
+export interface CourseVideoLesson {
+  id: number;
+  title: string;
+  youtubeURL?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1190,6 +1207,10 @@ export interface PayloadLockedDocument {
         value: number | CourseSharedDocument;
       } | null)
     | ({
+        relationTo: 'course-video-lessons';
+        value: number | CourseVideoLesson;
+      } | null)
+    | ({
         relationTo: 'plants';
         value: number | Plant;
       } | null)
@@ -1346,6 +1367,7 @@ export interface CoursesSelect<T extends boolean = true> {
   modules?: T;
   participants?: T;
   sharedDocuments?: T;
+  videoLessons?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1414,6 +1436,16 @@ export interface CourseSharedDocumentsSelect<T extends boolean = true> {
   filetype?: T;
   url?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "course-video-lessons_select".
+ */
+export interface CourseVideoLessonsSelect<T extends boolean = true> {
+  title?: T;
+  youtubeURL?: T;
   updatedAt?: T;
   createdAt?: T;
 }
