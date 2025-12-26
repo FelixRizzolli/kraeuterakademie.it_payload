@@ -211,6 +211,56 @@ export const Plants: CollectionConfig = {
                     },
                   },
                 },
+
+                {
+                  name: 'plantPartSubstances',
+                  type: 'array',
+                  label: {
+                    en: 'Plant Part Substances',
+                    de: 'Inhaltsstoffe nach Pflanzenteil',
+                  },
+                  admin: {
+                    description: {
+                      en: 'Substances on specific plant parts and their effects (managed in Plant Part Substances)',
+                      de: 'Inhaltsstoffe an bestimmten Pflanzenteilen und deren Wirkungen (in Pflanzen-Inhaltsstoffe verwalten)',
+                    },
+                  },
+                  fields: [
+                    {
+                      name: 'plantPart',
+                      type: 'relationship',
+                      relationTo: CollectionSlug.PLANT_PARTS,
+                      required: true,
+                      hasMany: false,
+                      label: {
+                        en: 'Plant Part',
+                        de: 'Pflanzen Teil',
+                      },
+                    },
+                    {
+                      name: 'plantSubstance',
+                      type: 'relationship',
+                      relationTo: CollectionSlug.PLANT_SUBSTANCES,
+                      required: true,
+                      hasMany: false,
+                      label: {
+                        en: 'Plant Substances',
+                        de: 'Pflanzen Inhaltsstoff',
+                      },
+                    },
+                    {
+                      name: 'plantEffect',
+                      type: 'relationship',
+                      relationTo: CollectionSlug.PLANT_EFFECTS,
+                      required: false,
+                      hasMany: false,
+                      label: {
+                        en: 'Plant Effect',
+                        de: 'Pflanzen Wirkung',
+                      },
+                    },
+                  ],
+                },
               ],
             },
             {

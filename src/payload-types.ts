@@ -83,6 +83,9 @@ export interface Config {
     'plant-toxicity-levels': PlantToxicityLevel;
     'plant-recognition-features': PlantRecognitionFeature;
     'plant-images': PlantImage;
+    'plant-parts': PlantPart;
+    'plant-substances': PlantSubstance;
+    'plant-effects': PlantEffect;
     'web-media': WebMedia;
     'web-pages': WebPage;
     'web-partners': WebPartner;
@@ -123,6 +126,9 @@ export interface Config {
     'plant-toxicity-levels': PlantToxicityLevelsSelect<false> | PlantToxicityLevelsSelect<true>;
     'plant-recognition-features': PlantRecognitionFeaturesSelect<false> | PlantRecognitionFeaturesSelect<true>;
     'plant-images': PlantImagesSelect<false> | PlantImagesSelect<true>;
+    'plant-parts': PlantPartsSelect<false> | PlantPartsSelect<true>;
+    'plant-substances': PlantSubstancesSelect<false> | PlantSubstancesSelect<true>;
+    'plant-effects': PlantEffectsSelect<false> | PlantEffectsSelect<true>;
     'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
@@ -440,6 +446,17 @@ export interface Plant {
    */
   toxicityLevel?: (number | null) | PlantToxicityLevel;
   /**
+   * Substances on specific plant parts and their effects (managed in Plant Part Substances)
+   */
+  plantPartSubstances?:
+    | {
+        plantPart: number | PlantPart;
+        plantSubstance: number | PlantSubstance;
+        plantEffect?: (number | null) | PlantEffect;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Recognition features of this plant
    */
   recognitionFeatures?: (number | PlantRecognitionFeature)[] | null;
@@ -541,6 +558,37 @@ export interface PlantGroup {
 export interface PlantToxicityLevel {
   id: number;
   title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-parts".
+ */
+export interface PlantPart {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-substances".
+ */
+export interface PlantSubstance {
+  id: number;
+  name: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-effects".
+ */
+export interface PlantEffect {
+  id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1235,6 +1283,18 @@ export interface PayloadLockedDocument {
         value: number | PlantImage;
       } | null)
     | ({
+        relationTo: 'plant-parts';
+        value: number | PlantPart;
+      } | null)
+    | ({
+        relationTo: 'plant-substances';
+        value: number | PlantSubstance;
+      } | null)
+    | ({
+        relationTo: 'plant-effects';
+        value: number | PlantEffect;
+      } | null)
+    | ({
         relationTo: 'web-media';
         value: number | WebMedia;
       } | null)
@@ -1472,6 +1532,14 @@ export interface PlantsSelect<T extends boolean = true> {
   images?: T;
   groups?: T;
   toxicityLevel?: T;
+  plantPartSubstances?:
+    | T
+    | {
+        plantPart?: T;
+        plantSubstance?: T;
+        plantEffect?: T;
+        id?: T;
+      };
   recognitionFeatures?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1545,6 +1613,34 @@ export interface PlantImagesSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-parts_select".
+ */
+export interface PlantPartsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-substances_select".
+ */
+export interface PlantSubstancesSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plant-effects_select".
+ */
+export interface PlantEffectsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

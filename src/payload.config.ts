@@ -36,6 +36,9 @@ import { PlantToxicityLevels } from './collections/PlantToxicityLevels'
 import { PlantRecognitionFeatures } from './collections/PlantRecognitionFeatures'
 import { PlantImages } from './collections/PlantImages'
 import { CourseVideoLesson } from './collections/CourseVideoLesson'
+import { PlantSubstances } from './collections/PlantSubstances'
+import { PlantEffects } from './collections/PlantEffects'
+import { PlantParts } from './collections/PlantParts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,6 +75,9 @@ export default buildConfig({
     PlantToxicityLevels,
     PlantRecognitionFeatures,
     PlantImages,
+    PlantParts,
+    PlantSubstances,
+    PlantEffects,
     // Web
     WebMedia,
     WebPages,
