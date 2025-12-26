@@ -38,36 +38,41 @@ export const Courses: CollectionConfig = {
           },
           fields: [
             {
-              name: 'name',
-              type: 'text',
-              required: true,
-              unique: true,
-              label: {
-                en: 'Course Name',
-                de: 'Kursname',
-              },
-              admin: {
-                description: {
-                  en: 'Unique course identifier (e.g., K1, K2, K3)',
-                  de: 'Eindeutiger Kursbezeichner (z.B. K1, K2, K3)',
+              type: 'row',
+              fields: [
+                {
+                  name: 'name',
+                  type: 'text',
+                  required: true,
+                  unique: true,
+                  label: {
+                    en: 'Course Name',
+                    de: 'Kursname',
+                  },
+                  admin: {
+                    description: {
+                      en: 'Unique course identifier (e.g., K1, K2, K3)',
+                      de: 'Eindeutiger Kursbezeichner (z.B. K1, K2, K3)',
+                    },
+                  },
                 },
-              },
-            },
-            {
-              name: 'place',
-              type: 'select',
-              required: true,
-              label: {
-                en: 'Place',
-                de: 'Ort',
-              },
-              options: COURSE_PLACE_OPTIONS,
-              admin: {
-                description: {
-                  en: 'Location where the course takes place',
-                  de: 'Ort, an dem der Kurs stattfindet',
+                {
+                  name: 'place',
+                  type: 'select',
+                  required: true,
+                  label: {
+                    en: 'Place',
+                    de: 'Ort',
+                  },
+                  options: COURSE_PLACE_OPTIONS,
+                  admin: {
+                    description: {
+                      en: 'Location where the course takes place',
+                      de: 'Ort, an dem der Kurs stattfindet',
+                    },
+                  },
                 },
-              },
+              ],
             },
             {
               name: 'description',

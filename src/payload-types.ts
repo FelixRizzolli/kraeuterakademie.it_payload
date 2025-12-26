@@ -218,9 +218,9 @@ export interface User {
     totalDocs?: number;
   };
   address?: {
-    street?: string | null;
-    zip?: string | null;
     place?: string | null;
+    zip?: string | null;
+    street?: string | null;
   };
   birthDate?: string | null;
   birthPlace?: string | null;
@@ -805,8 +805,8 @@ export interface WebPage {
               image?: (number | null) | WebMedia;
               title: string;
               link?: {
-                href?: string | null;
                 text?: string | null;
+                href?: string | null;
                 target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
@@ -882,8 +882,8 @@ export interface WebPage {
                 [k: string]: unknown;
               } | null;
               link?: {
-                href?: string | null;
                 text?: string | null;
+                href?: string | null;
                 target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
@@ -922,8 +922,8 @@ export interface WebPage {
                       } | null;
                     };
                     link?: {
-                      href?: string | null;
                       text?: string | null;
+                      href?: string | null;
                       target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
@@ -969,8 +969,8 @@ export interface WebPage {
                     date?: string | null;
                     title?: string | null;
                     link?: {
-                      href?: string | null;
                       text?: string | null;
+                      href?: string | null;
                       target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
@@ -1014,8 +1014,8 @@ export interface WebPage {
                       [k: string]: unknown;
                     } | null;
                     link?: {
-                      href?: string | null;
                       text?: string | null;
+                      href?: string | null;
                       target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
                     };
                     id?: string | null;
@@ -1082,8 +1082,8 @@ export interface WebPage {
                 [k: string]: unknown;
               };
               link?: {
-                href?: string | null;
                 text?: string | null;
+                href?: string | null;
                 target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
               };
             };
@@ -1135,8 +1135,8 @@ export interface WebBook {
   } | null;
   cover?: (number | null) | WebMedia;
   link?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
   updatedAt: string;
@@ -1159,8 +1159,8 @@ export interface WebPartner {
   id: number;
   name?: string | null;
   link?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
   image?: (number | null) | WebMedia;
@@ -1174,8 +1174,8 @@ export interface WebPartner {
 export interface WebSocial {
   id: number;
   link?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
   icon?: ('facebook' | 'instagram') | null;
@@ -1374,9 +1374,9 @@ export interface UsersSelect<T extends boolean = true> {
   address?:
     | T
     | {
-        street?: T;
-        zip?: T;
         place?: T;
+        zip?: T;
+        street?: T;
       };
   birthDate?: T;
   birthPlace?: T;
@@ -1810,8 +1810,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          href?: T;
                           text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
@@ -1875,8 +1875,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          href?: T;
                           text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
@@ -1913,8 +1913,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                href?: T;
                                 text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -1976,8 +1976,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                href?: T;
                                 text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -2016,8 +2016,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                           link?:
                             | T
                             | {
-                                href?: T;
                                 text?: T;
+                                href?: T;
                                 target?: T;
                               };
                           id?: T;
@@ -2085,8 +2085,8 @@ export interface WebPagesSelect<T extends boolean = true> {
                     link?:
                       | T
                       | {
-                          href?: T;
                           text?: T;
+                          href?: T;
                           target?: T;
                         };
                   };
@@ -2121,8 +2121,8 @@ export interface WebPartnersSelect<T extends boolean = true> {
   link?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
       };
   image?: T;
@@ -2137,8 +2137,8 @@ export interface WebSocialsSelect<T extends boolean = true> {
   link?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
       };
   icon?: T;
@@ -2158,8 +2158,8 @@ export interface WebBooksSelect<T extends boolean = true> {
   link?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
       };
   updatedAt?: T;
@@ -2262,8 +2262,8 @@ export interface Footer {
   } | null;
   links?:
     | {
-        href?: string | null;
         text?: string | null;
+        href?: string | null;
         target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
         id?: string | null;
       }[]
@@ -2279,8 +2279,8 @@ export interface Header {
   id: number;
   links?:
     | {
-        href?: string | null;
         text?: string | null;
+        href?: string | null;
         target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
         id?: string | null;
       }[]
@@ -2296,15 +2296,15 @@ export interface Sidebar {
   id: number;
   links?:
     | {
-        href?: string | null;
         text?: string | null;
+        href?: string | null;
         target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
         id?: string | null;
       }[]
     | null;
   logoLink?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
     id?: string | null;
   };
@@ -2319,16 +2319,16 @@ export interface Contact {
   id: number;
   name?: string | null;
   phone?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
   };
   mail?: {
-    href?: string | null;
     text?: string | null;
+    href?: string | null;
   };
   address?: {
-    street?: string | null;
     place?: string | null;
+    street?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2343,8 +2343,8 @@ export interface FooterSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
         id?: T;
       };
@@ -2360,8 +2360,8 @@ export interface HeaderSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
         id?: T;
       };
@@ -2377,16 +2377,16 @@ export interface SidebarSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
         id?: T;
       };
   logoLink?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
         target?: T;
         id?: T;
       };
@@ -2403,20 +2403,20 @@ export interface ContactSelect<T extends boolean = true> {
   phone?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
       };
   mail?:
     | T
     | {
-        href?: T;
         text?: T;
+        href?: T;
       };
   address?:
     | T
     | {
-        street?: T;
         place?: T;
+        street?: T;
       };
   updatedAt?: T;
   createdAt?: T;

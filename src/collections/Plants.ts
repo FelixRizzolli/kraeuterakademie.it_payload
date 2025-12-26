@@ -63,34 +63,39 @@ export const Plants: CollectionConfig = {
               },
               fields: [
                 {
-                  name: 'germanName',
-                  type: 'text',
-                  required: true,
-                  label: {
-                    en: 'German Name',
-                    de: 'Deutscher Name',
-                  },
-                  admin: {
-                    description: {
-                      en: 'German name of the plant',
-                      de: 'Deutscher Name der Pflanze',
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'germanName',
+                      type: 'text',
+                      required: true,
+                      label: {
+                        en: 'German Name',
+                        de: 'Deutscher Name',
+                      },
+                      admin: {
+                        description: {
+                          en: 'German name of the plant',
+                          de: 'Deutscher Name der Pflanze',
+                        },
+                      },
                     },
-                  },
-                },
-                {
-                  name: 'scientificName',
-                  type: 'text',
-                  required: true,
-                  label: {
-                    en: 'Scientific/Latin Name',
-                    de: 'Wissenschaftlicher/Lateinischer Name',
-                  },
-                  admin: {
-                    description: {
-                      en: 'Scientific/Latin name of the plant',
-                      de: 'Wissenschaftlicher/Lateinischer Name der Pflanze',
+                    {
+                      name: 'scientificName',
+                      type: 'text',
+                      required: true,
+                      label: {
+                        en: 'Scientific/Latin Name',
+                        de: 'Wissenschaftlicher/Lateinischer Name',
+                      },
+                      admin: {
+                        description: {
+                          en: 'Scientific/Latin name of the plant',
+                          de: 'Wissenschaftlicher/Lateinischer Name der Pflanze',
+                        },
+                      },
                     },
-                  },
+                  ],
                 },
               ],
             },
@@ -211,7 +216,6 @@ export const Plants: CollectionConfig = {
                     },
                   },
                 },
-
                 {
                   name: 'plantPartSubstances',
                   type: 'array',
@@ -227,37 +231,42 @@ export const Plants: CollectionConfig = {
                   },
                   fields: [
                     {
-                      name: 'plantPart',
-                      type: 'relationship',
-                      relationTo: CollectionSlug.PLANT_PARTS,
-                      required: true,
-                      hasMany: false,
-                      label: {
-                        en: 'Plant Part',
-                        de: 'Pflanzen Teil',
-                      },
-                    },
-                    {
-                      name: 'plantSubstance',
-                      type: 'relationship',
-                      relationTo: CollectionSlug.PLANT_SUBSTANCES,
-                      required: true,
-                      hasMany: false,
-                      label: {
-                        en: 'Plant Substances',
-                        de: 'Pflanzen Inhaltsstoff',
-                      },
-                    },
-                    {
-                      name: 'plantEffect',
-                      type: 'relationship',
-                      relationTo: CollectionSlug.PLANT_EFFECTS,
-                      required: false,
-                      hasMany: false,
-                      label: {
-                        en: 'Plant Effect',
-                        de: 'Pflanzen Wirkung',
-                      },
+                      type: 'row',
+                      fields: [
+                        {
+                          name: 'plantPart',
+                          type: 'relationship',
+                          relationTo: CollectionSlug.PLANT_PARTS,
+                          required: true,
+                          hasMany: false,
+                          label: {
+                            en: 'Plant Part',
+                            de: 'Pflanzen Teil',
+                          },
+                        },
+                        {
+                          name: 'plantSubstance',
+                          type: 'relationship',
+                          relationTo: CollectionSlug.PLANT_SUBSTANCES,
+                          required: true,
+                          hasMany: false,
+                          label: {
+                            en: 'Plant Substances',
+                            de: 'Pflanzen Inhaltsstoff',
+                          },
+                        },
+                        {
+                          name: 'plantEffect',
+                          type: 'relationship',
+                          relationTo: CollectionSlug.PLANT_EFFECTS,
+                          required: false,
+                          hasMany: false,
+                          label: {
+                            en: 'Plant Effect',
+                            de: 'Pflanzen Wirkung',
+                          },
+                        },
+                      ],
                     },
                   ],
                 },

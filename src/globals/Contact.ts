@@ -10,20 +10,25 @@ const contactLink: Field = {
   type: 'group',
   fields: [
     {
-      name: 'href',
-      label: {
-        en: 'URL',
-        de: 'URL',
-      },
-      type: 'text',
-    },
-    {
-      name: 'text',
-      label: {
-        en: 'Text',
-        de: 'Text',
-      },
-      type: 'text',
+      type: 'row',
+      fields: [
+        {
+          name: 'text',
+          label: {
+            en: 'Text',
+            de: 'Text',
+          },
+          type: 'text',
+        },
+        {
+          name: 'href',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
+          type: 'text',
+        },
+      ],
     },
   ],
 }
@@ -37,12 +42,21 @@ export const Contact: GlobalConfig = {
   access: contentCreatorWritePublicRead,
   fields: [
     {
-      name: 'name',
+      type: 'group',
       label: {
-        en: 'Name',
-        de: 'Name',
+        en: 'Contact Person',
+        de: 'Kontaktperson',
       },
-      type: 'text',
+      fields: [
+        {
+          name: 'name',
+          label: {
+            en: 'Name',
+            de: 'Name',
+          },
+          type: 'text',
+        },
+      ],
     },
     {
       ...contactLink,
@@ -69,20 +83,25 @@ export const Contact: GlobalConfig = {
       type: 'group',
       fields: [
         {
-          name: 'street',
-          label: {
-            en: 'Street',
-            de: 'Straße',
-          },
-          type: 'text',
-        },
-        {
-          name: 'place',
-          label: {
-            en: 'Place',
-            de: 'Ort',
-          },
-          type: 'text',
+          type: 'row',
+          fields: [
+            {
+              name: 'place',
+              label: {
+                en: 'Place',
+                de: 'Ort',
+              },
+              type: 'text',
+            },
+            {
+              name: 'street',
+              label: {
+                en: 'Street',
+                de: 'Straße',
+              },
+              type: 'text',
+            },
+          ],
         },
       ],
     },

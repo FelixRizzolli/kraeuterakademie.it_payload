@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug, UserRole } from '../lib/constants'
 import { administratorOrSelf, isAdministratorFieldLevel } from '../lib/access'
+import { group } from 'console'
 
 export const Users: CollectionConfig = {
   slug: CollectionSlug.USERS,
@@ -69,20 +70,25 @@ export const Users: CollectionConfig = {
           },
           fields: [
             {
-              name: 'firstName',
-              type: 'text',
-              label: {
-                en: 'First Name',
-                de: 'Vorname',
-              },
-            },
-            {
-              name: 'lastName',
-              type: 'text',
-              label: {
-                en: 'Last Name',
-                de: 'Nachname',
-              },
+              type: 'row',
+              fields: [
+                {
+                  name: 'firstName',
+                  type: 'text',
+                  label: {
+                    en: 'First Name',
+                    de: 'Vorname',
+                  },
+                },
+                {
+                  name: 'lastName',
+                  type: 'text',
+                  label: {
+                    en: 'Last Name',
+                    de: 'Nachname',
+                  },
+                },
+              ],
             },
             {
               name: 'roles',
@@ -178,28 +184,33 @@ export const Users: CollectionConfig = {
               },
               fields: [
                 {
-                  name: 'street',
-                  type: 'text',
-                  label: {
-                    en: 'Street',
-                    de: 'Straße',
-                  },
-                },
-                {
-                  name: 'zip',
-                  type: 'text',
-                  label: {
-                    en: 'ZIP Code',
-                    de: 'PLZ',
-                  },
-                },
-                {
-                  name: 'place',
-                  type: 'text',
-                  label: {
-                    en: 'Place',
-                    de: 'Ort',
-                  },
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'place',
+                      type: 'text',
+                      label: {
+                        en: 'Place',
+                        de: 'Ort',
+                      },
+                    },
+                    {
+                      name: 'zip',
+                      type: 'text',
+                      label: {
+                        en: 'ZIP Code',
+                        de: 'PLZ',
+                      },
+                    },
+                    {
+                      name: 'street',
+                      type: 'text',
+                      label: {
+                        en: 'Street',
+                        de: 'Straße',
+                      },
+                    },
+                  ],
                 },
               ],
             },
@@ -211,20 +222,25 @@ export const Users: CollectionConfig = {
               },
               fields: [
                 {
-                  name: 'birthDate',
-                  type: 'date',
-                  label: {
-                    en: 'Birth Date',
-                    de: 'Geburtsdatum',
-                  },
-                },
-                {
-                  name: 'birthPlace',
-                  type: 'text',
-                  label: {
-                    en: 'Birth Place',
-                    de: 'Geburtsort',
-                  },
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'birthDate',
+                      type: 'date',
+                      label: {
+                        en: 'Birth Date',
+                        de: 'Geburtsdatum',
+                      },
+                    },
+                    {
+                      name: 'birthPlace',
+                      type: 'text',
+                      label: {
+                        en: 'Birth Place',
+                        de: 'Geburtsort',
+                      },
+                    },
+                  ],
                 },
               ],
             },
@@ -278,28 +294,42 @@ export const Users: CollectionConfig = {
               },
             },
             {
-              name: 'linkedin',
-              type: 'text',
+              type: 'group',
               label: {
-                en: 'LinkedIn',
-                de: 'LinkedIn',
+                en: 'Social Media Links',
+                de: 'Soziale Medien Links',
               },
-            },
-            {
-              name: 'instagram',
-              type: 'text',
-              label: {
-                en: 'Instagram',
-                de: 'Instagram',
-              },
-            },
-            {
-              name: 'facebook',
-              type: 'text',
-              label: {
-                en: 'Facebook',
-                de: 'Facebook',
-              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'linkedin',
+                      type: 'text',
+                      label: {
+                        en: 'LinkedIn',
+                        de: 'LinkedIn',
+                      },
+                    },
+                    {
+                      name: 'instagram',
+                      type: 'text',
+                      label: {
+                        en: 'Instagram',
+                        de: 'Instagram',
+                      },
+                    },
+                    {
+                      name: 'facebook',
+                      type: 'text',
+                      label: {
+                        en: 'Facebook',
+                        de: 'Facebook',
+                      },
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
