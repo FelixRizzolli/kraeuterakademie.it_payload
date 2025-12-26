@@ -42,6 +42,7 @@ next-env.d.ts
 
 /media
 /web-media
+/seeds
 
 # Playwright
 node_modules/
