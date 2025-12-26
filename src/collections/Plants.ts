@@ -53,17 +53,17 @@ export const Plants: CollectionConfig = {
     },
     {
       name: 'images',
-      type: 'upload',
-      relationTo: CollectionSlug.PLANT_IMAGES,
-      hasMany: true,
+      type: 'join',
+      collection: CollectionSlug.PLANT_IMAGES,
+      on: 'plant',
       label: {
         en: 'Images',
         de: 'Bilder',
       },
       admin: {
         description: {
-          en: 'Images of the plant',
-          de: 'Bilder der Pflanze',
+          en: 'Images that belong to this plant (managed in Plant Images)',
+          de: 'Bilder, die zu dieser Pflanze gehören (in Pflanzenbilder verwalten)',
         },
       },
     },
@@ -129,6 +129,6 @@ export const Plants: CollectionConfig = {
           de: 'Erkennungsmerkmale dieser Pflanze',
         },
       },
-    }
+    },
   ],
 }

@@ -101,6 +101,9 @@ export interface Config {
     courses: {
       modules: 'course-modules';
     };
+    plants: {
+      images: 'plant-images';
+    };
   };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
@@ -395,9 +398,13 @@ export interface Plant {
    */
   scientificName: string;
   /**
-   * Images of the plant
+   * Images that belong to this plant (managed in Plant Images)
    */
-  images?: (number | PlantImage)[] | null;
+  images?: {
+    docs?: (number | PlantImage)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   /**
    * The botanical family this plant belongs to
    */
@@ -423,6 +430,10 @@ export interface Plant {
  */
 export interface PlantImage {
   id: number;
+  /**
+   * The plant this image belongs to (one plant per image)
+   */
+  plant: number | Plant;
   recognitionFeatures?: (number | PlantRecognitionFeature)[] | null;
   description?: string | null;
   updatedAt: string;
@@ -1435,6 +1446,7 @@ export interface PlantRecognitionFeaturesSelect<T extends boolean = true> {
  * via the `definition` "plant-images_select".
  */
 export interface PlantImagesSelect<T extends boolean = true> {
+  plant?: T;
   recognitionFeatures?: T;
   description?: T;
   updatedAt?: T;

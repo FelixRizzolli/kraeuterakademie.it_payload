@@ -20,23 +20,39 @@ export const PlantImages: CollectionConfig = {
   access: administratorWritePublicRead,
   fields: [
     {
-        name: 'recognitionFeatures',
-        type: 'relationship',
-        relationTo: CollectionSlug.PLANT_RECOGNITION_FEATURES,
-        hasMany: true,
-        label: {
-            en: 'Recognition Features',
-            de: 'Erkennungsmerkmale',
+      name: 'plant',
+      type: 'relationship',
+      relationTo: CollectionSlug.PLANTS,
+      required: true,
+      label: {
+        en: 'Plant',
+        de: 'Pflanze',
+      },
+      admin: {
+        description: {
+          en: 'The plant this image belongs to (one plant per image)',
+          de: 'Die Pflanze, zu der dieses Bild gehört (ein Bild gehört immer zu genau einer Pflanze)',
         },
+      },
     },
     {
-        name: 'description',
-        type: 'textarea',
-        label: {
-            en: 'Description',
-            de: 'Beschreibung',
-        },
-    }
+      name: 'recognitionFeatures',
+      type: 'relationship',
+      relationTo: CollectionSlug.PLANT_RECOGNITION_FEATURES,
+      hasMany: true,
+      label: {
+        en: 'Recognition Features',
+        de: 'Erkennungsmerkmale',
+      },
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
+    },
   ],
   upload: true,
 }
