@@ -165,51 +165,78 @@ export const Plants: CollectionConfig = {
           },
           fields: [
             {
-              name: 'groups',
-              type: 'relationship',
-              relationTo: CollectionSlug.PLANT_GROUPS,
-              hasMany: true,
+              type: 'group',
               label: {
                 en: 'Plant Groups',
                 de: 'Pflanzengruppen',
               },
-              admin: {
-                description: {
-                  en: 'The groups this plant belongs to',
-                  de: 'Die Gruppen, zu denen diese Pflanze gehört',
+              fields: [
+                {
+                  name: 'groups',
+                  type: 'relationship',
+                  relationTo: CollectionSlug.PLANT_GROUPS,
+                  hasMany: true,
+                  label: {
+                    en: 'Plant Groups',
+                    de: 'Pflanzengruppen',
+                  },
+                  admin: {
+                    description: {
+                      en: 'The groups this plant belongs to',
+                      de: 'Die Gruppen, zu denen diese Pflanze gehört',
+                    },
+                  },
                 },
-              },
+              ],
             },
             {
-              name: 'toxicityLevel',
-              type: 'relationship',
-              relationTo: CollectionSlug.PLANT_TOXICITY_LEVELS,
+              type: 'group',
               label: {
-                en: 'Toxicity Level',
-                de: 'Giftigkeitsstufe',
+                en: 'Plant Properties',
+                de: 'Pflanzeneigenschaften',
               },
-              admin: {
-                description: {
-                  en: 'The toxicity level of this plant, if applicable',
-                  de: 'Die Giftigkeitsstufe dieser Pflanze, falls zutreffend',
+              fields: [
+                {
+                  name: 'toxicityLevel',
+                  type: 'relationship',
+                  relationTo: CollectionSlug.PLANT_TOXICITY_LEVELS,
+                  label: {
+                    en: 'Toxicity Level',
+                    de: 'Giftigkeitsstufe',
+                  },
+                  admin: {
+                    description: {
+                      en: 'The toxicity level of this plant, if applicable',
+                      de: 'Die Giftigkeitsstufe dieser Pflanze, falls zutreffend',
+                    },
+                  },
                 },
-              },
+              ],
             },
             {
-              name: 'recognitionFeatures',
-              type: 'relationship',
-              relationTo: CollectionSlug.PLANT_RECOGNITION_FEATURES,
-              hasMany: true,
+              type: 'group',
               label: {
-                en: 'Recognition Features',
-                de: 'Erkennungsmerkmale',
+                en: 'Other',
+                de: 'Weiteres',
               },
-              admin: {
-                description: {
-                  en: 'Recognition features of this plant',
-                  de: 'Erkennungsmerkmale dieser Pflanze',
+              fields: [
+                {
+                  name: 'recognitionFeatures',
+                  type: 'relationship',
+                  relationTo: CollectionSlug.PLANT_RECOGNITION_FEATURES,
+                  hasMany: true,
+                  label: {
+                    en: 'Recognition Features',
+                    de: 'Erkennungsmerkmale',
+                  },
+                  admin: {
+                    description: {
+                      en: 'Recognition features of this plant',
+                      de: 'Erkennungsmerkmale dieser Pflanze',
+                    },
+                  },
                 },
-              },
+              ],
             },
           ],
         },
