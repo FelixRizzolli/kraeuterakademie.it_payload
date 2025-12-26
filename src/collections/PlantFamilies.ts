@@ -51,5 +51,43 @@ export const PlantFamilies: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'germanNameVariations',
+      type: 'array',
+      label: {
+        en: 'German Name Variations',
+        de: 'Variationen des Deutschen Namens',
+      },
+      fields: [
+        {
+          name: 'variation',
+          type: 'text',
+          required: true,
+          label: {
+            en: 'Variation',
+            de: 'Variation',
+          },
+        },
+      ],
+    },
+    {
+      name: 'scientificNameVariations',
+      type: 'array',
+      label: {
+        en: 'Scientific/Latin Name Variations',
+        de: 'Variationen des Wissenschaftlichen/Lateinischen Namens',
+      },
+      fields: [
+        {
+          name: 'variation',
+          type: 'text',
+          required: true,
+          label: {
+            en: 'Variation',
+            de: 'Variation',
+          },
+        },
+      ],
+    },
   ],
 }

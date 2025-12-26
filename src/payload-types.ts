@@ -397,6 +397,18 @@ export interface Plant {
    * Scientific/Latin name of the plant
    */
   scientificName: string;
+  germanNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
+  scientificNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Images that belong to this plant (managed in Plant Images)
    */
@@ -472,6 +484,18 @@ export interface PlantFamily {
    * Scientific/Latin name of the plant family
    */
   scientificName: string;
+  germanNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
+  scientificNameVariations?:
+    | {
+        variation: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1395,6 +1419,18 @@ export interface CourseSharedDocumentsSelect<T extends boolean = true> {
 export interface PlantsSelect<T extends boolean = true> {
   germanName?: T;
   scientificName?: T;
+  germanNameVariations?:
+    | T
+    | {
+        variation?: T;
+        id?: T;
+      };
+  scientificNameVariations?:
+    | T
+    | {
+        variation?: T;
+        id?: T;
+      };
   images?: T;
   family?: T;
   groups?: T;
@@ -1410,6 +1446,18 @@ export interface PlantsSelect<T extends boolean = true> {
 export interface PlantFamiliesSelect<T extends boolean = true> {
   germanName?: T;
   scientificName?: T;
+  germanNameVariations?:
+    | T
+    | {
+        variation?: T;
+        id?: T;
+      };
+  scientificNameVariations?:
+    | T
+    | {
+        variation?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
