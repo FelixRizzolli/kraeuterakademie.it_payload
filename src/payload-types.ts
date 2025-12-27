@@ -2296,6 +2296,7 @@ export interface Sidebar {
   id: number;
   links?:
     | {
+        icon?: string | null;
         text?: string | null;
         href?: string | null;
         target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
@@ -2377,6 +2378,7 @@ export interface SidebarSelect<T extends boolean = true> {
   links?:
     | T
     | {
+        icon?: T;
         text?: T;
         href?: T;
         target?: T;

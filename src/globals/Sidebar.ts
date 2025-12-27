@@ -1,5 +1,5 @@
 import { link } from '@/fields/shared'
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig, GroupField, RowField } from 'payload'
 
 export const Sidebar: GlobalConfig = {
   slug: 'sidebar',
@@ -18,7 +18,22 @@ export const Sidebar: GlobalConfig = {
         de: 'Links',
       },
       type: 'array',
-      fields: link.type === 'group' ? link.fields : [],
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'icon',
+              label: {
+                en: 'Icon',
+                de: 'Icon',
+              },
+              type: 'text',
+            },
+            ...((link as GroupField)?.fields?.[0] as RowField)?.fields,
+          ],
+        },
+      ],
       admin: {
         components: {
           RowLabel: '@/components/admin/LinkArrayRowLabel#LinkArrayRowLabel',
