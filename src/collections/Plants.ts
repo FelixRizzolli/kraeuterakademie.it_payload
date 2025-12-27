@@ -228,6 +228,10 @@ export const Plants: CollectionConfig = {
                       en: 'Substances on specific plant parts and their effects (managed in Plant Part Substances)',
                       de: 'Inhaltsstoffe an bestimmten Pflanzenteilen und deren Wirkungen (in Pflanzen-Inhaltsstoffe verwalten)',
                     },
+                    components: {
+                      RowLabel:
+                        '@/components/admin/PlantPartSubstancesArrayRowLabel#PlantPartSubstancesArrayRowLabel',
+                    },
                   },
                   fields: [
                     {
