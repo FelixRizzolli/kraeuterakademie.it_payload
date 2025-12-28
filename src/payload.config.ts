@@ -55,6 +55,9 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    timezones: {
+      defaultTimezone: 'Europe/Rome',
+    },
   },
   collections: [
     // Administration
