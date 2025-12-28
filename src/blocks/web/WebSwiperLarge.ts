@@ -25,6 +25,7 @@ export const WebSwiperLarge: Block = {
                 de: 'Titel',
               },
               type: 'text',
+              required: false,
             },
             {
               name: 'items',

@@ -1276,7 +1276,7 @@ export interface WebPage {
           }
         | {
             content: {
-              title: string;
+              title?: string | null;
               content: {
                 root: {
                   type: string;

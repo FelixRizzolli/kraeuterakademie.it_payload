@@ -24,7 +24,7 @@ export const WebTextElement: Block = {
                 de: 'Titel',
               },
               type: 'text',
-              required: true,
+              required: false,
             },
             {
               name: 'content',

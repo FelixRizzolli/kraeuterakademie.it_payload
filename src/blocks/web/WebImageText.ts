@@ -24,6 +24,7 @@ export const WebImageText: Block = {
                 de: 'Titel',
               },
               type: 'text',
+              required: false,
             },
             {
               name: 'image',

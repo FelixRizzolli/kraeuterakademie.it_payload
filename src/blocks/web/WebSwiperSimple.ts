@@ -31,6 +31,7 @@ export const WebSwiperSimple: Block = {
                     de: 'Titel',
                   },
                   type: 'text',
+                  required: false,
                 },
                 {
                   name: 'images',
