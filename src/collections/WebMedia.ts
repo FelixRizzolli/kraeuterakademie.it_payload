@@ -24,6 +24,16 @@ export const WebMedia: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: CollectionSlug.WEB_MEDIA_CATEGORY,
+      hasMany: true,
+      label: {
+        en: 'Category',
+        de: 'Kategorie',
+      },
+    },
   ],
   upload: true,
 }

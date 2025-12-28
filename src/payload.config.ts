@@ -39,6 +39,7 @@ import { CourseVideoLesson } from './collections/CourseVideoLesson'
 import { PlantSubstances } from './collections/PlantSubstances'
 import { PlantEffects } from './collections/PlantEffects'
 import { PlantParts } from './collections/PlantParts'
+import { WebMediaCategory } from './collections/WebMediaCategory'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -80,6 +81,7 @@ export default buildConfig({
     PlantEffects,
     // Web
     WebMedia,
+    WebMediaCategory,
     WebPages,
     WebPartners,
     WebSocials,

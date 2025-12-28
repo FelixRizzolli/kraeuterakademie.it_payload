@@ -163,6 +163,7 @@ export const CollectionSlug = {
   PLANT_PARTS: 'plant-parts',
   // Web
   WEB_MEDIA: 'web-media',
+  WEB_MEDIA_CATEGORY: 'web-media-category',
   WEB_PAGES: 'web-pages',
   WEB_PARTNERS: 'web-partners',
   WEB_SOCIALS: 'web-socials',

@@ -87,6 +87,7 @@ export interface Config {
     'plant-substances': PlantSubstance;
     'plant-effects': PlantEffect;
     'web-media': WebMedia;
+    'web-media-category': WebMediaCategory;
     'web-pages': WebPage;
     'web-partners': WebPartner;
     'web-socials': WebSocial;
@@ -130,6 +131,7 @@ export interface Config {
     'plant-substances': PlantSubstancesSelect<false> | PlantSubstancesSelect<true>;
     'plant-effects': PlantEffectsSelect<false> | PlantEffectsSelect<true>;
     'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
+    'web-media-category': WebMediaCategorySelect<false> | WebMediaCategorySelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
     'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
@@ -664,6 +666,7 @@ export interface CourseVideoLesson {
 export interface WebMedia {
   id: number;
   alt: string;
+  category?: (number | WebMediaCategory)[] | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -675,6 +678,18 @@ export interface WebMedia {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-media-category".
+ */
+export interface WebMediaCategory {
+  id: number;
+  title: string;
+  description?: string | null;
+  showInGallery?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1299,6 +1314,10 @@ export interface PayloadLockedDocument {
         value: number | WebMedia;
       } | null)
     | ({
+        relationTo: 'web-media-category';
+        value: number | WebMediaCategory;
+      } | null)
+    | ({
         relationTo: 'web-pages';
         value: number | WebPage;
       } | null)
@@ -1648,6 +1667,7 @@ export interface PlantEffectsSelect<T extends boolean = true> {
  */
 export interface WebMediaSelect<T extends boolean = true> {
   alt?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1659,6 +1679,17 @@ export interface WebMediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "web-media-category_select".
+ */
+export interface WebMediaCategorySelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  showInGallery?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
