@@ -90,6 +90,74 @@ export const WebPages: CollectionConfig = {
             MetaImageField({
               relationTo: CollectionSlug.WEB_MEDIA,
             }),
+            {
+              name: 'keywords',
+              label: {
+                en: 'Keywords',
+                de: 'Schlüsselwörter',
+              },
+              type: 'text',
+              hasMany: true,
+              admin: {
+                description: {
+                  en: 'Relevant keywords for this page (one per line)',
+                  de: 'Relevante Schlüsselwörter für diese Seite (eines pro Zeile)',
+                },
+              },
+            },
+            {
+              name: 'noIndex',
+              label: {
+                en: 'No Index',
+                de: 'Nicht indexieren',
+              },
+              type: 'checkbox',
+              defaultValue: false,
+              admin: {
+                description: {
+                  en: 'Prevent search engines from indexing this page',
+                  de: 'Suchmaschinen daran hindern, diese Seite zu indexieren',
+                },
+              },
+            },
+            {
+              name: 'canonical',
+              label: {
+                en: 'Canonical URL',
+                de: 'Kanonische URL',
+              },
+              type: 'text',
+              admin: {
+                description: {
+                  en: 'The canonical URL for this page (leave empty to use current URL)',
+                  de: 'Die kanonische URL für diese Seite (leer lassen für aktuelle URL)',
+                },
+              },
+            },
+            {
+              name: 'schemaType',
+              label: {
+                en: 'Schema Type',
+                de: 'Schema-Typ',
+              },
+              type: 'select',
+              defaultValue: 'WebPage',
+              options: [
+                { label: 'Web Page', value: 'WebPage' },
+                { label: 'Article', value: 'Article' },
+                { label: 'Blog Posting', value: 'BlogPosting' },
+                { label: 'Course', value: 'Course' },
+                { label: 'About Page', value: 'AboutPage' },
+                { label: 'Contact Page', value: 'ContactPage' },
+                { label: 'FAQ Page', value: 'FAQPage' },
+              ],
+              admin: {
+                description: {
+                  en: 'The schema.org type for structured data',
+                  de: 'Der schema.org-Typ für strukturierte Daten',
+                },
+              },
+            },
             PreviewField({
               hasGenerateFn: true,
             }),

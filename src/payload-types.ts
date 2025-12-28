@@ -1122,6 +1122,22 @@ export interface WebPage {
    * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
    */
   image?: (number | null) | WebMedia;
+  /**
+   * Relevant keywords for this page (one per line)
+   */
+  keywords?: string[] | null;
+  /**
+   * Prevent search engines from indexing this page
+   */
+  noIndex?: boolean | null;
+  /**
+   * The canonical URL for this page (leave empty to use current URL)
+   */
+  canonical?: string | null;
+  /**
+   * The schema.org type for structured data
+   */
+  schemaType?: ('WebPage' | 'Article' | 'BlogPosting' | 'Course' | 'AboutPage' | 'ContactPage' | 'FAQPage') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2140,6 +2156,10 @@ export interface WebPagesSelect<T extends boolean = true> {
       };
   description?: T;
   image?: T;
+  keywords?: T;
+  noIndex?: T;
+  canonical?: T;
+  schemaType?: T;
   updatedAt?: T;
   createdAt?: T;
 }
