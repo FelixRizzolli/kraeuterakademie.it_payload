@@ -1,11 +1,11 @@
 import { link } from '@/fields/shared'
 import type { GlobalConfig, GroupField, RowField } from 'payload'
 
-export const Sidebar: GlobalConfig = {
-  slug: 'sidebar',
+export const WebSidebar: GlobalConfig = {
+  slug: 'web-sidebar',
   label: {
-    en: 'Sidebar',
-    de: 'Seitenleiste',
+    en: 'Web Sidebar',
+    de: 'Web Seitenleiste',
   },
   access: {
     read: () => true,

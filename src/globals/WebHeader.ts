@@ -1,11 +1,11 @@
 import { link } from '@/fields/shared'
 import type { GlobalConfig } from 'payload'
 
-export const Header: GlobalConfig = {
-  slug: 'header',
+export const WebHeader: GlobalConfig = {
+  slug: 'web-header',
   label: {
-    en: 'Header',
-    de: 'Header',
+    en: 'Web Header',
+    de: 'Web Header',
   },
   access: {
     read: () => true,

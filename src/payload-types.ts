@@ -147,15 +147,15 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
-    footer: Footer;
-    header: Header;
-    sidebar: Sidebar;
+    'web-footer': WebFooter;
+    'web-header': WebHeader;
+    'web-sidebar': WebSidebar;
     contact: Contact;
   };
   globalsSelect: {
-    footer: FooterSelect<false> | FooterSelect<true>;
-    header: HeaderSelect<false> | HeaderSelect<true>;
-    sidebar: SidebarSelect<false> | SidebarSelect<true>;
+    'web-footer': WebFooterSelect<false> | WebFooterSelect<true>;
+    'web-header': WebHeaderSelect<false> | WebHeaderSelect<true>;
+    'web-sidebar': WebSidebarSelect<false> | WebSidebarSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
   };
   locale: null;
@@ -2721,9 +2721,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer".
+ * via the `definition` "web-footer".
  */
-export interface Footer {
+export interface WebFooter {
   id: number;
   text1?: {
     root: {
@@ -2768,9 +2768,9 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "header".
+ * via the `definition` "web-header".
  */
-export interface Header {
+export interface WebHeader {
   id: number;
   links?:
     | {
@@ -2785,9 +2785,9 @@ export interface Header {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sidebar".
+ * via the `definition` "web-sidebar".
  */
-export interface Sidebar {
+export interface WebSidebar {
   id: number;
   links?:
     | {
@@ -2831,9 +2831,9 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer_select".
+ * via the `definition` "web-footer_select".
  */
-export interface FooterSelect<T extends boolean = true> {
+export interface WebFooterSelect<T extends boolean = true> {
   text1?: T;
   text2?: T;
   links?:
@@ -2850,9 +2850,9 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "header_select".
+ * via the `definition` "web-header_select".
  */
-export interface HeaderSelect<T extends boolean = true> {
+export interface WebHeaderSelect<T extends boolean = true> {
   links?:
     | T
     | {
@@ -2867,9 +2867,9 @@ export interface HeaderSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sidebar_select".
+ * via the `definition` "web-sidebar_select".
  */
-export interface SidebarSelect<T extends boolean = true> {
+export interface WebSidebarSelect<T extends boolean = true> {
   links?:
     | T
     | {

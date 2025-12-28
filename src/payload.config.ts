@@ -17,11 +17,11 @@ import { CourseModules } from './collections/CourseModules'
 import { Plants } from './collections/Plants'
 import { PlantFamilies } from './collections/PlantFamilies'
 import { PlantGroups } from './collections/PlantGroups'
-import { Footer } from './globals/Footer'
-import { Header } from './globals/Header'
+import { WebFooter } from './globals/WebFooter'
+import { WebHeader } from './globals/WebHeader'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { CollectionSlug } from './lib/constants'
-import { Sidebar } from './globals/Sidebar'
+import { WebSidebar } from './globals/WebSidebar'
 import { Contact } from './globals/Contact'
 import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
@@ -88,7 +88,7 @@ export default buildConfig({
     WebBooks,
     WebTextBlocks,
   ],
-  globals: [Footer, Header, Sidebar, Contact],
+  globals: [WebFooter, WebHeader, WebSidebar, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

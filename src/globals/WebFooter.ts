@@ -3,11 +3,11 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { GlobalConfig } from 'payload'
 
-export const Footer: GlobalConfig = {
-  slug: 'footer',
+export const WebFooter: GlobalConfig = {
+  slug: 'web-footer',
   label: {
-    en: 'Footer',
-    de: 'Footer',
+    en: 'Web Footer',
+    de: 'Web Footer',
   },
   access: contentCreatorWritePublicRead,
   fields: [
