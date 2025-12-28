@@ -1311,6 +1311,22 @@ export interface WebPage {
             blockName?: string | null;
             blockType: 'web-text-element';
           }
+        | {
+            content: {
+              title: string;
+            };
+            settings: {
+              spacing: {
+                marginTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                marginBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+                paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'web-title-element';
+          }
       )[]
     | null;
   description?: string | null;
@@ -2593,6 +2609,29 @@ export interface WebPagesSelect<T extends boolean = true> {
                           paddingBottom?: T;
                         };
                     style?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'web-title-element'?:
+          | T
+          | {
+              content?:
+                | T
+                | {
+                    title?: T;
+                  };
+              settings?:
+                | T
+                | {
+                    spacing?:
+                      | T
+                      | {
+                          marginTop?: T;
+                          marginBottom?: T;
+                          paddingTop?: T;
+                          paddingBottom?: T;
+                        };
                   };
               id?: T;
               blockName?: T;

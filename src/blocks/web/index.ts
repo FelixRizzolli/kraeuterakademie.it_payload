@@ -15,6 +15,7 @@ import { WebSwiperCard } from './WebSwiperCard'
 import { WebSwiperLarge } from './WebSwiperLarge'
 import { WebSwiperSimple } from './WebSwiperSimple'
 import { WebTextElement } from './WebTextElement'
+import { WebTitleElement } from './WebTitleElement'
 
 export const webBlocks: Block[] = [
   WebAccordions,
@@ -31,4 +32,5 @@ export const webBlocks: Block[] = [
   WebSwiperLarge,
   WebSwiperSimple,
   WebTextElement,
+  WebTitleElement,
 ]
