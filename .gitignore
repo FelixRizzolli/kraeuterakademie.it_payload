@@ -40,8 +40,8 @@ next-env.d.ts
 
 .env
 
-/media
-/web-media
+/web-images
+/plant-images
 /seeds
 
 # Playwright

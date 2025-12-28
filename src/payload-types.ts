@@ -86,8 +86,8 @@ export interface Config {
     'plant-parts': PlantPart;
     'plant-substances': PlantSubstance;
     'plant-effects': PlantEffect;
-    'web-media': WebMedia;
-    'web-media-category': WebMediaCategory;
+    'web-images': WebImage;
+    'web-image-categories': WebImageCategory;
     'web-pages': WebPage;
     'web-partners': WebPartner;
     'web-socials': WebSocial;
@@ -130,8 +130,8 @@ export interface Config {
     'plant-parts': PlantPartsSelect<false> | PlantPartsSelect<true>;
     'plant-substances': PlantSubstancesSelect<false> | PlantSubstancesSelect<true>;
     'plant-effects': PlantEffectsSelect<false> | PlantEffectsSelect<true>;
-    'web-media': WebMediaSelect<false> | WebMediaSelect<true>;
-    'web-media-category': WebMediaCategorySelect<false> | WebMediaCategorySelect<true>;
+    'web-images': WebImagesSelect<false> | WebImagesSelect<true>;
+    'web-image-categories': WebImageCategoriesSelect<false> | WebImageCategoriesSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
     'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
     'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
@@ -759,12 +759,12 @@ export interface CourseVideoLesson {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-media".
+ * via the `definition` "web-images".
  */
-export interface WebMedia {
+export interface WebImage {
   id: number;
   alt: string;
-  category?: (number | WebMediaCategory)[] | null;
+  category?: (number | WebImageCategory)[] | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -877,9 +877,9 @@ export interface WebMedia {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-media-category".
+ * via the `definition` "web-image-categories".
  */
-export interface WebMediaCategory {
+export interface WebImageCategory {
   id: number;
   title: string;
   description?: string | null;
@@ -996,7 +996,7 @@ export interface WebPage {
           }
         | {
             content: {
-              image: number | WebMedia;
+              image: number | WebImage;
               title: string;
             };
             settings: {
@@ -1013,7 +1013,7 @@ export interface WebPage {
           }
         | {
             content: {
-              image?: (number | null) | WebMedia;
+              image?: (number | null) | WebImage;
               title: string;
               link?: {
                 text?: string | null;
@@ -1039,7 +1039,7 @@ export interface WebPage {
                 | {
                     label: string;
                     url: string;
-                    image: number | WebMedia;
+                    image: number | WebImage;
                     target?: ('_self' | '_blank') | null;
                     id?: string | null;
                   }[]
@@ -1060,7 +1060,7 @@ export interface WebPage {
         | {
             content?: {
               title?: string | null;
-              image?: (number | null) | WebMedia;
+              image?: (number | null) | WebImage;
               textTop?: {
                 root: {
                   type: string;
@@ -1156,7 +1156,7 @@ export interface WebPage {
           }
         | {
             content?: {
-              image?: (number | null) | WebMedia;
+              image?: (number | null) | WebImage;
             };
             settings: {
               spacing: {
@@ -1175,7 +1175,7 @@ export interface WebPage {
             content?: {
               cards?:
                 | {
-                    image?: (number | null) | WebMedia;
+                    image?: (number | null) | WebImage;
                     info?: string | null;
                     date?: string | null;
                     title?: string | null;
@@ -1206,7 +1206,7 @@ export interface WebPage {
               title?: string | null;
               items?:
                 | {
-                    image?: (number | null) | WebMedia;
+                    image?: (number | null) | WebImage;
                     infos?: string | null;
                     title?: string | null;
                     description?: {
@@ -1253,7 +1253,7 @@ export interface WebPage {
                     title?: string | null;
                     images?:
                       | {
-                          image?: (number | null) | WebMedia;
+                          image?: (number | null) | WebImage;
                           id?: string | null;
                         }[]
                       | null;
@@ -1317,7 +1317,7 @@ export interface WebPage {
   /**
    * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
    */
-  image?: (number | null) | WebMedia;
+  image?: (number | null) | WebImage;
   /**
    * Relevant keywords for this page (one per line)
    */
@@ -1360,7 +1360,7 @@ export interface WebBook {
     };
     [k: string]: unknown;
   } | null;
-  cover?: (number | null) | WebMedia;
+  cover?: (number | null) | WebImage;
   link?: {
     text?: string | null;
     href?: string | null;
@@ -1390,7 +1390,7 @@ export interface WebPartner {
     href?: string | null;
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
-  image?: (number | null) | WebMedia;
+  image?: (number | null) | WebImage;
   updatedAt: string;
   createdAt: string;
 }
@@ -1406,7 +1406,7 @@ export interface WebSocial {
     target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
   };
   icon?: ('facebook' | 'instagram') | null;
-  backgroundImage?: (number | null) | WebMedia;
+  backgroundImage?: (number | null) | WebImage;
   updatedAt: string;
   createdAt: string;
 }
@@ -1522,12 +1522,12 @@ export interface PayloadLockedDocument {
         value: number | PlantEffect;
       } | null)
     | ({
-        relationTo: 'web-media';
-        value: number | WebMedia;
+        relationTo: 'web-images';
+        value: number | WebImage;
       } | null)
     | ({
-        relationTo: 'web-media-category';
-        value: number | WebMediaCategory;
+        relationTo: 'web-image-categories';
+        value: number | WebImageCategory;
       } | null)
     | ({
         relationTo: 'web-pages';
@@ -1999,9 +1999,9 @@ export interface PlantEffectsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-media_select".
+ * via the `definition` "web-images_select".
  */
-export interface WebMediaSelect<T extends boolean = true> {
+export interface WebImagesSelect<T extends boolean = true> {
   alt?: T;
   category?: T;
   updatedAt?: T;
@@ -2142,9 +2142,9 @@ export interface WebMediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-media-category_select".
+ * via the `definition` "web-image-categories_select".
  */
-export interface WebMediaCategorySelect<T extends boolean = true> {
+export interface WebImageCategoriesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   showInGallery?: T;

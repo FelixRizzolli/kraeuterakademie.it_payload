@@ -88,7 +88,7 @@ export const WebPages: CollectionConfig = {
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: CollectionSlug.WEB_MEDIA,
+              relationTo: CollectionSlug.WEB_IMAGES,
             }),
             {
               name: 'keywords',

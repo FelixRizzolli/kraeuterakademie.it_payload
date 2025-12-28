@@ -2,16 +2,16 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
-export const WebMedia: CollectionConfig = {
-  slug: CollectionSlug.WEB_MEDIA,
+export const WebImages: CollectionConfig = {
+  slug: CollectionSlug.WEB_IMAGES,
   labels: {
     singular: {
-      en: 'Web Media',
-      de: 'Web Medien',
+      en: 'Web Image',
+      de: 'Web Bild',
     },
     plural: {
-      en: 'Web Media',
-      de: 'Web Medien',
+      en: 'Web Images',
+      de: 'Web Bilder',
     },
   },
   admin: {
@@ -27,7 +27,7 @@ export const WebMedia: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: CollectionSlug.WEB_MEDIA_CATEGORY,
+      relationTo: CollectionSlug.WEB_IMAGE_CATEGORIES,
       hasMany: true,
       label: {
         en: 'Category',
@@ -36,6 +36,15 @@ export const WebMedia: CollectionConfig = {
     },
   ],
   upload: {
+    // Only accept image files
+    mimeTypes: [
+      'image/jpeg',
+      'image/png',
+      'image/webp',
+      'image/avif',
+      'image/gif',
+      'image/svg+xml',
+    ],
     // Convert the stored "original" to PNG and constrain its width so we don't keep the huge uploads.
     formatOptions: {
       format: 'png',

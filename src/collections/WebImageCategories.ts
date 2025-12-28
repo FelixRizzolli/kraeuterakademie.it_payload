@@ -2,16 +2,16 @@ import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
 import { administratorWritePublicRead } from '../lib/access'
 
-export const WebMediaCategory: CollectionConfig = {
-  slug: CollectionSlug.WEB_MEDIA_CATEGORY,
+export const WebImageCategories: CollectionConfig = {
+  slug: CollectionSlug.WEB_IMAGE_CATEGORIES,
   labels: {
     singular: {
-      en: 'Web Media Category',
-      de: 'Web Medienkategorie',
+      en: 'Web Image Category',
+      de: 'Web Bildkategorie',
     },
     plural: {
-      en: 'Web Media Categories',
-      de: 'Web Medienkategorien',
+      en: 'Web Image Categories',
+      de: 'Web Bildkategorien',
     },
   },
   admin: {

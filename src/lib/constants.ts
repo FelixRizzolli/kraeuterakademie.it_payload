@@ -162,8 +162,8 @@ export const CollectionSlug = {
   PLANT_EFFECTS: 'plant-effects',
   PLANT_PARTS: 'plant-parts',
   // Web
-  WEB_MEDIA: 'web-media',
-  WEB_MEDIA_CATEGORY: 'web-media-category',
+  WEB_IMAGES: 'web-images',
+  WEB_IMAGE_CATEGORIES: 'web-image-categories',
   WEB_PAGES: 'web-pages',
   WEB_PARTNERS: 'web-partners',
   WEB_SOCIALS: 'web-socials',

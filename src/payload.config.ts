@@ -10,7 +10,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Roles } from './collections/Roles'
-import { WebMedia } from './collections/WebMedia'
+import { WebImages } from './collections/WebImages'
 import { WebPages } from './collections/WebPages'
 import { Courses } from './collections/Courses'
 import { CourseModules } from './collections/CourseModules'
@@ -39,7 +39,7 @@ import { CourseVideoLesson } from './collections/CourseVideoLesson'
 import { PlantSubstances } from './collections/PlantSubstances'
 import { PlantEffects } from './collections/PlantEffects'
 import { PlantParts } from './collections/PlantParts'
-import { WebMediaCategory } from './collections/WebMediaCategory'
+import { WebImageCategories } from './collections/WebImageCategories'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -80,8 +80,8 @@ export default buildConfig({
     PlantSubstances,
     PlantEffects,
     // Web
-    WebMedia,
-    WebMediaCategory,
+    WebImages,
+    WebImageCategories,
     WebPages,
     WebPartners,
     WebSocials,
@@ -103,7 +103,7 @@ export default buildConfig({
   sharp,
   plugins: [
     seoPlugin({
-      uploadsCollection: CollectionSlug.WEB_MEDIA,
+      uploadsCollection: CollectionSlug.WEB_IMAGES,
       generateTitle: ({ doc }) => `kraeuterakademie.it — ${doc.title}`,
       generateURL: ({ doc }) => `https://kraeuterakademie.it/${doc?.slug}`,
       generateDescription: ({ doc }) => doc.excerpt,

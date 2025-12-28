@@ -32,7 +32,7 @@ export const WebImageText: Block = {
                 de: 'Bild',
               },
               type: 'upload',
-              relationTo: CollectionSlug.WEB_MEDIA,
+              relationTo: CollectionSlug.WEB_IMAGES,
             },
             {
               name: 'textTop',

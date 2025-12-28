@@ -41,7 +41,7 @@ export const WebSwiperLarge: Block = {
                     de: 'Bild',
                   },
                   type: 'upload',
-                  relationTo: CollectionSlug.WEB_MEDIA,
+                  relationTo: CollectionSlug.WEB_IMAGES,
                 },
                 {
                   name: 'infos',

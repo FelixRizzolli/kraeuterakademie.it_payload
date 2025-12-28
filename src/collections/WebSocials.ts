@@ -40,7 +40,7 @@ export const WebSocials: CollectionConfig = {
         de: 'Hintergrundbild',
       },
       type: 'upload',
-      relationTo: CollectionSlug.WEB_MEDIA,
+      relationTo: CollectionSlug.WEB_IMAGES,
     },
   ],
 }

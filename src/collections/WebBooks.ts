@@ -55,7 +55,7 @@ export const WebBooks: CollectionConfig = {
         de: 'Cover Bild',
       },
       type: 'upload',
-      relationTo: CollectionSlug.WEB_MEDIA,
+      relationTo: CollectionSlug.WEB_IMAGES,
     },
     link,
   ],
