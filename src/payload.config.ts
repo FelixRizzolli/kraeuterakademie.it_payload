@@ -58,6 +58,23 @@ export default buildConfig({
     timezones: {
       defaultTimezone: 'Europe/Rome',
     },
+    meta: {
+      titleSuffix: '- Kraeuterakademie Admin',
+    },
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: 'dev@payloadcms.com',
+            password: 'test',
+            prefillOnly: true,
+          }
+        : false,
+  },
+  routes: {
+    admin: '/admin',
+    api: '/api',
+    graphQL: '/api/graphql',
+    graphQLPlayground: '/api/graphql-playground',
   },
   collections: [
     // Administration
