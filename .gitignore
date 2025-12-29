@@ -40,9 +40,8 @@ next-env.d.ts
 
 .env
 
-/web-images
-/plant-images
-/seeds
+# Payload CMS Data
+/data
 
 # Playwright
 node_modules/

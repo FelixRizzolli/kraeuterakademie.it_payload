@@ -36,6 +36,7 @@ export const WebImages: CollectionConfig = {
     },
   ],
   upload: {
+    staticDir: 'data/images/web-images',
     // Only accept image files
     mimeTypes: [
       'image/jpeg',
