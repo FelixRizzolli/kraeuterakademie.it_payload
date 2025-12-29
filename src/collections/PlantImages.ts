@@ -55,7 +55,7 @@ export const PlantImages: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: 'images/plant-images',
+    staticDir: 'data/images/plant-images',
     // Convert the stored "original" to PNG and constrain its width so we don't keep the huge uploads.
     formatOptions: {
       format: 'png',
