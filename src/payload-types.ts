@@ -1114,32 +1114,30 @@ export interface WebPage {
             content?: {
               infos?:
                 | {
-                    infos: {
-                      title?: string | null;
-                      text?: {
-                        root: {
-                          type: string;
-                          children: {
-                            type: any;
-                            version: number;
-                            [k: string]: unknown;
-                          }[];
-                          direction: ('ltr' | 'rtl') | null;
-                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                          indent: number;
+                    title?: string | null;
+                    text?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
                           version: number;
-                        };
-                        [k: string]: unknown;
-                      } | null;
-                    };
-                    link?: {
-                      text?: string | null;
-                      href?: string | null;
-                      target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
-                    };
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
                     id?: string | null;
                   }[]
                 | null;
+              link?: {
+                text?: string | null;
+                href?: string | null;
+                target?: ('_self' | '_blank' | '_parent' | '_top' | '_unfencedTop') | null;
+              };
             };
             settings: {
               spacing: {
@@ -2411,20 +2409,16 @@ export interface WebPagesSelect<T extends boolean = true> {
                     infos?:
                       | T
                       | {
-                          infos?:
-                            | T
-                            | {
-                                title?: T;
-                                text?: T;
-                              };
-                          link?:
-                            | T
-                            | {
-                                text?: T;
-                                href?: T;
-                                target?: T;
-                              };
+                          title?: T;
+                          text?: T;
                           id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          text?: T;
+                          href?: T;
+                          target?: T;
                         };
                   };
               settings?:

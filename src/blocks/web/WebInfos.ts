@@ -26,7 +26,6 @@ export const WebInfos: Block = {
               type: 'array',
               fields: [
                 {
-                  name: 'infos',
                   type: 'group',
                   required: true,
                   fields: [
@@ -51,9 +50,9 @@ export const WebInfos: Block = {
                     },
                   ],
                 },
-                link,
               ],
             },
+            link,
           ],
         },
         {
