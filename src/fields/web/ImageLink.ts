@@ -6,10 +6,10 @@ export const imageLink: GroupField = {
   type: 'group',
   fields: [
     {
-      name: 'label',
+      name: 'text',
       label: {
-        en: 'Label',
-        de: 'Label',
+        en: 'Text',
+        de: 'Text',
       },
       type: 'text',
       required: true,

@@ -1037,7 +1037,7 @@ export interface WebPage {
             content?: {
               links?:
                 | {
-                    label: string;
+                    text: string;
                     url: string;
                     image: number | WebImage;
                     target?: ('_self' | '_blank') | null;
@@ -2344,7 +2344,7 @@ export interface WebPagesSelect<T extends boolean = true> {
                     links?:
                       | T
                       | {
-                          label?: T;
+                          text?: T;
                           url?: T;
                           image?: T;
                           target?: T;
