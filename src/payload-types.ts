@@ -1163,7 +1163,6 @@ export interface WebPage {
                 paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
                 paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
               };
-              style: 'light' | 'gray' | 'dark';
             };
             id?: string | null;
             blockName?: string | null;
@@ -1320,6 +1319,7 @@ export interface WebPage {
                 paddingTop: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
                 paddingBottom: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
               };
+              style: 'light' | 'gray' | 'dark';
             };
             id?: string | null;
             blockName?: string | null;
@@ -2456,7 +2456,6 @@ export interface WebPagesSelect<T extends boolean = true> {
                           paddingTop?: T;
                           paddingBottom?: T;
                         };
-                    style?: T;
                   };
               id?: T;
               blockName?: T;
@@ -2626,6 +2625,7 @@ export interface WebPagesSelect<T extends boolean = true> {
                           paddingTop?: T;
                           paddingBottom?: T;
                         };
+                    style?: T;
                   };
               id?: T;
               blockName?: T;

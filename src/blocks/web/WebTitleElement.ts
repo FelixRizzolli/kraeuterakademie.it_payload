@@ -1,5 +1,5 @@
 import { Block } from 'payload'
-import { spacing } from '@/fields/web'
+import { spacing, style } from '@/fields/web'
 
 export const WebTitleElement: Block = {
   slug: 'web-title-element',
@@ -31,7 +31,7 @@ export const WebTitleElement: Block = {
             en: 'Settings',
             de: 'Einstellungen',
           },
-          fields: [spacing],
+          fields: [spacing, style],
         },
       ],
     },

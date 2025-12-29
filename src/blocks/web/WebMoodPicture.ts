@@ -33,7 +33,7 @@ export const WebMoodPicture: Block = {
             en: 'Settings',
             de: 'Einstellungen',
           },
-          fields: [spacing, style],
+          fields: [spacing],
         },
       ],
     },
