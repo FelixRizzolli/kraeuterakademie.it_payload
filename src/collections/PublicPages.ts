@@ -1,4 +1,4 @@
-import { CollectionConfig, TextField } from 'payload'
+import { CollectionConfig } from 'payload'
 import { publicBlocks } from '../blocks/public'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import { contentCreatorWritePublicRead } from '@/lib/access'
@@ -14,12 +14,12 @@ export const PublicPages: CollectionConfig = {
   slug: CollectionSlug.PUBLIC_PAGES,
   labels: {
     singular: {
-      en: 'Web Page',
-      de: 'Web Seite',
+      en: 'Public Page',
+      de: 'Public Seite',
     },
     plural: {
-      en: 'Web Pages',
-      de: 'Web Seiten',
+      en: 'Public Pages',
+      de: 'Public Seiten',
     },
   },
   admin: {
