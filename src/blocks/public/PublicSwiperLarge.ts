@@ -1,10 +1,12 @@
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
+import { link } from '@/fields/shared'
+import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
-import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
 
-export const PublicAccordions: Block = {
-  slug: 'public-accordions',
+export const PublicSwiperLarge: Block = {
+  slug: 'public-swiper-large',
   fields: [
     {
       type: 'tabs',
@@ -19,7 +21,7 @@ export const PublicAccordions: Block = {
             {
               name: 'title',
               label: {
-                en: 'Title',
+                en: 'Heading',
                 de: 'Titel',
               },
               type: 'text',
@@ -28,29 +30,46 @@ export const PublicAccordions: Block = {
             {
               name: 'items',
               label: {
-                en: 'Accordion Items',
-                de: 'Akkordeon Elemente',
+                en: 'Items',
+                de: 'Elemente',
               },
               type: 'array',
               fields: [
                 {
-                  name: 'title',
+                  name: 'image',
                   label: {
-                    en: 'Accordion Title',
-                    de: 'Elementtitel',
+                    en: 'Image',
+                    de: 'Bild',
                   },
-                  type: 'text',
-                  required: true,
+                  type: 'upload',
+                  relationTo: CollectionSlug.PUBLIC_IMAGES,
                 },
                 {
-                  name: 'content',
+                  name: 'infos',
                   label: {
-                    en: 'Accordion Content',
-                    de: 'Elementinhalt',
+                    en: 'Infos',
+                    de: 'Infos',
+                  },
+                  type: 'text',
+                },
+                {
+                  name: 'title',
+                  label: {
+                    en: 'Title',
+                    de: 'Titel',
+                  },
+                  type: 'text',
+                },
+                {
+                  name: 'description',
+                  label: {
+                    en: 'Description',
+                    de: 'Beschreibung',
                   },
                   type: 'richText',
                   editor: lexicalEditor({}),
                 },
+                link,
               ],
             },
           ],

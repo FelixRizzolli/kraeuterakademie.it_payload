@@ -1,6 +1,6 @@
 import { link } from '@/fields/shared'
-import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 

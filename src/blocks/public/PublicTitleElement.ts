@@ -1,10 +1,8 @@
-import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
-import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
+import { spacing, style } from '@/fields/public'
 
-export const PublicMoodPicture: Block = {
-  slug: 'public-mood-picture',
+export const PublicTitleElement: Block = {
+  slug: 'public-title-element',
   fields: [
     {
       type: 'tabs',
@@ -17,13 +15,13 @@ export const PublicMoodPicture: Block = {
           },
           fields: [
             {
-              name: 'image',
+              name: 'title',
               label: {
-                en: 'Image',
-                de: 'Bild',
+                en: 'Title',
+                de: 'Titel',
               },
-              type: 'upload',
-              relationTo: CollectionSlug.PUBLIC_IMAGES,
+              type: 'text',
+              required: true,
             },
           ],
         },
@@ -33,7 +31,7 @@ export const PublicMoodPicture: Block = {
             en: 'Settings',
             de: 'Einstellungen',
           },
-          fields: [spacing],
+          fields: [spacing, style],
         },
       ],
     },

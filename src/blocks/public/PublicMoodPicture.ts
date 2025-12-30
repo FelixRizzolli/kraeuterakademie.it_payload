@@ -1,10 +1,10 @@
-import { spacing } from '@/fields/web'
-import { link } from '@/fields/shared'
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const PublicHeroSmall: Block = {
-  slug: 'public-hero-small',
+export const PublicMoodPicture: Block = {
+  slug: 'public-mood-picture',
   fields: [
     {
       type: 'tabs',
@@ -24,18 +24,7 @@ export const PublicHeroSmall: Block = {
               },
               type: 'upload',
               relationTo: CollectionSlug.PUBLIC_IMAGES,
-              required: false,
             },
-            {
-              name: 'title',
-              label: {
-                en: 'Title',
-                de: 'Titel',
-              },
-              type: 'text',
-              required: true,
-            },
-            link,
           ],
         },
         {

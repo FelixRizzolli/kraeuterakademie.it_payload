@@ -1,9 +1,10 @@
-import { spacing } from '@/fields/web'
+import { spacing } from '@/fields/public'
+import { link } from '@/fields/shared'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const PublicHeroLarge: Block = {
-  slug: 'public-hero-large',
+export const PublicHeroSmall: Block = {
+  slug: 'public-hero-small',
   fields: [
     {
       type: 'tabs',
@@ -23,7 +24,7 @@ export const PublicHeroLarge: Block = {
               },
               type: 'upload',
               relationTo: CollectionSlug.PUBLIC_IMAGES,
-              required: true,
+              required: false,
             },
             {
               name: 'title',
@@ -31,9 +32,10 @@ export const PublicHeroLarge: Block = {
                 en: 'Title',
                 de: 'Titel',
               },
-              required: true,
               type: 'text',
+              required: true,
             },
+            link,
           ],
         },
         {

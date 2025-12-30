@@ -1,8 +1,9 @@
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
 import { Block } from 'payload'
-import { spacing, style } from '@/fields/web'
 
-export const PublicTitleElement: Block = {
-  slug: 'public-title-element',
+export const PublicAnimatedText: Block = {
+  slug: 'public-animated-text',
   fields: [
     {
       type: 'tabs',
@@ -15,10 +16,10 @@ export const PublicTitleElement: Block = {
           },
           fields: [
             {
-              name: 'title',
+              name: 'text',
               label: {
-                en: 'Title',
-                de: 'Titel',
+                en: 'Text',
+                de: 'Text',
               },
               type: 'text',
               required: true,

@@ -17,7 +17,7 @@ import { PublicSwiperSimple } from './PublicSwiperSimple'
 import { PublicTextElement } from './PublicTextElement'
 import { PublicTitleElement } from './PublicTitleElement'
 
-export const webBlocks: Block[] = [
+export const publicBlocks: Block[] = [
   PublicAccordions,
   PublicAnimatedText,
   PublicBookList,

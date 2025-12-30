@@ -1,11 +1,10 @@
-import { link } from '@/fields/shared'
-import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const PublicTextElement: Block = {
-  slug: 'public-text-element',
+export const PublicCourseList: Block = {
+  slug: 'public-course-list',
   fields: [
     {
       type: 'tabs',
@@ -27,16 +26,22 @@ export const PublicTextElement: Block = {
               required: false,
             },
             {
-              name: 'content',
+              name: 'courses',
               label: {
-                en: 'Content',
-                de: 'Inhalt',
+                en: 'Courses',
+                de: 'Kurse',
               },
-              type: 'richText',
-              editor: lexicalEditor({}),
-              required: true,
+              type: 'relationship',
+              relationTo: CollectionSlug.COURSES,
+              hasMany: true,
+              required: false,
+              admin: {
+                description: {
+                  en: 'Select courses to display in this list',
+                  de: 'Wählen Sie Kurse aus, die in dieser Liste angezeigt werden sollen',
+                },
+              },
             },
-            link,
           ],
         },
         {

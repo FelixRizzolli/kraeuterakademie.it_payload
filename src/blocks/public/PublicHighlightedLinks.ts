@@ -1,5 +1,5 @@
-import { imageLink } from '@/fields/web/ImageLink'
-import { spacing } from '@/fields/web'
+import { imageLink } from '@/fields/public/ImageLink'
+import { spacing } from '@/fields/public'
 import { Block } from 'payload'
 
 export const PublicHighlightedLinks: Block = {

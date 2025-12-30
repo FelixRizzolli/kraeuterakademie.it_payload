@@ -1,5 +1,5 @@
 import { CollectionConfig, TextField } from 'payload'
-import { webBlocks } from '../blocks/web'
+import { publicBlocks } from '../blocks/public'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import { contentCreatorWritePublicRead } from '@/lib/access'
 import {
@@ -73,7 +73,7 @@ export const PublicPages: CollectionConfig = {
             {
               name: 'blocks',
               type: 'blocks',
-              blocks: webBlocks,
+              blocks: publicBlocks,
               required: false,
             },
           ],

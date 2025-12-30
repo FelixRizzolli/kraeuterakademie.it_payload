@@ -1,5 +1,5 @@
 import { link } from '@/fields/shared'
-import { spacing } from '@/fields/web'
+import { spacing } from '@/fields/public'
 import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'

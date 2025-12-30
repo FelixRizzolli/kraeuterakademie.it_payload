@@ -1,5 +1,5 @@
-import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
+import { spacing } from '@/fields/public'
+import { style } from '@/fields/public'
 import { link } from '@/fields/shared'
 import { Block } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
