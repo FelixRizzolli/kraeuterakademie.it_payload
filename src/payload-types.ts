@@ -89,10 +89,10 @@ export interface Config {
     'public-images': PublicImage;
     'public-image-categories': PublicImageCategory;
     'web-pages': WebPage;
-    'web-partners': WebPartner;
-    'web-socials': WebSocial;
-    'web-books': WebBook;
-    'web-text-blocks': WebTextBlock;
+    'public-partners': PublicPartner;
+    'public-socials': PublicSocial;
+    'public-books': PublicBook;
+    'public-text-blocks': PublicTextBlock;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -133,10 +133,10 @@ export interface Config {
     'public-images': PublicImagesSelect<false> | PublicImagesSelect<true>;
     'public-image-categories': PublicImageCategoriesSelect<false> | PublicImageCategoriesSelect<true>;
     'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
-    'web-partners': WebPartnersSelect<false> | WebPartnersSelect<true>;
-    'web-socials': WebSocialsSelect<false> | WebSocialsSelect<true>;
-    'web-books': WebBooksSelect<false> | WebBooksSelect<true>;
-    'web-text-blocks': WebTextBlocksSelect<false> | WebTextBlocksSelect<true>;
+    'public-partners': PublicPartnersSelect<false> | PublicPartnersSelect<true>;
+    'public-socials': PublicSocialsSelect<false> | PublicSocialsSelect<true>;
+    'public-books': PublicBooksSelect<false> | PublicBooksSelect<true>;
+    'public-text-blocks': PublicTextBlocksSelect<false> | PublicTextBlocksSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -958,7 +958,7 @@ export interface WebPage {
               /**
                * Select books to display in this list
                */
-              books?: (number | WebBook)[] | null;
+              books?: (number | PublicBook)[] | null;
             };
             settings: {
               spacing: {
@@ -1353,9 +1353,9 @@ export interface WebPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-books".
+ * via the `definition` "public-books".
  */
-export interface WebBook {
+export interface PublicBook {
   id: number;
   title: string;
   infos: string;
@@ -1394,9 +1394,9 @@ export interface WebBook {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-partners".
+ * via the `definition` "public-partners".
  */
-export interface WebPartner {
+export interface PublicPartner {
   id: number;
   name?: string | null;
   link?: {
@@ -1410,9 +1410,9 @@ export interface WebPartner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-socials".
+ * via the `definition` "public-socials".
  */
-export interface WebSocial {
+export interface PublicSocial {
   id: number;
   link?: {
     text?: string | null;
@@ -1426,9 +1426,9 @@ export interface WebSocial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-text-blocks".
+ * via the `definition` "public-text-blocks".
  */
-export interface WebTextBlock {
+export interface PublicTextBlock {
   id: number;
   slug: string;
   value: string;
@@ -1548,20 +1548,20 @@ export interface PayloadLockedDocument {
         value: number | WebPage;
       } | null)
     | ({
-        relationTo: 'web-partners';
-        value: number | WebPartner;
+        relationTo: 'public-partners';
+        value: number | PublicPartner;
       } | null)
     | ({
-        relationTo: 'web-socials';
-        value: number | WebSocial;
+        relationTo: 'public-socials';
+        value: number | PublicSocial;
       } | null)
     | ({
-        relationTo: 'web-books';
-        value: number | WebBook;
+        relationTo: 'public-books';
+        value: number | PublicBook;
       } | null)
     | ({
-        relationTo: 'web-text-blocks';
-        value: number | WebTextBlock;
+        relationTo: 'public-text-blocks';
+        value: number | PublicTextBlock;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2642,9 +2642,9 @@ export interface WebPagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-partners_select".
+ * via the `definition` "public-partners_select".
  */
-export interface WebPartnersSelect<T extends boolean = true> {
+export interface PublicPartnersSelect<T extends boolean = true> {
   name?: T;
   link?:
     | T
@@ -2659,9 +2659,9 @@ export interface WebPartnersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-socials_select".
+ * via the `definition` "public-socials_select".
  */
-export interface WebSocialsSelect<T extends boolean = true> {
+export interface PublicSocialsSelect<T extends boolean = true> {
   link?:
     | T
     | {
@@ -2676,9 +2676,9 @@ export interface WebSocialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-books_select".
+ * via the `definition` "public-books_select".
  */
-export interface WebBooksSelect<T extends boolean = true> {
+export interface PublicBooksSelect<T extends boolean = true> {
   title?: T;
   infos?: T;
   description?: T;
@@ -2704,9 +2704,9 @@ export interface WebBooksSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-text-blocks_select".
+ * via the `definition` "public-text-blocks_select".
  */
-export interface WebTextBlocksSelect<T extends boolean = true> {
+export interface PublicTextBlocksSelect<T extends boolean = true> {
   slug?: T;
   value?: T;
   updatedAt?: T;

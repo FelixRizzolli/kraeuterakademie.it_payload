@@ -3,16 +3,16 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
-export const WebSocials: CollectionConfig = {
-  slug: CollectionSlug.WEB_SOCIALS,
+export const PublicSocials: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_SOCIALS,
   labels: {
     singular: {
-      en: 'Web Social',
-      de: 'Web Sozial',
+      en: 'Public Social',
+      de: 'Public Sozial',
     },
     plural: {
-      en: 'Web Socials',
-      de: 'Web Socials',
+      en: 'Public Socials',
+      de: 'Public Socials',
     },
   },
   admin: {

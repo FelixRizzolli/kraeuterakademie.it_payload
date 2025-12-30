@@ -27,10 +27,10 @@ import { WebSidebar } from './globals/WebSidebar'
 import { PublicImages } from './collections/PublicImages'
 import { PublicImageCategories } from './collections/PublicImageCategories'
 import { WebPages } from './collections/WebPages'
-import { WebPartners } from './collections/WebPartners'
-import { WebSocials } from './collections/WebSocials'
-import { WebBooks } from './collections/WebBooks'
-import { WebTextBlocks } from './collections/WebTextBlocks'
+import { PublicPartners } from './collections/PublicPartners'
+import { PublicSocials } from './collections/PublicSocials'
+import { PublicBooks } from './collections/PublicBooks'
+import { PublicTextBlocks } from './collections/PublicTextBlocks'
 
 // Dashboard Content
 
@@ -117,10 +117,10 @@ export default buildConfig({
     PublicImages,
     PublicImageCategories,
     WebPages,
-    WebPartners,
-    WebSocials,
-    WebBooks,
-    WebTextBlocks,
+    PublicPartners,
+    PublicSocials,
+    PublicBooks,
+    PublicTextBlocks,
   ],
   globals: [WebFooter, WebHeader, WebSidebar, Contact],
   editor: lexicalEditor(),

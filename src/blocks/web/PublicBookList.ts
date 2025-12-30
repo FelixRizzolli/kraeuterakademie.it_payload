@@ -32,7 +32,7 @@ export const PublicBookList: Block = {
                 de: 'Bücher',
               },
               type: 'relationship',
-              relationTo: CollectionSlug.WEB_BOOKS,
+              relationTo: CollectionSlug.PUBLIC_BOOKS,
               hasMany: true,
               required: false,
               admin: {

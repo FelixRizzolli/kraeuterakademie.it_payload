@@ -165,10 +165,10 @@ export const CollectionSlug = {
   PUBLIC_IMAGES: 'public-images',
   PUBLIC_IMAGE_CATEGORIES: 'public-image-categories',
   WEB_PAGES: 'web-pages',
-  WEB_PARTNERS: 'web-partners',
-  WEB_SOCIALS: 'web-socials',
-  WEB_TEXT_BLOCKS: 'web-text-blocks',
-  WEB_BOOKS: 'web-books',
+  PUBLIC_PARTNERS: 'public-partners',
+  PUBLIC_SOCIALS: 'public-socials',
+  PUBLIC_TEXT_BLOCKS: 'public-text-blocks',
+  PUBLIC_BOOKS: 'public-books',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]

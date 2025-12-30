@@ -4,16 +4,16 @@ import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
-export const WebBooks: CollectionConfig = {
-  slug: CollectionSlug.WEB_BOOKS,
+export const PublicBooks: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_BOOKS,
   labels: {
     singular: {
-      en: 'Web Book',
-      de: 'Web Buch',
+      en: 'Public Book',
+      de: 'Public Buch',
     },
     plural: {
-      en: 'Web Books',
-      de: 'Web Bücher',
+      en: 'Public Books',
+      de: 'Public Bücher',
     },
   },
   admin: {

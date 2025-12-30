@@ -2,16 +2,16 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
-export const WebTextBlocks: CollectionConfig = {
-  slug: CollectionSlug.WEB_TEXT_BLOCKS,
+export const PublicTextBlocks: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_TEXT_BLOCKS,
   labels: {
     singular: {
-      en: 'Web Text Block',
-      de: 'Web Textblock',
+      en: 'Public Text Block',
+      de: 'Public Textblock',
     },
     plural: {
-      en: 'Web Text Blocks',
-      de: 'Web Textblöcke',
+      en: 'Public Text Blocks',
+      de: 'Public Textblöcke',
     },
   },
   admin: {
