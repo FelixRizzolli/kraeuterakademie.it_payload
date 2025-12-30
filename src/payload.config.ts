@@ -20,9 +20,9 @@ import { Roles } from './collections/Roles'
 
 // Public Web Content
 //  -> Globals
-import { WebFooter } from './globals/WebFooter'
-import { WebHeader } from './globals/WebHeader'
-import { WebSidebar } from './globals/WebSidebar'
+import { PublicFooter } from './globals/PublicFooter'
+import { PublicHeader } from './globals/PublicHeader'
+import { PublicSidebar } from './globals/PublicSidebar'
 //  -> Collections
 import { PublicImages } from './collections/PublicImages'
 import { PublicImageCategories } from './collections/PublicImageCategories'
@@ -122,7 +122,7 @@ export default buildConfig({
     PublicBooks,
     PublicTextBlocks,
   ],
-  globals: [WebFooter, WebHeader, WebSidebar, Contact],
+  globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

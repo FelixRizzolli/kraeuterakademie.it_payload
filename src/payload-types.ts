@@ -147,15 +147,15 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
-    'web-footer': WebFooter;
-    'web-header': WebHeader;
-    'web-sidebar': WebSidebar;
+    'public-footer': PublicFooter;
+    'public-header': PublicHeader;
+    'public-sidebar': PublicSidebar;
     contact: Contact;
   };
   globalsSelect: {
-    'web-footer': WebFooterSelect<false> | WebFooterSelect<true>;
-    'web-header': WebHeaderSelect<false> | WebHeaderSelect<true>;
-    'web-sidebar': WebSidebarSelect<false> | WebSidebarSelect<true>;
+    'public-footer': PublicFooterSelect<false> | PublicFooterSelect<true>;
+    'public-header': PublicHeaderSelect<false> | PublicHeaderSelect<true>;
+    'public-sidebar': PublicSidebarSelect<false> | PublicSidebarSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
   };
   locale: null;
@@ -2754,9 +2754,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-footer".
+ * via the `definition` "public-footer".
  */
-export interface WebFooter {
+export interface PublicFooter {
   id: number;
   text1?: {
     root: {
@@ -2801,9 +2801,9 @@ export interface WebFooter {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-header".
+ * via the `definition` "public-header".
  */
-export interface WebHeader {
+export interface PublicHeader {
   id: number;
   links?:
     | {
@@ -2818,9 +2818,9 @@ export interface WebHeader {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-sidebar".
+ * via the `definition` "public-sidebar".
  */
-export interface WebSidebar {
+export interface PublicSidebar {
   id: number;
   links?:
     | {
@@ -2864,9 +2864,9 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-footer_select".
+ * via the `definition` "public-footer_select".
  */
-export interface WebFooterSelect<T extends boolean = true> {
+export interface PublicFooterSelect<T extends boolean = true> {
   text1?: T;
   text2?: T;
   links?:
@@ -2883,9 +2883,9 @@ export interface WebFooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-header_select".
+ * via the `definition` "public-header_select".
  */
-export interface WebHeaderSelect<T extends boolean = true> {
+export interface PublicHeaderSelect<T extends boolean = true> {
   links?:
     | T
     | {
@@ -2900,9 +2900,9 @@ export interface WebHeaderSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-sidebar_select".
+ * via the `definition` "public-sidebar_select".
  */
-export interface WebSidebarSelect<T extends boolean = true> {
+export interface PublicSidebarSelect<T extends boolean = true> {
   links?:
     | T
     | {
