@@ -4,8 +4,8 @@ import { link } from '@/fields/shared'
 import { Block } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
-export const WebInfos: Block = {
-  slug: 'web-infos',
+export const PublicInfos: Block = {
+  slug: 'public-infos',
   fields: [
     {
       type: 'tabs',

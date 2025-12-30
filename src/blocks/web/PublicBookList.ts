@@ -1,11 +1,10 @@
-import { link } from '@/fields/shared'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebTextElement: Block = {
-  slug: 'web-text-element',
+export const PublicBookList: Block = {
+  slug: 'public-book-list',
   fields: [
     {
       type: 'tabs',
@@ -27,16 +26,22 @@ export const WebTextElement: Block = {
               required: false,
             },
             {
-              name: 'content',
+              name: 'books',
               label: {
-                en: 'Content',
-                de: 'Inhalt',
+                en: 'Books',
+                de: 'Bücher',
               },
-              type: 'richText',
-              editor: lexicalEditor({}),
-              required: true,
+              type: 'relationship',
+              relationTo: CollectionSlug.WEB_BOOKS,
+              hasMany: true,
+              required: false,
+              admin: {
+                description: {
+                  en: 'Select books to display in this list',
+                  de: 'Wählen Sie Bücher aus, die in dieser Liste angezeigt werden sollen',
+                },
+              },
             },
-            link,
           ],
         },
         {

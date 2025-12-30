@@ -1,36 +1,36 @@
 import { Block } from 'payload'
 
 // Import each block config below
-import { WebAccordions } from './WebAccordions'
-import { WebAnimatedText } from './WebAnimatedText'
-import { WebBookList } from './WebBookList'
-import { WebCourseList } from './WebCourseList'
-import { WebHeroLarge } from './WebHeroLarge'
-import { WebHeroSmall } from './WebHeroSmall'
-import { WebHighlightedLinks } from './WebHighlightedLinks'
-import { WebImageText } from './WebImageText'
-import { WebInfos } from './WebInfos'
-import { WebMoodPicture } from './WebMoodPicture'
-import { WebSwiperCard } from './WebSwiperCard'
-import { WebSwiperLarge } from './WebSwiperLarge'
-import { WebSwiperSimple } from './WebSwiperSimple'
-import { WebTextElement } from './WebTextElement'
-import { WebTitleElement } from './WebTitleElement'
+import { PublicAccordions } from './PublicAccordions'
+import { PublicAnimatedText } from './PublicAnimatedText'
+import { PublicBookList } from './PublicBookList'
+import { PublicCourseList } from './PublicCourseList'
+import { PublicHeroLarge } from './PublicHeroLarge'
+import { PublicHeroSmall } from './PublicHeroSmall'
+import { PublicHighlightedLinks } from './PublicHighlightedLinks'
+import { PublicImageText } from './PublicImageText'
+import { PublicInfos } from './PublicInfos'
+import { PublicMoodPicture } from './PublicMoodPicture'
+import { PublicSwiperCard } from './PublicSwiperCard'
+import { PublicSwiperLarge } from './PublicSwiperLarge'
+import { PublicSwiperSimple } from './PublicSwiperSimple'
+import { PublicTextElement } from './PublicTextElement'
+import { PublicTitleElement } from './PublicTitleElement'
 
 export const webBlocks: Block[] = [
-  WebAccordions,
-  WebAnimatedText,
-  WebBookList,
-  WebCourseList,
-  WebHeroLarge,
-  WebHeroSmall,
-  WebHighlightedLinks,
-  WebImageText,
-  WebInfos,
-  WebMoodPicture,
-  WebSwiperCard,
-  WebSwiperLarge,
-  WebSwiperSimple,
-  WebTextElement,
-  WebTitleElement,
+  PublicAccordions,
+  PublicAnimatedText,
+  PublicBookList,
+  PublicCourseList,
+  PublicHeroLarge,
+  PublicHeroSmall,
+  PublicHighlightedLinks,
+  PublicImageText,
+  PublicInfos,
+  PublicMoodPicture,
+  PublicSwiperCard,
+  PublicSwiperLarge,
+  PublicSwiperSimple,
+  PublicTextElement,
+  PublicTitleElement,
 ]

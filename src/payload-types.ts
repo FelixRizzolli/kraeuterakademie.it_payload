@@ -933,7 +933,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-accordions';
+            blockType: 'public-accordions';
           }
         | {
             content: {
@@ -950,7 +950,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-animatedText';
+            blockType: 'public-animated-text';
           }
         | {
             content?: {
@@ -971,7 +971,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-book-list';
+            blockType: 'public-book-list';
           }
         | {
             content?: {
@@ -992,7 +992,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-course-list';
+            blockType: 'public-course-list';
           }
         | {
             content: {
@@ -1009,7 +1009,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-hero-large';
+            blockType: 'public-hero-large';
           }
         | {
             content: {
@@ -1031,7 +1031,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-hero-small';
+            blockType: 'public-hero-small';
           }
         | {
             content?: {
@@ -1055,7 +1055,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-highlighted-links';
+            blockType: 'public-highlighted-links';
           }
         | {
             content?: {
@@ -1108,7 +1108,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-image-text';
+            blockType: 'public-image-text';
           }
         | {
             content?: {
@@ -1150,7 +1150,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-infos';
+            blockType: 'public-infos';
           }
         | {
             content?: {
@@ -1166,7 +1166,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-mood-picture';
+            blockType: 'public-mood-picture';
           }
         | {
             content?: {
@@ -1196,7 +1196,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-swiper-card';
+            blockType: 'public-swiper-card';
           }
         | {
             content?: {
@@ -1241,7 +1241,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-swiper-large';
+            blockType: 'public-swiper-large';
           }
         | {
             content?: {
@@ -1269,7 +1269,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-swiper-simple';
+            blockType: 'public-swiper-simple';
           }
         | {
             content: {
@@ -1306,7 +1306,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-text-element';
+            blockType: 'public-text-element';
           }
         | {
             content: {
@@ -1323,7 +1323,7 @@ export interface WebPage {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'web-title-element';
+            blockType: 'public-title-element';
           }
       )[]
     | null;
@@ -2175,7 +2175,7 @@ export interface WebPagesSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        'web-accordions'?:
+        'public-accordions'?:
           | T
           | {
               content?:
@@ -2206,7 +2206,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-animatedText'?:
+        'public-animated-text'?:
           | T
           | {
               content?:
@@ -2230,7 +2230,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-book-list'?:
+        'public-book-list'?:
           | T
           | {
               content?:
@@ -2255,7 +2255,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-course-list'?:
+        'public-course-list'?:
           | T
           | {
               content?:
@@ -2280,7 +2280,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-hero-large'?:
+        'public-hero-large'?:
           | T
           | {
               content?:
@@ -2304,7 +2304,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-hero-small'?:
+        'public-hero-small'?:
           | T
           | {
               content?:
@@ -2335,7 +2335,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-highlighted-links'?:
+        'public-highlighted-links'?:
           | T
           | {
               content?:
@@ -2366,7 +2366,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-image-text'?:
+        'public-image-text'?:
           | T
           | {
               content?:
@@ -2400,7 +2400,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-infos'?:
+        'public-infos'?:
           | T
           | {
               content?:
@@ -2437,7 +2437,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-mood-picture'?:
+        'public-mood-picture'?:
           | T
           | {
               content?:
@@ -2460,7 +2460,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-swiper-card'?:
+        'public-swiper-card'?:
           | T
           | {
               content?:
@@ -2499,7 +2499,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-swiper-large'?:
+        'public-swiper-large'?:
           | T
           | {
               content?:
@@ -2539,7 +2539,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-swiper-simple'?:
+        'public-swiper-simple'?:
           | T
           | {
               content?:
@@ -2574,7 +2574,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-text-element'?:
+        'public-text-element'?:
           | T
           | {
               content?:
@@ -2606,7 +2606,7 @@ export interface WebPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'web-title-element'?:
+        'public-title-element'?:
           | T
           | {
               content?:

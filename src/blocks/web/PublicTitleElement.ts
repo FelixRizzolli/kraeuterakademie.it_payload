@@ -1,9 +1,8 @@
-import { spacing } from '@/fields/web'
-import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
+import { spacing, style } from '@/fields/web'
 
-export const WebHeroLarge: Block = {
-  slug: 'web-hero-large',
+export const PublicTitleElement: Block = {
+  slug: 'public-title-element',
   fields: [
     {
       type: 'tabs',
@@ -16,23 +15,13 @@ export const WebHeroLarge: Block = {
           },
           fields: [
             {
-              name: 'image',
-              label: {
-                en: 'Image',
-                de: 'Bild',
-              },
-              type: 'upload',
-              relationTo: CollectionSlug.PUBLIC_IMAGES,
-              required: true,
-            },
-            {
               name: 'title',
               label: {
                 en: 'Title',
                 de: 'Titel',
               },
-              required: true,
               type: 'text',
+              required: true,
             },
           ],
         },
@@ -42,7 +31,7 @@ export const WebHeroLarge: Block = {
             en: 'Settings',
             de: 'Einstellungen',
           },
-          fields: [spacing],
+          fields: [spacing, style],
         },
       ],
     },

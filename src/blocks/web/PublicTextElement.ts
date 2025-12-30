@@ -1,8 +1,11 @@
+import { link } from '@/fields/shared'
+import { spacing } from '@/fields/web'
+import { style } from '@/fields/web'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
-import { spacing, style } from '@/fields/web'
 
-export const WebTitleElement: Block = {
-  slug: 'web-title-element',
+export const PublicTextElement: Block = {
+  slug: 'public-text-element',
   fields: [
     {
       type: 'tabs',
@@ -21,8 +24,19 @@ export const WebTitleElement: Block = {
                 de: 'Titel',
               },
               type: 'text',
+              required: false,
+            },
+            {
+              name: 'content',
+              label: {
+                en: 'Content',
+                de: 'Inhalt',
+              },
+              type: 'richText',
+              editor: lexicalEditor({}),
               required: true,
             },
+            link,
           ],
         },
         {

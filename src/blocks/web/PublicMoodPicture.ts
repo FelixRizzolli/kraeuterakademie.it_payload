@@ -3,8 +3,8 @@ import { style } from '@/fields/web'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebMoodPicture: Block = {
-  slug: 'web-mood-picture',
+export const PublicMoodPicture: Block = {
+  slug: 'public-mood-picture',
   fields: [
     {
       type: 'tabs',

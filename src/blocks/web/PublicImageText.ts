@@ -4,8 +4,8 @@ import { CollectionSlug } from '@/lib/constants'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
-export const WebImageText: Block = {
-  slug: 'web-image-text',
+export const PublicImageText: Block = {
+  slug: 'public-image-text',
   fields: [
     {
       type: 'tabs',

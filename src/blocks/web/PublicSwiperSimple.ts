@@ -3,8 +3,8 @@ import { style } from '@/fields/web'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebSwiperSimple: Block = {
-  slug: 'web-swiper-simple',
+export const PublicSwiperSimple: Block = {
+  slug: 'public-swiper-simple',
   fields: [
     {
       type: 'tabs',

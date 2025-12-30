@@ -3,8 +3,8 @@ import { link } from '@/fields/shared'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebHeroSmall: Block = {
-  slug: 'web-hero-small',
+export const PublicHeroSmall: Block = {
+  slug: 'public-hero-small',
   fields: [
     {
       type: 'tabs',

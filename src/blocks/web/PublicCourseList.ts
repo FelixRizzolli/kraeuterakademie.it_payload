@@ -3,8 +3,8 @@ import { style } from '@/fields/web'
 import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebBookList: Block = {
-  slug: 'web-book-list',
+export const PublicCourseList: Block = {
+  slug: 'public-course-list',
   fields: [
     {
       type: 'tabs',
@@ -26,19 +26,19 @@ export const WebBookList: Block = {
               required: false,
             },
             {
-              name: 'books',
+              name: 'courses',
               label: {
-                en: 'Books',
-                de: 'Bücher',
+                en: 'Courses',
+                de: 'Kurse',
               },
               type: 'relationship',
-              relationTo: CollectionSlug.WEB_BOOKS,
+              relationTo: CollectionSlug.COURSES,
               hasMany: true,
               required: false,
               admin: {
                 description: {
-                  en: 'Select books to display in this list',
-                  de: 'Wählen Sie Bücher aus, die in dieser Liste angezeigt werden sollen',
+                  en: 'Select courses to display in this list',
+                  de: 'Wählen Sie Kurse aus, die in dieser Liste angezeigt werden sollen',
                 },
               },
             },

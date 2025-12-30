@@ -1,9 +1,9 @@
-import { imageLink } from '@/fields/web/ImageLink'
 import { spacing } from '@/fields/web'
+import { CollectionSlug } from '@/lib/constants'
 import { Block } from 'payload'
 
-export const WebHighlightedLinks: Block = {
-  slug: 'web-highlighted-links',
+export const PublicHeroLarge: Block = {
+  slug: 'public-hero-large',
   fields: [
     {
       type: 'tabs',
@@ -16,13 +16,23 @@ export const WebHighlightedLinks: Block = {
           },
           fields: [
             {
-              name: 'links',
+              name: 'image',
               label: {
-                en: 'Highlighted Links',
-                de: 'Hervorgehobene Links',
+                en: 'Image',
+                de: 'Bild',
               },
-              type: 'array',
-              fields: imageLink.fields,
+              type: 'upload',
+              relationTo: CollectionSlug.PUBLIC_IMAGES,
+              required: true,
+            },
+            {
+              name: 'title',
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
+              required: true,
+              type: 'text',
             },
           ],
         },

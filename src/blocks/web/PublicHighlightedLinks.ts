@@ -1,9 +1,9 @@
+import { imageLink } from '@/fields/web/ImageLink'
 import { spacing } from '@/fields/web'
-import { style } from '@/fields/web'
 import { Block } from 'payload'
 
-export const WebAnimatedText: Block = {
-  slug: 'web-animatedText',
+export const PublicHighlightedLinks: Block = {
+  slug: 'public-highlighted-links',
   fields: [
     {
       type: 'tabs',
@@ -16,13 +16,13 @@ export const WebAnimatedText: Block = {
           },
           fields: [
             {
-              name: 'text',
+              name: 'links',
               label: {
-                en: 'Text',
-                de: 'Text',
+                en: 'Highlighted Links',
+                de: 'Hervorgehobene Links',
               },
-              type: 'text',
-              required: true,
+              type: 'array',
+              fields: imageLink.fields,
             },
           ],
         },
@@ -32,7 +32,7 @@ export const WebAnimatedText: Block = {
             en: 'Settings',
             de: 'Einstellungen',
           },
-          fields: [spacing, style],
+          fields: [spacing],
         },
       ],
     },

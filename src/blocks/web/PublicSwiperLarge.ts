@@ -1,11 +1,12 @@
-import { link } from '@/fields/shared'
 import { spacing } from '@/fields/web'
 import { style } from '@/fields/web'
+import { link } from '@/fields/shared'
 import { CollectionSlug } from '@/lib/constants'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
-export const WebSwiperCard: Block = {
-  slug: 'web-swiper-card',
+export const PublicSwiperLarge: Block = {
+  slug: 'public-swiper-large',
   fields: [
     {
       type: 'tabs',
@@ -18,10 +19,19 @@ export const WebSwiperCard: Block = {
           },
           fields: [
             {
-              name: 'cards',
+              name: 'title',
               label: {
-                en: 'Cards',
-                de: 'Karten',
+                en: 'Heading',
+                de: 'Titel',
+              },
+              type: 'text',
+              required: false,
+            },
+            {
+              name: 'items',
+              label: {
+                en: 'Items',
+                de: 'Elemente',
               },
               type: 'array',
               fields: [
@@ -35,20 +45,12 @@ export const WebSwiperCard: Block = {
                   relationTo: CollectionSlug.PUBLIC_IMAGES,
                 },
                 {
-                  name: 'info',
+                  name: 'infos',
                   label: {
-                    en: 'Info',
-                    de: 'Info',
+                    en: 'Infos',
+                    de: 'Infos',
                   },
                   type: 'text',
-                },
-                {
-                  name: 'date',
-                  label: {
-                    en: 'Date',
-                    de: 'Datum',
-                  },
-                  type: 'date',
                 },
                 {
                   name: 'title',
@@ -57,6 +59,15 @@ export const WebSwiperCard: Block = {
                     de: 'Titel',
                   },
                   type: 'text',
+                },
+                {
+                  name: 'description',
+                  label: {
+                    en: 'Description',
+                    de: 'Beschreibung',
+                  },
+                  type: 'richText',
+                  editor: lexicalEditor({}),
                 },
                 link,
               ],
