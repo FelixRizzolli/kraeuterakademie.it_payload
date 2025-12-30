@@ -10,8 +10,8 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 
-export const WebPages: CollectionConfig = {
-  slug: CollectionSlug.WEB_PAGES,
+export const PublicPages: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_PAGES,
   labels: {
     singular: {
       en: 'Web Page',

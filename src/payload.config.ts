@@ -26,7 +26,7 @@ import { PublicSidebar } from './globals/PublicSidebar'
 //  -> Collections
 import { PublicImages } from './collections/PublicImages'
 import { PublicImageCategories } from './collections/PublicImageCategories'
-import { WebPages } from './collections/WebPages'
+import { PublicPages } from './collections/PublicPages'
 import { PublicPartners } from './collections/PublicPartners'
 import { PublicSocials } from './collections/PublicSocials'
 import { PublicBooks } from './collections/PublicBooks'
@@ -116,7 +116,7 @@ export default buildConfig({
     // Public Web Content
     PublicImages,
     PublicImageCategories,
-    WebPages,
+    PublicPages,
     PublicPartners,
     PublicSocials,
     PublicBooks,

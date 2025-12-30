@@ -161,10 +161,10 @@ export const CollectionSlug = {
   PLANT_SUBSTANCES: 'plant-substances',
   PLANT_EFFECTS: 'plant-effects',
   PLANT_PARTS: 'plant-parts',
-  // Web
+  // Public Web Content
   PUBLIC_IMAGES: 'public-images',
   PUBLIC_IMAGE_CATEGORIES: 'public-image-categories',
-  WEB_PAGES: 'web-pages',
+  PUBLIC_PAGES: 'public-pages',
   PUBLIC_PARTNERS: 'public-partners',
   PUBLIC_SOCIALS: 'public-socials',
   PUBLIC_TEXT_BLOCKS: 'public-text-blocks',

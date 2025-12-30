@@ -88,7 +88,7 @@ export interface Config {
     'plant-effects': PlantEffect;
     'public-images': PublicImage;
     'public-image-categories': PublicImageCategory;
-    'web-pages': WebPage;
+    'public-pages': PublicPage;
     'public-partners': PublicPartner;
     'public-socials': PublicSocial;
     'public-books': PublicBook;
@@ -132,7 +132,7 @@ export interface Config {
     'plant-effects': PlantEffectsSelect<false> | PlantEffectsSelect<true>;
     'public-images': PublicImagesSelect<false> | PublicImagesSelect<true>;
     'public-image-categories': PublicImageCategoriesSelect<false> | PublicImageCategoriesSelect<true>;
-    'web-pages': WebPagesSelect<false> | WebPagesSelect<true>;
+    'public-pages': PublicPagesSelect<false> | PublicPagesSelect<true>;
     'public-partners': PublicPartnersSelect<false> | PublicPartnersSelect<true>;
     'public-socials': PublicSocialsSelect<false> | PublicSocialsSelect<true>;
     'public-books': PublicBooksSelect<false> | PublicBooksSelect<true>;
@@ -889,9 +889,9 @@ export interface PublicImageCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-pages".
+ * via the `definition` "public-pages".
  */
-export interface WebPage {
+export interface PublicPage {
   id: number;
   title?: string | null;
   slug: string;
@@ -1544,8 +1544,8 @@ export interface PayloadLockedDocument {
         value: number | PublicImageCategory;
       } | null)
     | ({
-        relationTo: 'web-pages';
-        value: number | WebPage;
+        relationTo: 'public-pages';
+        value: number | PublicPage;
       } | null)
     | ({
         relationTo: 'public-partners';
@@ -2167,9 +2167,9 @@ export interface PublicImageCategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "web-pages_select".
+ * via the `definition` "public-pages_select".
  */
-export interface WebPagesSelect<T extends boolean = true> {
+export interface PublicPagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   blocks?:
