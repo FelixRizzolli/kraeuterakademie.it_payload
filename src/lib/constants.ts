@@ -9,7 +9,7 @@
  */
 export enum CollectionGroup {
   ADMINISTRATION = 'Administration',
-  WEB_CONTENT = 'Web Content',
+  PUBLIC_CONTENT = 'Public Content',
   COURSES = 'Courses',
   BOTANICAL = 'Botanical',
   GLOBALS = 'Globals',
@@ -162,8 +162,8 @@ export const CollectionSlug = {
   PLANT_EFFECTS: 'plant-effects',
   PLANT_PARTS: 'plant-parts',
   // Web
-  WEB_IMAGES: 'web-images',
-  WEB_IMAGE_CATEGORIES: 'web-image-categories',
+  PUBLIC_IMAGES: 'public-images',
+  PUBLIC_IMAGE_CATEGORIES: 'public-image-categories',
   WEB_PAGES: 'web-pages',
   WEB_PARTNERS: 'web-partners',
   WEB_SOCIALS: 'web-socials',

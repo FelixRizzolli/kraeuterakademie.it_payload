@@ -16,7 +16,7 @@ export const WebSocials: CollectionConfig = {
     },
   },
   admin: {
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
@@ -40,7 +40,7 @@ export const WebSocials: CollectionConfig = {
         de: 'Hintergrundbild',
       },
       type: 'upload',
-      relationTo: CollectionSlug.WEB_IMAGES,
+      relationTo: CollectionSlug.PUBLIC_IMAGES,
     },
   ],
 }

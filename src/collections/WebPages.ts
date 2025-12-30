@@ -24,7 +24,7 @@ export const WebPages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
@@ -88,7 +88,7 @@ export const WebPages: CollectionConfig = {
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: CollectionSlug.WEB_IMAGES,
+              relationTo: CollectionSlug.PUBLIC_IMAGES,
             }),
             {
               name: 'keywords',

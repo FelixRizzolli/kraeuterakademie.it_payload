@@ -23,7 +23,7 @@ export const WebMoodPicture: Block = {
                 de: 'Bild',
               },
               type: 'upload',
-              relationTo: CollectionSlug.WEB_IMAGES,
+              relationTo: CollectionSlug.PUBLIC_IMAGES,
             },
           ],
         },

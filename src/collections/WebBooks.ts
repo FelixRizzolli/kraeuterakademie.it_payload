@@ -17,7 +17,7 @@ export const WebBooks: CollectionConfig = {
     },
   },
   admin: {
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
@@ -55,7 +55,7 @@ export const WebBooks: CollectionConfig = {
         de: 'Cover Bild',
       },
       type: 'upload',
-      relationTo: CollectionSlug.WEB_IMAGES,
+      relationTo: CollectionSlug.PUBLIC_IMAGES,
     },
     link,
   ],

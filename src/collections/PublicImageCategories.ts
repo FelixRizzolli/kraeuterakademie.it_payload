@@ -2,22 +2,22 @@ import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '../lib/constants'
 import { administratorWritePublicRead } from '../lib/access'
 
-export const WebImageCategories: CollectionConfig = {
-  slug: CollectionSlug.WEB_IMAGE_CATEGORIES,
+export const PublicImageCategories: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_IMAGE_CATEGORIES,
   labels: {
     singular: {
-      en: 'Web Image Category',
-      de: 'Web Bildkategorie',
+      en: 'Public Image Category',
+      de: 'Public Bildkategorie',
     },
     plural: {
-      en: 'Web Image Categories',
-      de: 'Web Bildkategorien',
+      en: 'Public Image Categories',
+      de: 'Public Bildkategorien',
     },
   },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title'],
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: administratorWritePublicRead,
   fields: [

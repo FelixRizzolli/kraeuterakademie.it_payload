@@ -8,38 +8,52 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Users } from './collections/Users'
-import { Roles } from './collections/Roles'
-import { WebImages } from './collections/WebImages'
-import { WebPages } from './collections/WebPages'
-import { Courses } from './collections/Courses'
-import { CourseModules } from './collections/CourseModules'
-import { Plants } from './collections/Plants'
-import { PlantFamilies } from './collections/PlantFamilies'
-import { PlantGroups } from './collections/PlantGroups'
-import { WebFooter } from './globals/WebFooter'
-import { WebHeader } from './globals/WebHeader'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { CollectionSlug } from './lib/constants'
-import { WebSidebar } from './globals/WebSidebar'
+
+// General Content
+//  -> Globals
 import { Contact } from './globals/Contact'
+//  -> Collections
+import { Users } from './collections/Users'
+import { Roles } from './collections/Roles'
+
+// Public Web Content
+//  -> Globals
+import { WebFooter } from './globals/WebFooter'
+import { WebHeader } from './globals/WebHeader'
+import { WebSidebar } from './globals/WebSidebar'
+//  -> Collections
+import { PublicImages } from './collections/PublicImages'
+import { PublicImageCategories } from './collections/PublicImageCategories'
+import { WebPages } from './collections/WebPages'
 import { WebPartners } from './collections/WebPartners'
 import { WebSocials } from './collections/WebSocials'
 import { WebBooks } from './collections/WebBooks'
 import { WebTextBlocks } from './collections/WebTextBlocks'
+
+// Dashboard Content
+
+// Botanical Content
+import { Plants } from './collections/Plants'
+import { PlantFamilies } from './collections/PlantFamilies'
+import { PlantGroups } from './collections/PlantGroups'
+import { PlantToxicityLevels } from './collections/PlantToxicityLevels'
+import { PlantRecognitionFeatures } from './collections/PlantRecognitionFeatures'
+import { PlantImages } from './collections/PlantImages'
+import { PlantSubstances } from './collections/PlantSubstances'
+import { PlantEffects } from './collections/PlantEffects'
+import { PlantParts } from './collections/PlantParts'
+
+// Course Content
+import { Courses } from './collections/Courses'
+import { CourseModules } from './collections/CourseModules'
 import { CourseExcursions } from './collections/CourseExcoursions'
 import { CoursePracticeUnits } from './collections/CoursePracticeUnits'
 import { CourseSpeakers } from './collections/CourseSpeakers'
 import { CourseGardens } from './collections/CourseGardens'
 import { CourseSharedDocuments } from './collections/CourseSharedDocuments'
-import { PlantToxicityLevels } from './collections/PlantToxicityLevels'
-import { PlantRecognitionFeatures } from './collections/PlantRecognitionFeatures'
-import { PlantImages } from './collections/PlantImages'
 import { CourseVideoLesson } from './collections/CourseVideoLesson'
-import { PlantSubstances } from './collections/PlantSubstances'
-import { PlantEffects } from './collections/PlantEffects'
-import { PlantParts } from './collections/PlantParts'
-import { WebImageCategories } from './collections/WebImageCategories'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -99,9 +113,9 @@ export default buildConfig({
     PlantParts,
     PlantSubstances,
     PlantEffects,
-    // Web
-    WebImages,
-    WebImageCategories,
+    // Public Web Content
+    PublicImages,
+    PublicImageCategories,
     WebPages,
     WebPartners,
     WebSocials,
@@ -123,7 +137,7 @@ export default buildConfig({
   sharp,
   plugins: [
     seoPlugin({
-      uploadsCollection: CollectionSlug.WEB_IMAGES,
+      uploadsCollection: CollectionSlug.PUBLIC_IMAGES,
       generateTitle: ({ doc }) => `kraeuterakademie.it — ${doc.title}`,
       generateURL: ({ doc }) => `https://kraeuterakademie.it/${doc?.slug}`,
       generateDescription: ({ doc }) => doc.excerpt,

@@ -16,7 +16,7 @@ export const WebPartners: CollectionConfig = {
     },
   },
   admin: {
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
@@ -38,7 +38,7 @@ export const WebPartners: CollectionConfig = {
         de: 'Bild',
       },
       type: 'upload',
-      relationTo: CollectionSlug.WEB_IMAGES,
+      relationTo: CollectionSlug.PUBLIC_IMAGES,
     },
   ],
 }

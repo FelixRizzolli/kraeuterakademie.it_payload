@@ -2,20 +2,20 @@ import { contentCreatorWritePublicRead } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
-export const WebImages: CollectionConfig = {
-  slug: CollectionSlug.WEB_IMAGES,
+export const PublicImages: CollectionConfig = {
+  slug: CollectionSlug.PUBLIC_IMAGES,
   labels: {
     singular: {
-      en: 'Web Image',
-      de: 'Web Bild',
+      en: 'Public Image',
+      de: 'Public Bild',
     },
     plural: {
-      en: 'Web Images',
-      de: 'Web Bilder',
+      en: 'Public Images',
+      de: 'Public Bilder',
     },
   },
   admin: {
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
@@ -27,7 +27,7 @@ export const WebImages: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: CollectionSlug.WEB_IMAGE_CATEGORIES,
+      relationTo: CollectionSlug.PUBLIC_IMAGE_CATEGORIES,
       hasMany: true,
       label: {
         en: 'Category',
@@ -36,7 +36,7 @@ export const WebImages: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: 'data/images/web-images',
+    staticDir: 'data/images/public-images',
     // Only accept image files
     mimeTypes: [
       'image/jpeg',

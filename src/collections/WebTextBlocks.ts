@@ -15,7 +15,7 @@ export const WebTextBlocks: CollectionConfig = {
     },
   },
   admin: {
-    group: CollectionGroup.WEB_CONTENT,
+    group: CollectionGroup.PUBLIC_CONTENT,
   },
   access: contentCreatorWritePublicRead,
   fields: [
