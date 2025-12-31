@@ -13,47 +13,47 @@ import { CollectionSlug } from './lib/constants'
 
 // General Content
 //  -> Globals
-import { Contact } from './globals/Contact'
+import { Contact } from './domains/shared/globals/Contact'
 //  -> Collections
-import { Users } from './collections/Users'
-import { Roles } from './collections/Roles'
+import { Users } from './domains/shared/collections/Users'
+import { Roles } from './domains/shared/collections/Roles'
 
 // Public Web Content
 //  -> Globals
-import { PublicFooter } from './globals/PublicFooter'
-import { PublicHeader } from './globals/PublicHeader'
-import { PublicSidebar } from './globals/PublicSidebar'
+import { PublicFooter } from './domains/public/globals/PublicFooter'
+import { PublicHeader } from './domains/public/globals/PublicHeader'
+import { PublicSidebar } from './domains/public/globals/PublicSidebar'
 //  -> Collections
-import { PublicImages } from './collections/PublicImages'
-import { PublicImageCategories } from './collections/PublicImageCategories'
-import { PublicPages } from './collections/PublicPages'
-import { PublicPartners } from './collections/PublicPartners'
-import { PublicSocials } from './collections/PublicSocials'
-import { PublicBooks } from './collections/PublicBooks'
-import { PublicTextBlocks } from './collections/PublicTextBlocks'
+import { PublicImages } from './domains/public/collections/PublicImages'
+import { PublicImageCategories } from './domains/public/collections/PublicImageCategories'
+import { PublicPages } from './domains/public/collections/PublicPages'
+import { PublicPartners } from './domains/public/collections/PublicPartners'
+import { PublicSocials } from './domains/public/collections/PublicSocials'
+import { PublicBooks } from './domains/public/collections/PublicBooks'
+import { PublicTextBlocks } from './domains/public/collections/PublicTextBlocks'
 
 // Dashboard Content
 
 // Botanical Content
-import { Plants } from './collections/Plants'
-import { PlantFamilies } from './collections/PlantFamilies'
-import { PlantGroups } from './collections/PlantGroups'
-import { PlantToxicityLevels } from './collections/PlantToxicityLevels'
-import { PlantRecognitionFeatures } from './collections/PlantRecognitionFeatures'
-import { PlantImages } from './collections/PlantImages'
-import { PlantSubstances } from './collections/PlantSubstances'
-import { PlantEffects } from './collections/PlantEffects'
-import { PlantParts } from './collections/PlantParts'
+import { Plants } from './domains/botanical/collections/Plants'
+import { PlantFamilies } from './domains/botanical/collections/PlantFamilies'
+import { PlantGroups } from './domains/botanical/collections/PlantGroups'
+import { PlantToxicityLevels } from './domains/botanical/collections/PlantToxicityLevels'
+import { PlantRecognitionFeatures } from './domains/botanical/collections/PlantRecognitionFeatures'
+import { PlantImages } from './domains/botanical/collections/PlantImages'
+import { PlantSubstances } from './domains/botanical/collections/PlantSubstances'
+import { PlantEffects } from './domains/botanical/collections/PlantEffects'
+import { PlantParts } from './domains/botanical/collections/PlantParts'
 
 // Course Content
-import { Courses } from './collections/Courses'
-import { CourseModules } from './collections/CourseModules'
-import { CourseExcursions } from './collections/CourseExcoursions'
-import { CoursePracticeUnits } from './collections/CoursePracticeUnits'
-import { CourseSpeakers } from './collections/CourseSpeakers'
-import { CourseGardens } from './collections/CourseGardens'
-import { CourseSharedDocuments } from './collections/CourseSharedDocuments'
-import { CourseVideoLesson } from './collections/CourseVideoLesson'
+import { Courses } from './domains/course/collections/Courses'
+import { CourseModules } from './domains/course/collections/CourseModules'
+import { CourseExcursions } from './domains/course/collections/CourseExcoursions'
+import { CoursePracticeUnits } from './domains/course/collections/CoursePracticeUnits'
+import { CourseSpeakers } from './domains/course/collections/CourseSpeakers'
+import { CourseGardens } from './domains/course/collections/CourseGardens'
+import { CourseSharedDocuments } from './domains/course/collections/CourseSharedDocuments'
+import { CourseVideoLesson } from './domains/course/collections/CourseVideoLesson'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
