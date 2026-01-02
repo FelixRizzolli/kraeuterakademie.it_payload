@@ -35,6 +35,9 @@ import { PublicTextBlocks } from './domains/public/collections/PublicTextBlocks'
 // Dashboard Content
 import { DashboardTextBlocks } from './domains/dashboard/collections/DashboardTextBlocks'
 import { DashboardImages } from './domains/dashboard/collections/DashboardImages'
+import { DashboardHelpPages } from './domains/dashboard/collections/DashboardHelpPages'
+import { DashboardTicketCategories } from './domains/dashboard/collections/DashboardTicketCategories'
+import { DashboardTickets } from './domains/dashboard/collections/DashboardTickets'
 
 // Botanical Content
 import { Plants } from './domains/botanical/collections/Plants'
@@ -56,7 +59,6 @@ import { CourseSpeakers } from './domains/course/collections/CourseSpeakers'
 import { CourseGardens } from './domains/course/collections/CourseGardens'
 import { CourseSharedDocuments } from './domains/course/collections/CourseSharedDocuments'
 import { CourseVideoLesson } from './domains/course/collections/CourseVideoLesson'
-import { DashboardHelpPages } from './domains/dashboard/collections/DashboardHelpPages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -128,6 +130,8 @@ export default buildConfig({
     DashboardTextBlocks,
     DashboardImages,
     DashboardHelpPages,
+    DashboardTicketCategories,
+    DashboardTickets,
   ],
   globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),

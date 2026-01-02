@@ -96,6 +96,8 @@ export interface Config {
     'dashboard-text-blocks': DashboardTextBlock;
     'dashboard-images': DashboardImage;
     'dashboard-help-pages': DashboardHelpPage;
+    'dashboard-ticket-categories': DashboardTicketCategory;
+    'dashboard-tickets': DashboardTicket;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -143,6 +145,8 @@ export interface Config {
     'dashboard-text-blocks': DashboardTextBlocksSelect<false> | DashboardTextBlocksSelect<true>;
     'dashboard-images': DashboardImagesSelect<false> | DashboardImagesSelect<true>;
     'dashboard-help-pages': DashboardHelpPagesSelect<false> | DashboardHelpPagesSelect<true>;
+    'dashboard-ticket-categories': DashboardTicketCategoriesSelect<false> | DashboardTicketCategoriesSelect<true>;
+    'dashboard-tickets': DashboardTicketsSelect<false> | DashboardTicketsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -1633,6 +1637,50 @@ export interface DashboardHelpPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-ticket-categories".
+ */
+export interface DashboardTicketCategory {
+  id: number;
+  title: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-tickets".
+ */
+export interface DashboardTicket {
+  id: number;
+  title: string;
+  /**
+   * Category of this ticket
+   */
+  category?: (number | null) | DashboardTicketCategory;
+  description?: string | null;
+  status: 'open' | 'in-progress' | 'closed';
+  priority: 'low' | 'medium' | 'high';
+  /**
+   * User who authored this ticket
+   */
+  author: number | User;
+  /**
+   * User assigned to this ticket
+   */
+  assignedTo?: (number | null) | User;
+  comments?:
+    | {
+        commenter?: (number | null) | User;
+        commentText?: string | null;
+        createdAt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1770,6 +1818,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'dashboard-help-pages';
         value: number | DashboardHelpPage;
+      } | null)
+    | ({
+        relationTo: 'dashboard-ticket-categories';
+        value: number | DashboardTicketCategory;
+      } | null)
+    | ({
+        relationTo: 'dashboard-tickets';
+        value: number | DashboardTicket;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -3116,6 +3172,39 @@ export interface DashboardHelpPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-ticket-categories_select".
+ */
+export interface DashboardTicketCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-tickets_select".
+ */
+export interface DashboardTicketsSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  description?: T;
+  status?: T;
+  priority?: T;
+  author?: T;
+  assignedTo?: T;
+  comments?:
+    | T
+    | {
+        commenter?: T;
+        commentText?: T;
+        createdAt?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

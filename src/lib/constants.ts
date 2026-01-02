@@ -174,6 +174,8 @@ export const CollectionSlug = {
   DASHBOARD_TEXT_BLOCKS: 'dashboard-text-blocks',
   DASHBOARD_IMAGES: 'dashboard-images',
   DASHBOARD_HELP_PAGES: 'dashboard-help-pages',
+  DASHBOARD_TICKET_CATEGORIES: 'dashboard-ticket-categories',
+  DASHBOARD_TICKETS: 'dashboard-tickets',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]
