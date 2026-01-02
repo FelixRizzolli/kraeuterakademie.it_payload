@@ -172,7 +172,8 @@ export const CollectionSlug = {
   PUBLIC_BOOKS: 'public-books',
   // Dashboard Web Content
   DASHBOARD_TEXT_BLOCKS: 'dashboard-text-blocks',
-  DASHBOARD_IMAGES: 'dashboard-images'
+  DASHBOARD_IMAGES: 'dashboard-images',
+  DASHBOARD_HELP_PAGES: 'dashboard-help-pages',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]

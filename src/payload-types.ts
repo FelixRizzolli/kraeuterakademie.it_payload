@@ -93,6 +93,9 @@ export interface Config {
     'public-socials': PublicSocial;
     'public-books': PublicBook;
     'public-text-blocks': PublicTextBlock;
+    'dashboard-text-blocks': DashboardTextBlock;
+    'dashboard-images': DashboardImage;
+    'dashboard-help-pages': DashboardHelpPage;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -137,6 +140,9 @@ export interface Config {
     'public-socials': PublicSocialsSelect<false> | PublicSocialsSelect<true>;
     'public-books': PublicBooksSelect<false> | PublicBooksSelect<true>;
     'public-text-blocks': PublicTextBlocksSelect<false> | PublicTextBlocksSelect<true>;
+    'dashboard-text-blocks': DashboardTextBlocksSelect<false> | DashboardTextBlocksSelect<true>;
+    'dashboard-images': DashboardImagesSelect<false> | DashboardImagesSelect<true>;
+    'dashboard-help-pages': DashboardHelpPagesSelect<false> | DashboardHelpPagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -1441,6 +1447,190 @@ export interface PublicTextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-text-blocks".
+ */
+export interface DashboardTextBlock {
+  id: number;
+  slug: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-images".
+ */
+export interface DashboardImage {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail_jpeg?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile_jpeg?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet_jpeg?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktop_jpeg?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktop_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktop_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-help-pages".
+ */
+export interface DashboardHelpPage {
+  id: number;
+  title: string;
+  slug: string;
+  blocks?:
+    | (
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-image-element';
+          }
+        | {
+            title?: string | null;
+            text?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-image-text';
+          }
+        | {
+            icon?: string | null;
+            title: string;
+            text: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-text-element';
+          }
+        | {
+            icon?: string | null;
+            title: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-title-element';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1566,6 +1756,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'public-text-blocks';
         value: number | PublicTextBlock;
+      } | null)
+    | ({
+        relationTo: 'dashboard-text-blocks';
+        value: number | DashboardTextBlock;
+      } | null)
+    | ({
+        relationTo: 'dashboard-images';
+        value: number | DashboardImage;
+      } | null)
+    | ({
+        relationTo: 'dashboard-help-pages';
+        value: number | DashboardHelpPage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2714,6 +2916,203 @@ export interface PublicBooksSelect<T extends boolean = true> {
 export interface PublicTextBlocksSelect<T extends boolean = true> {
   slug?: T;
   value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-text-blocks_select".
+ */
+export interface DashboardTextBlocksSelect<T extends boolean = true> {
+  slug?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-images_select".
+ */
+export interface DashboardImagesSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail_jpeg?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile_jpeg?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet_jpeg?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        desktop_jpeg?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        desktop_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        desktop_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-help-pages_select".
+ */
+export interface DashboardHelpPagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  blocks?:
+    | T
+    | {
+        'dashboard-image-element'?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-image-text'?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-text-element'?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-title-element'?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }

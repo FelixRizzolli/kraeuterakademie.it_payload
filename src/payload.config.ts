@@ -56,6 +56,7 @@ import { CourseSpeakers } from './domains/course/collections/CourseSpeakers'
 import { CourseGardens } from './domains/course/collections/CourseGardens'
 import { CourseSharedDocuments } from './domains/course/collections/CourseSharedDocuments'
 import { CourseVideoLesson } from './domains/course/collections/CourseVideoLesson'
+import { DashboardHelpPages } from './domains/dashboard/collections/DashboardHelpPages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -126,6 +127,7 @@ export default buildConfig({
     // Dashboard Web Content
     DashboardTextBlocks,
     DashboardImages,
+    DashboardHelpPages,
   ],
   globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),
