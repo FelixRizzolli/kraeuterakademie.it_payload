@@ -34,6 +34,7 @@ import { PublicTextBlocks } from './domains/public/collections/PublicTextBlocks'
 
 // Dashboard Content
 import { DashboardTextBlocks } from './domains/dashboard/collections/DashboardTextBlocks'
+import { DashboardImages } from './domains/dashboard/collections/DashboardImages'
 
 // Botanical Content
 import { Plants } from './domains/botanical/collections/Plants'
@@ -124,6 +125,7 @@ export default buildConfig({
     PublicTextBlocks,
     // Dashboard Web Content
     DashboardTextBlocks,
+    DashboardImages,
   ],
   globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),
