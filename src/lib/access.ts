@@ -146,6 +146,18 @@ export const isAdministratorOrSelfFieldLevel: FieldAccess = ({ req: { user }, id
 }
 
 /**
+ * Field-level access: Sensitive personal data (Admin only for read, user can update their own)
+ * Used for fields like taxNumber, birthDate, address that should be private
+ */
+export const sensitivePersonalDataFieldLevel: FieldAccess = ({ req: { user }, id }) => {
+  if (!user) return false
+  // Admins can always read/write
+  if (userHasAnyRole(user, [UserRole.SUPER_ADMIN, UserRole.ADMINISTRATOR])) return true
+  // Users can only access their own sensitive data
+  return user.id === id
+}
+
+/**
  * Standard CRUD access pattern: Administrator only for write, public read
  */
 export const administratorWritePublicRead = {

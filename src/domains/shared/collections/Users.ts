@@ -1,6 +1,11 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug, UserRole } from '@/lib/constants'
-import { administratorOrSelf, isAdministratorFieldLevel } from '@/lib/access'
+import {
+  administratorOrSelf,
+  isAdministratorFieldLevel,
+  sensitivePersonalDataFieldLevel,
+  isAdministratorOrSelfFieldLevel,
+} from '@/lib/access'
 
 export const Users: CollectionConfig = {
   slug: CollectionSlug.USERS,
@@ -171,6 +176,12 @@ export const Users: CollectionConfig = {
                   de: 'Interne Notizen über den Benutzer (für den Benutzer nicht sichtbar)',
                 },
               },
+              access: {
+                // Only administrators can read/write notes
+                create: isAdministratorFieldLevel,
+                update: isAdministratorFieldLevel,
+                read: isAdministratorFieldLevel,
+              },
             },
           ],
         },
@@ -229,6 +240,11 @@ export const Users: CollectionConfig = {
                 en: 'Address Information',
                 de: 'Adressinformationen',
               },
+              access: {
+                // Users can read/update their own address, admins can see all
+                read: isAdministratorOrSelfFieldLevel,
+                update: isAdministratorOrSelfFieldLevel,
+              },
               fields: [
                 {
                   type: 'row',
@@ -266,6 +282,11 @@ export const Users: CollectionConfig = {
               label: {
                 en: 'Birth Information',
                 de: 'Geburtsinformationen',
+              },
+              access: {
+                // Sensitive: Only user themselves or admins can access
+                read: sensitivePersonalDataFieldLevel,
+                update: isAdministratorOrSelfFieldLevel,
               },
               fields: [
                 {
@@ -305,6 +326,10 @@ export const Users: CollectionConfig = {
                     en: 'Phone',
                     de: 'Telefon',
                   },
+                  access: {
+                    read: isAdministratorOrSelfFieldLevel,
+                    update: isAdministratorOrSelfFieldLevel,
+                  },
                 },
                 {
                   name: 'taxNumber',
@@ -312,6 +337,11 @@ export const Users: CollectionConfig = {
                   label: {
                     en: 'Tax Number',
                     de: 'Steuernummer',
+                  },
+                  access: {
+                    // Highly sensitive: Only user themselves or admins
+                    read: sensitivePersonalDataFieldLevel,
+                    update: sensitivePersonalDataFieldLevel,
                   },
                 },
               ],
