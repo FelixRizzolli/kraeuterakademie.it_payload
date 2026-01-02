@@ -163,12 +163,14 @@ export interface Config {
     'public-header': PublicHeader;
     'public-sidebar': PublicSidebar;
     contact: Contact;
+    'dashboard-globals': DashboardGlobal;
   };
   globalsSelect: {
     'public-footer': PublicFooterSelect<false> | PublicFooterSelect<true>;
     'public-header': PublicHeaderSelect<false> | PublicHeaderSelect<true>;
     'public-sidebar': PublicSidebarSelect<false> | PublicSidebarSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
+    'dashboard-globals': DashboardGlobalsSelect<false> | DashboardGlobalsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -3472,6 +3474,17 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-globals".
+ */
+export interface DashboardGlobal {
+  id: number;
+  loginImage?: (number | null) | DashboardImage;
+  registerImage?: (number | null) | DashboardImage;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "public-footer_select".
  */
 export interface PublicFooterSelect<T extends boolean = true> {
@@ -3556,6 +3569,17 @@ export interface ContactSelect<T extends boolean = true> {
         place?: T;
         street?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-globals_select".
+ */
+export interface DashboardGlobalsSelect<T extends boolean = true> {
+  loginImage?: T;
+  registerImage?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
