@@ -196,6 +196,10 @@ export interface User {
   firstName?: string | null;
   lastName?: string | null;
   /**
+   * One-time invitation token for user registration. Generate and share with the user.
+   */
+  invitationToken?: string | null;
+  /**
    * User can have multiple roles (e.g., Dashboard User + Quiz Player)
    */
   roles: (number | Role)[];
@@ -1612,6 +1616,7 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
+  invitationToken?: T;
   roles?: T;
   notes?: T;
   enrolledCourses?: T;

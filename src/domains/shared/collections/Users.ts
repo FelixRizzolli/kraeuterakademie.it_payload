@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug, UserRole } from '@/lib/constants'
 import { administratorOrSelf, isAdministratorFieldLevel } from '@/lib/access'
-import { group } from 'console'
+import InvitationTokenField from '../components/InvitationTokenField'
 
 export const Users: CollectionConfig = {
   slug: CollectionSlug.USERS,
@@ -28,7 +28,15 @@ export const Users: CollectionConfig = {
   access: administratorOrSelf,
   hooks: {
     beforeChange: [
-      async ({ data, req, operation }) => {
+      async ({ data, req, operation, originalDoc }) => {
+        // If an invitationToken was set/changed, ensure password is null to prevent accidental overwrite
+        if (
+          data?.invitationToken &&
+          (!originalDoc || originalDoc.invitationToken !== data.invitationToken)
+        ) {
+          data.password = null
+        }
+
         // Automatically assign super-admin role to the first user
         if (operation === 'create') {
           const existingUsers = await req.payload.find({
@@ -55,7 +63,25 @@ export const Users: CollectionConfig = {
             }
           }
         }
+
         return data
+      },
+    ],
+    afterChange: [
+      async ({ doc, previousDoc, operation, req }) => {
+        // If password is set/changed and invitationToken exists, remove the invitationToken
+        if (
+          operation === 'update' &&
+          doc?.password &&
+          previousDoc?.invitationToken &&
+          doc.invitationToken
+        ) {
+          await req.payload.update({
+            collection: CollectionSlug.USERS,
+            id: doc.id,
+            data: { invitationToken: null },
+          })
+        }
       },
     ],
   },
@@ -89,6 +115,28 @@ export const Users: CollectionConfig = {
                   },
                 },
               ],
+            },
+            {
+              name: 'invitationToken',
+              type: 'text',
+              label: {
+                en: 'Invitation Token',
+                de: 'Einladungscode',
+              },
+              admin: {
+                description: {
+                  en: 'One-time invitation token for user registration. Generate and share with the user.',
+                  de: 'Einmaliger Einladungscode für die Benutzerregistrierung. Generieren und an den Benutzer weitergeben.',
+                },
+                components: {
+                  Field: InvitationTokenField as any,
+                },
+              },
+              access: {
+                create: isAdministratorFieldLevel,
+                update: isAdministratorFieldLevel,
+                read: isAdministratorFieldLevel,
+              },
             },
             {
               name: 'roles',
