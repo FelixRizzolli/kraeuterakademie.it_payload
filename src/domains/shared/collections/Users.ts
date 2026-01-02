@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug, UserRole } from '@/lib/constants'
 import { administratorOrSelf, isAdministratorFieldLevel } from '@/lib/access'
-import InvitationTokenField from '../components/InvitationTokenField'
 
 export const Users: CollectionConfig = {
   slug: CollectionSlug.USERS,
@@ -129,7 +128,7 @@ export const Users: CollectionConfig = {
                   de: 'Einmaliger Einladungscode für die Benutzerregistrierung. Generieren und an den Benutzer weitergeben.',
                 },
                 components: {
-                  Field: InvitationTokenField as any,
+                  Field: '@/domains/shared/components/InvitationTokenField#InvitationTokenField',
                 },
               },
               access: {

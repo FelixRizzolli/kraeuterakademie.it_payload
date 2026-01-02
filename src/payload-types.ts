@@ -1584,12 +1584,14 @@ export interface DashboardHelpPage {
   blocks?:
     | (
         | {
+            image?: (number | null) | DashboardImage;
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-image-element';
           }
         | {
             title?: string | null;
+            image?: (number | null) | DashboardImage;
             text?: {
               root: {
                 type: string;
@@ -3084,6 +3086,7 @@ export interface DashboardHelpPagesSelect<T extends boolean = true> {
         'dashboard-image-element'?:
           | T
           | {
+              image?: T;
               id?: T;
               blockName?: T;
             };
@@ -3091,6 +3094,7 @@ export interface DashboardHelpPagesSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              image?: T;
               text?: T;
               id?: T;
               blockName?: T;
