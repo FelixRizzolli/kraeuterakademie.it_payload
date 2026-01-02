@@ -33,6 +33,7 @@ import { PublicBooks } from './domains/public/collections/PublicBooks'
 import { PublicTextBlocks } from './domains/public/collections/PublicTextBlocks'
 
 // Dashboard Content
+import { DashboardTextBlocks } from './domains/dashboard/collections/DashboardTextBlocks'
 
 // Botanical Content
 import { Plants } from './domains/botanical/collections/Plants'
@@ -121,6 +122,8 @@ export default buildConfig({
     PublicSocials,
     PublicBooks,
     PublicTextBlocks,
+    // Dashboard Web Content
+    DashboardTextBlocks,
   ],
   globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),

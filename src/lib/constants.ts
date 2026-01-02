@@ -10,6 +10,7 @@
 export enum CollectionGroup {
   ADMINISTRATION = 'Administration',
   PUBLIC_CONTENT = 'Public Content',
+  DASHBOARD_CONTENT = 'Dashboard Content',
   COURSES = 'Courses',
   BOTANICAL = 'Botanical',
   GLOBALS = 'Globals',
@@ -169,6 +170,8 @@ export const CollectionSlug = {
   PUBLIC_SOCIALS: 'public-socials',
   PUBLIC_TEXT_BLOCKS: 'public-text-blocks',
   PUBLIC_BOOKS: 'public-books',
+  // Dashboard Web Content
+  DASHBOARD_TEXT_BLOCKS: 'dashboard-text-blocks',
 } as const
 
 export type CollectionSlug = (typeof CollectionSlug)[keyof typeof CollectionSlug]
