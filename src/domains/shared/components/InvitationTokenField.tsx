@@ -4,7 +4,7 @@ import React from 'react'
 import { TextInput, Button, useField } from '@payloadcms/ui'
 import generateInvitationToken from '../utils/generateInvitationToken'
 
-const InvitationTokenField = (props: any) => {
+export const InvitationTokenField = (props: any) => {
   const path = props.path
   const { value, setValue } = useField({ path })
   const field = props.field || {}
@@ -36,5 +36,3 @@ const InvitationTokenField = (props: any) => {
     </div>
   )
 }
-
-export default InvitationTokenField
