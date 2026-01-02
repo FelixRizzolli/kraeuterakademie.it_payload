@@ -98,6 +98,7 @@ export interface Config {
     'dashboard-help-pages': DashboardHelpPage;
     'dashboard-ticket-categories': DashboardTicketCategory;
     'dashboard-tickets': DashboardTicket;
+    'dashboard-changelogs': DashboardChangelog;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -147,6 +148,7 @@ export interface Config {
     'dashboard-help-pages': DashboardHelpPagesSelect<false> | DashboardHelpPagesSelect<true>;
     'dashboard-ticket-categories': DashboardTicketCategoriesSelect<false> | DashboardTicketCategoriesSelect<true>;
     'dashboard-tickets': DashboardTicketsSelect<false> | DashboardTicketsSelect<true>;
+    'dashboard-changelogs': DashboardChangelogsSelect<false> | DashboardChangelogsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -1681,6 +1683,64 @@ export interface DashboardTicket {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-changelogs".
+ */
+export interface DashboardChangelog {
+  id: number;
+  version: string;
+  releaseDate: string;
+  blocks?:
+    | (
+        | {
+            image?: (number | null) | DashboardImage;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-image-element';
+          }
+        | {
+            title?: string | null;
+            image?: (number | null) | DashboardImage;
+            text?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-image-text';
+          }
+        | {
+            icon?: string | null;
+            title: string;
+            text: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-text-element';
+          }
+        | {
+            icon?: string | null;
+            title: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'dashboard-title-element';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1826,6 +1886,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'dashboard-tickets';
         value: number | DashboardTicket;
+      } | null)
+    | ({
+        relationTo: 'dashboard-changelogs';
+        value: number | DashboardChangelog;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -3205,6 +3269,53 @@ export interface DashboardTicketsSelect<T extends boolean = true> {
         commentText?: T;
         createdAt?: T;
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dashboard-changelogs_select".
+ */
+export interface DashboardChangelogsSelect<T extends boolean = true> {
+  version?: T;
+  releaseDate?: T;
+  blocks?:
+    | T
+    | {
+        'dashboard-image-element'?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-image-text'?:
+          | T
+          | {
+              title?: T;
+              image?: T;
+              text?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-text-element'?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'dashboard-title-element'?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

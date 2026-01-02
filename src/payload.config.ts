@@ -38,6 +38,7 @@ import { DashboardImages } from './domains/dashboard/collections/DashboardImages
 import { DashboardHelpPages } from './domains/dashboard/collections/DashboardHelpPages'
 import { DashboardTicketCategories } from './domains/dashboard/collections/DashboardTicketCategories'
 import { DashboardTickets } from './domains/dashboard/collections/DashboardTickets'
+import { DashboardChangelogs } from './domains/dashboard/collections/DashboardChangelogs'
 
 // Botanical Content
 import { Plants } from './domains/botanical/collections/Plants'
@@ -132,6 +133,7 @@ export default buildConfig({
     DashboardHelpPages,
     DashboardTicketCategories,
     DashboardTickets,
+    DashboardChangelogs,
   ],
   globals: [PublicFooter, PublicHeader, PublicSidebar, Contact],
   editor: lexicalEditor(),
