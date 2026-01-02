@@ -163,14 +163,14 @@ export interface Config {
     'public-header': PublicHeader;
     'public-sidebar': PublicSidebar;
     contact: Contact;
-    'dashboard-globals': DashboardGlobal;
+    'dashboard-global': DashboardGlobal;
   };
   globalsSelect: {
     'public-footer': PublicFooterSelect<false> | PublicFooterSelect<true>;
     'public-header': PublicHeaderSelect<false> | PublicHeaderSelect<true>;
     'public-sidebar': PublicSidebarSelect<false> | PublicSidebarSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
-    'dashboard-globals': DashboardGlobalsSelect<false> | DashboardGlobalsSelect<true>;
+    'dashboard-global': DashboardGlobalSelect<false> | DashboardGlobalSelect<true>;
   };
   locale: null;
   user: User & {
@@ -3474,7 +3474,7 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "dashboard-globals".
+ * via the `definition` "dashboard-global".
  */
 export interface DashboardGlobal {
   id: number;
@@ -3575,9 +3575,9 @@ export interface ContactSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "dashboard-globals_select".
+ * via the `definition` "dashboard-global_select".
  */
-export interface DashboardGlobalsSelect<T extends boolean = true> {
+export interface DashboardGlobalSelect<T extends boolean = true> {
   loginImage?: T;
   registerImage?: T;
   updatedAt?: T;

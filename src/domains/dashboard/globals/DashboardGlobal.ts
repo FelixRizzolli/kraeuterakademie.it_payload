@@ -2,11 +2,11 @@ import { administratorWritePublicRead } from '@/lib/access'
 import { CollectionSlug } from '@/lib/constants'
 import type { GlobalConfig } from 'payload'
 
-export const DashboardGlobals: GlobalConfig = {
-  slug: 'dashboard-globals',
+export const DashboardGlobal: GlobalConfig = {
+  slug: 'dashboard-global',
   label: {
-    en: 'Dashboard Globals',
-    de: 'Dashboard Globals',
+    en: 'Dashboard Global',
+    de: 'Dashboard Global',
   },
   access: administratorWritePublicRead,
   fields: [

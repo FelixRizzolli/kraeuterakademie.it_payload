@@ -34,7 +34,7 @@ import { PublicTextBlocks } from './domains/public/collections/PublicTextBlocks'
 
 // Dashboard Content
 //  -> Globals
-import { DashboardGlobals } from './domains/dashboard/globals/DashboardGlobals'
+import { DashboardGlobal } from './domains/dashboard/globals/DashboardGlobal'
 //  -> Collections
 import { DashboardTextBlocks } from './domains/dashboard/collections/DashboardTextBlocks'
 import { DashboardImages } from './domains/dashboard/collections/DashboardImages'
@@ -138,7 +138,7 @@ export default buildConfig({
     DashboardTickets,
     DashboardChangelogs,
   ],
-  globals: [PublicFooter, PublicHeader, PublicSidebar, Contact, DashboardGlobals],
+  globals: [PublicFooter, PublicHeader, PublicSidebar, Contact, DashboardGlobal],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
