@@ -68,12 +68,18 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  cors: ['http://localhost:3000', 'http://localhost:3001', process.env.FRONTEND_URL || ''].filter(
-    Boolean,
-  ),
-  csrf: ['http://localhost:3000', 'http://localhost:3001', process.env.FRONTEND_URL || ''].filter(
-    Boolean,
-  ),
+  cors: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    process.env.FRONTEND_URL || '',
+    ...[process.env.NODE_ENV === 'development' ? 'https://studio.apollographql.com' : ''],
+  ].filter(Boolean),
+  csrf: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    process.env.FRONTEND_URL || '',
+    ...[process.env.NODE_ENV === 'development' ? 'https://studio.apollographql.com' : ''],
+  ].filter(Boolean),
   i18n: {
     supportedLanguages: { en, de },
     fallbackLanguage: 'en',
