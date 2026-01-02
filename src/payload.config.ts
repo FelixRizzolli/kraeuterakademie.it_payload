@@ -68,7 +68,12 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  cors: '*',
+  cors: ['http://localhost:3000', 'http://localhost:3001', process.env.FRONTEND_URL || ''].filter(
+    Boolean,
+  ),
+  csrf: ['http://localhost:3000', 'http://localhost:3001', process.env.FRONTEND_URL || ''].filter(
+    Boolean,
+  ),
   i18n: {
     supportedLanguages: { en, de },
     fallbackLanguage: 'en',
@@ -161,6 +166,6 @@ export default buildConfig({
   ],
   graphQL: {
     disable: false,
-    disablePlaygroundInProduction: false,
+    disablePlaygroundInProduction: true, // Changed to true for security
   },
 })
