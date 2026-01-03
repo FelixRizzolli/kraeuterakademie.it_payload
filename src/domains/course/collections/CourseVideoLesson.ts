@@ -22,13 +22,28 @@ export const CourseVideoLesson: CollectionConfig = {
   access: administratorWritePublicRead,
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
-      label: {
-        en: 'Video Lesson Title',
-        de: 'Video Lektionstitel',
-      },
+      type: 'row',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          label: {
+            en: 'Video Lesson Title',
+            de: 'Video Lektionstitel',
+          },
+        },
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          label: {
+            en: 'Video Lesson Slug',
+            de: 'Video Lektion Slug',
+          },
+        },
+      ],
     },
     {
       name: 'youtubeURL',

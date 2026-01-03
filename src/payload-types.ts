@@ -771,6 +771,7 @@ export interface CourseSharedDocument {
 export interface CourseVideoLesson {
   id: number;
   title: string;
+  slug: string;
   youtubeURL?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -2081,6 +2082,7 @@ export interface CourseSharedDocumentsSelect<T extends boolean = true> {
  */
 export interface CourseVideoLessonsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   youtubeURL?: T;
   updatedAt?: T;
   createdAt?: T;
