@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
-import { administratorWritePublicRead } from '@/lib/access'
+import { hasDashboardAccess, isAdministrator } from '@/lib/access'
 import { dashboardBlocks } from '@/domains/dashboard/blocks'
 
 export const DashboardChangelogs: CollectionConfig = {
@@ -19,7 +19,12 @@ export const DashboardChangelogs: CollectionConfig = {
     useAsTitle: 'version',
     group: CollectionGroup.DASHBOARD_CONTENT,
   },
-  access: administratorWritePublicRead,
+  access: {
+    read: hasDashboardAccess,
+    create: isAdministrator,
+    update: isAdministrator,
+    delete: isAdministrator,
+  },
   fields: [
     {
       name: 'version',

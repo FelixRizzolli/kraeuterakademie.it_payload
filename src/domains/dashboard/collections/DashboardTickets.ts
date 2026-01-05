@@ -1,6 +1,31 @@
-import type { CollectionConfig } from 'payload'
+import type { AccessArgs, CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
-import { administratorWritePublicRead } from '@/lib/access'
+import { hasDashboardAccess, isAdministrator, isAdministratorFieldLevel } from '@/lib/access'
+
+const isAdministratorOrHasDashboardAccessWithOwnTicketsOnly = ({
+  data,
+  req: { user },
+}: AccessArgs) => {
+  if (!user) {
+    throw new Error('User must be authenticated to perform this action')
+  }
+
+  // Administrators can read and modify all tickets
+  if (isAdministrator({ req: { user } } as AccessArgs)) {
+    return true
+  }
+
+  if (data && data.author && data.author !== user.id) {
+    throw new Error('User can only read and edit their own tickets')
+  }
+
+  // Non-admins can only read or modify tickets they authored.
+  return {
+    author: {
+      equals: user.id,
+    },
+  }
+}
 
 export const DashboardTickets: CollectionConfig = {
   slug: CollectionSlug.DASHBOARD_TICKETS,
@@ -19,18 +44,67 @@ export const DashboardTickets: CollectionConfig = {
     defaultColumns: ['title'],
     group: CollectionGroup.DASHBOARD_CONTENT,
   },
-  access: administratorWritePublicRead,
+  access: {
+    read: isAdministratorOrHasDashboardAccessWithOwnTicketsOnly,
+    create: hasDashboardAccess,
+    update: isAdministratorOrHasDashboardAccessWithOwnTicketsOnly,
+    delete: isAdministrator,
+  },
   hooks: {
     beforeChange: [
-      async ({ operation, data, originalDoc }: any) => {
-        if (
-          operation === 'update' &&
-          originalDoc &&
-          data.author &&
-          originalDoc.author !== data.author
-        ) {
-          throw new Error('Author cannot be changed')
+      async ({ operation, data, originalDoc, req: { user } }: any) => {
+        // Ensure user is authenticated
+        if (!user) {
+          throw new Error('User must be authenticated to perform this action')
         }
+
+        // On create, ensure user is creating ticket for themselves
+        if (user.id !== data.author && !isAdministrator({ req: { user } } as AccessArgs)) {
+          throw new Error('User can only create tickets for themselves')
+        }
+
+        if (operation === 'update' && originalDoc) {
+          // Prevent changing author
+          if (data.author && originalDoc.author !== data.author) {
+            throw new Error('Author cannot be changed')
+          }
+
+          // Prevent changing title or description when status is in-progress
+          if (data.status === 'in-progress') {
+            if (data.title && originalDoc.title !== data.title) {
+              throw new Error('Title cannot be changed, when status is in-progress')
+            }
+            if (data.description && originalDoc.description !== data.description) {
+              throw new Error('Description cannot be changed, when status is in-progress')
+            }
+          }
+        }
+
+        // Only administrators can change status, priority, and assignedTo
+        if (!isAdministrator({ req: { user } } as AccessArgs)) {
+          if (
+            data.status &&
+            ((operation === 'create' && data.status !== 'open') ||
+              (operation === 'update' && originalDoc.status !== data.status))
+          ) {
+            throw new Error('Only administrators can change the status')
+          }
+          if (
+            data.priority &&
+            ((operation === 'create' && data.priority !== 'medium') ||
+              (operation === 'update' && originalDoc.priority !== data.priority))
+          ) {
+            throw new Error('Only administrators can change the priority')
+          }
+          if (
+            data.assignedTo &&
+            ((operation === 'create' && data.assignedTo !== null) ||
+              (operation === 'update' && originalDoc.assignedTo !== data.assignedTo))
+          ) {
+            throw new Error('Only administrators can change the assigned user')
+          }
+        }
+
         return data
       },
     ],
@@ -100,6 +174,9 @@ export const DashboardTickets: CollectionConfig = {
               ],
               defaultValue: 'open',
               required: true,
+              access: {
+                update: isAdministratorFieldLevel,
+              },
             },
             {
               name: 'priority',
@@ -115,6 +192,9 @@ export const DashboardTickets: CollectionConfig = {
               ],
               defaultValue: 'medium',
               required: true,
+              access: {
+                update: isAdministratorFieldLevel,
+              },
             },
             {
               name: 'author',
@@ -132,6 +212,9 @@ export const DashboardTickets: CollectionConfig = {
                   de: 'Benutzer, der dieses Ticket verfasst hat',
                 },
               },
+              access: {
+                update: () => false,
+              },
             },
             {
               name: 'assignedTo',
@@ -147,6 +230,9 @@ export const DashboardTickets: CollectionConfig = {
                   en: 'User assigned to this ticket',
                   de: 'Benutzer, dem dieses Ticket zugewiesen ist',
                 },
+              },
+              access: {
+                update: isAdministratorFieldLevel,
               },
             },
           ],

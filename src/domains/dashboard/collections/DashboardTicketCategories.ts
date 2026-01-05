@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
-import { administratorWritePublicRead } from '@/lib/access'
+import { isAdministrator, hasDashboardAccess } from '@/lib/access'
 
 export const DashboardTicketCategories: CollectionConfig = {
   slug: CollectionSlug.DASHBOARD_TICKET_CATEGORIES,
@@ -19,7 +19,12 @@ export const DashboardTicketCategories: CollectionConfig = {
     defaultColumns: ['title'],
     group: CollectionGroup.DASHBOARD_CONTENT,
   },
-  access: administratorWritePublicRead,
+  access: {
+    read: hasDashboardAccess,
+    create: isAdministrator,
+    update: isAdministrator,
+    delete: isAdministrator,
+  },
   fields: [
     {
       name: 'title',

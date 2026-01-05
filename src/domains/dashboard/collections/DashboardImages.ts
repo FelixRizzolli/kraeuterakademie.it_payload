@@ -1,4 +1,4 @@
-import { contentCreatorWritePublicRead } from '@/lib/access'
+import { hasDashboardAccess, isAdministrator } from '@/lib/access'
 import { CollectionGroup, CollectionSlug } from '@/lib/constants'
 import type { CollectionConfig } from 'payload'
 
@@ -17,7 +17,12 @@ export const DashboardImages: CollectionConfig = {
   admin: {
     group: CollectionGroup.DASHBOARD_CONTENT,
   },
-  access: contentCreatorWritePublicRead,
+  access: {
+    read: hasDashboardAccess,
+    create: isAdministrator,
+    update: isAdministrator,
+    delete: isAdministrator,
+  },
   fields: [
     {
       name: 'alt',
