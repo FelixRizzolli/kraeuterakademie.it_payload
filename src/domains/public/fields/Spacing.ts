@@ -18,7 +18,6 @@ export const spacing: GroupField = {
             de: 'Abstand Oben',
           },
           type: 'select',
-          dbName: 'mt',
           enumName: 'spacing_enum',
           options: [
             {
@@ -67,7 +66,6 @@ export const spacing: GroupField = {
             de: 'Abstand Unten',
           },
           type: 'select',
-          dbName: 'mb',
           enumName: 'spacing_enum',
           options: [
             {
@@ -121,7 +119,6 @@ export const spacing: GroupField = {
             de: 'Innenabstand Oben',
           },
           type: 'select',
-          dbName: 'pt',
           enumName: 'spacing_enum',
           options: [
             {
@@ -170,7 +167,6 @@ export const spacing: GroupField = {
             de: 'Innenabstand Unten',
           },
           type: 'select',
-          dbName: 'pb',
           enumName: 'spacing_enum',
           options: [
             {

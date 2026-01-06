@@ -160,6 +160,7 @@ export default buildConfig({
       connectionString: process.env.PAYLOAD_DATABASE_URI || '',
     },
     push: process.env.NODE_ENV === 'production' ? false : true,
+    blocksAsJSON: true,
   }),
   sharp,
   plugins: [

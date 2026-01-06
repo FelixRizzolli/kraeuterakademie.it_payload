@@ -23,7 +23,6 @@ export const PublicSwiperSimple: Block = {
                 de: 'Folien',
               },
               type: 'array',
-              dbName: 'public_swiper_simple_slides',
               fields: [
                 {
                   name: 'title',
