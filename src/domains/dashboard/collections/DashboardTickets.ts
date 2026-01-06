@@ -6,23 +6,19 @@ const isAdministratorOrHasDashboardAccessWithOwnTicketsOnly = ({
   data,
   req: { user },
 }: AccessArgs) => {
-  if (!user) {
-    throw new Error('User must be authenticated to perform this action')
-  }
-
   // Administrators can read and modify all tickets
   if (isAdministrator({ req: { user } } as AccessArgs)) {
     return true
   }
 
-  if (data && data.author && data.author !== user.id) {
+  if (data && data.author && data.author !== user?.id) {
     throw new Error('User can only read and edit their own tickets')
   }
 
   // Non-admins can only read or modify tickets they authored.
   return {
     author: {
-      equals: user.id,
+      equals: user?.id,
     },
   }
 }
