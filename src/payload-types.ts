@@ -1593,58 +1593,70 @@ export interface DashboardHelpPage {
   blocks?:
     | (
         | {
-            image?: (number | null) | DashboardImage;
+            content?: {
+              image?: (number | null) | DashboardImage;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-image-element';
           }
         | {
-            title?: string | null;
-            image?: (number | null) | DashboardImage;
-            text?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
+            content?: {
+              title?: string | null;
+              image?: (number | null) | DashboardImage;
+              text?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
+                };
+                [k: string]: unknown;
+              } | null;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-image-text';
           }
         | {
-            icon?: string | null;
-            title: string;
-            text?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
+            content: {
+              icon?: string | null;
+              title: string;
+              text?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
+                };
+                [k: string]: unknown;
+              } | null;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-text-element';
           }
         | {
-            icon?: string | null;
-            title: string;
+            content: {
+              icon?: string | null;
+              title: string;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-title-element';
@@ -1709,58 +1721,70 @@ export interface DashboardChangelog {
   blocks?:
     | (
         | {
-            image?: (number | null) | DashboardImage;
+            content?: {
+              image?: (number | null) | DashboardImage;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-image-element';
           }
         | {
-            title?: string | null;
-            image?: (number | null) | DashboardImage;
-            text?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
+            content?: {
+              title?: string | null;
+              image?: (number | null) | DashboardImage;
+              text?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
+                };
+                [k: string]: unknown;
+              } | null;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-image-text';
           }
         | {
-            icon?: string | null;
-            title: string;
-            text?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
+            content: {
+              icon?: string | null;
+              title: string;
+              text?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
+                };
+                [k: string]: unknown;
+              } | null;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-text-element';
           }
         | {
-            icon?: string | null;
-            title: string;
+            content: {
+              icon?: string | null;
+              title: string;
+            };
+            settings?: {};
             id?: string | null;
             blockName?: string | null;
             blockType: 'dashboard-title-element';
@@ -3238,33 +3262,53 @@ export interface DashboardHelpPagesSelect<T extends boolean = true> {
         'dashboard-image-element'?:
           | T
           | {
-              image?: T;
+              content?:
+                | T
+                | {
+                    image?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-image-text'?:
           | T
           | {
-              title?: T;
-              image?: T;
-              text?: T;
+              content?:
+                | T
+                | {
+                    title?: T;
+                    image?: T;
+                    text?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-text-element'?:
           | T
           | {
-              icon?: T;
-              title?: T;
-              text?: T;
+              content?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    text?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-title-element'?:
           | T
           | {
-              icon?: T;
-              title?: T;
+              content?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
@@ -3318,33 +3362,53 @@ export interface DashboardChangelogsSelect<T extends boolean = true> {
         'dashboard-image-element'?:
           | T
           | {
-              image?: T;
+              content?:
+                | T
+                | {
+                    image?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-image-text'?:
           | T
           | {
-              title?: T;
-              image?: T;
-              text?: T;
+              content?:
+                | T
+                | {
+                    title?: T;
+                    image?: T;
+                    text?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-text-element'?:
           | T
           | {
-              icon?: T;
-              title?: T;
-              text?: T;
+              content?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    text?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
         'dashboard-title-element'?:
           | T
           | {
-              icon?: T;
-              title?: T;
+              content?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                  };
+              settings?: T | {};
               id?: T;
               blockName?: T;
             };
