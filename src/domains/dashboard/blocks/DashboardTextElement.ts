@@ -1,3 +1,4 @@
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
 export const DashboardTextElement: Block = {
@@ -27,8 +28,8 @@ export const DashboardTextElement: Block = {
         en: 'Text',
         de: 'Text',
       },
-      type: 'text',
-      required: true,
+      type: 'richText',
+      editor: lexicalEditor({}),
     },
   ],
 }
