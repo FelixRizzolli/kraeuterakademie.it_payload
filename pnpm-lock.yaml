@@ -97,8 +97,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       vite-tsconfig-paths:
-        specifier: 6.0.3
-        version: 6.0.3(typescript@5.7.3)(vite@7.2.2(@types/node@25.0.9)(sass@1.77.4)(tsx@4.21.0))
+        specifier: 6.0.4
+        version: 6.0.4(typescript@5.7.3)(vite@7.2.2(@types/node@25.0.9)(sass@1.77.4)(tsx@4.21.0))
       vitest:
         specifier: 4.0.17
         version: 4.0.17(@types/node@25.0.9)(jsdom@27.4.0)(sass@1.77.4)(tsx@4.21.0)
@@ -3852,8 +3852,8 @@ packages:
   vfile-message@4.0.3:
     resolution: {integrity: sha512-QTHzsGd1EhbZs4AsQ20JX1rC3cOlt/IWJruk893DfLRr57lcnOeMaWG4K0JrRta4mIJZKth2Au3mM3u03/JWKw==}
 
-  vite-tsconfig-paths@6.0.3:
-    resolution: {integrity: sha512-7bL7FPX/DSviaZGYUKowWF1AiDVWjMjxNbE8lyaVGDezkedWqfGhlnQ4BZXre0ZN5P4kAgIJfAlgFDVyjrCIyg==}
+  vite-tsconfig-paths@6.0.4:
+    resolution: {integrity: sha512-iIsEJ+ek5KqRTK17pmxtgIxXtqr3qDdE6OxrP9mVeGhVDNXRJTKN/l9oMbujTQNzMLe6XZ8qmpztfbkPu2TiFQ==}
     peerDependencies:
       vite: '*'
     peerDependenciesMeta:
@@ -8193,7 +8193,7 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-stringify-position: 4.0.0
 
-  vite-tsconfig-paths@6.0.3(typescript@5.7.3)(vite@7.2.2(@types/node@25.0.9)(sass@1.77.4)(tsx@4.21.0)):
+  vite-tsconfig-paths@6.0.4(typescript@5.7.3)(vite@7.2.2(@types/node@25.0.9)(sass@1.77.4)(tsx@4.21.0)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
