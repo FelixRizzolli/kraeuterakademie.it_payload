@@ -9,7 +9,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+
 - Simplify database push configuration for non-production environments 
+
+- updated dependencies
+    - @payloadcms/db-postgres 3.69.0 → 3.80.0
+    - @payloadcms/next 3.69.0 → 3.80.0
+    - @payloadcms/plugin-seo ^3.69.0 → 3.80.0
+    - @payloadcms/richtext-lexical 3.69.0 → 3.80.0
+    - @payloadcms/translations ^3.69.0 → 3.80.0
+    - @payloadcms/ui 3.69.0 → 3.80.0
+    - dotenv 17.2.3 → 17.3.1
+    - graphql 16.12.0 → 16.13.1
+    - next 15.5.9 → 16.2.1
+    - payload 3.69.0 → 3.80.0
+    - react 19.2.3 → 19.2.4
+    - react-dom 19.2.3 → 19.2.4
+- updated devDependencies
+    - @playwright/test 1.57.0 → 1.58.2
+    - @testing-library/react 16.3.1 → 16.3.2
+    - @types/node 22.19.3 → 25.5.0
+    - @types/react 19.2.7 → 19.2.14
+    - @vitejs/plugin-react 5.1.2 → 6.0.1
+    - eslint 9.39.2 → 10.1.0
+    - eslint-config-next 15.5.9 → 16.2.1
+    - jsdom 27.3.0 → 29.0.1
+    - playwright 1.57.0 → 1.58.2
+    - playwright-core 1.57.0 → 1.58.2
+    - prettier 3.7.4 → 3.8.1
+    - typescript 5.7.3 → 5.9.3
+    - vite-tsconfig-paths 6.0.3 → 6.1.1
+    - vitest 4.0.16 → 4.1.0
 
 ## [1.0.3] - 2025-12-29
 
